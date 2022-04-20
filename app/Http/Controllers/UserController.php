@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Intervention\Image\ImageManagerStatic as Image;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -47,5 +49,18 @@ class UserController extends Controller
             'created_at' => Carbon::now(),
         ]);
         return back();
+    }
+    // password change
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required', new MatchOldPassword],
+            'new_password' => ['required'],
+            'new_confirm_password' => ['same:new_password'],
+        ]);
+   
+        User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+   
+        dd('Password change successfully.');
     }
 }

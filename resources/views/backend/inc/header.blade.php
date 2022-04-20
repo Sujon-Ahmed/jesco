@@ -11,11 +11,14 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link rel="shortcut icon" href="{{ asset('backend_assets/img/favicon.ico') }}" type="image/x-icon">
+  <link href="{{ asset('backend_assets/img/favicon.ico') }}" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  {{-- fontawesome cdn link --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('backend_assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,7 +27,9 @@
   <link href="{{ asset('backend_assets/vendor/quill/quill.snow.css') }}" rel="stylesheet">
   <link href="{{ asset('backend_assets/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
   <link href="{{ asset('backend_assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-  <link href="{{ asset('backend_assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+  {{-- <link href="{{ asset('backend_assets/vendor/simple-datatables/style.css') }}" rel="stylesheet"> --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('backend_assets/css/style.css') }}" rel="stylesheet">
@@ -262,25 +267,27 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li>
+      <!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link {{ Route::currentRouteName() == 'product' ? '' : 'collapsed' }}" data-bs-target="#products-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-basket"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="products-nav" class="nav-content collapse {{ request()->segment(1) == 'color' || request()->segment(1) == 'size' ? 'show' : ''}}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Alerts</span>
+            <a href="{{ route('color') }}" class="{{ Route::currentRouteName() == 'color' ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Color</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
-              <i class="bi bi-circle"></i><span>Accordion</span>
+            <a href="{{ route('size') }}" class="{{ Route::currentRouteName() == 'size' ? 'active' : '' }}">
+              <i class="bi bi-circle"></i><span>Size</span>
             </a>
           </li>
         </ul>
-      </li><!-- End Components Nav -->
+      </li>
+      <!-- End Components Nav -->
 
       <li class="nav-heading">Pages</li>
 
