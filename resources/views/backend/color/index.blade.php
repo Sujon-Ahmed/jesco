@@ -40,10 +40,10 @@
                                     </td>
                                     <td>
                                         <button type="button" value="{{ $color->id }}"
-                                            class="btn btn-outline-success btn-sm colorEdit"><i
+                                            class="btn btn-outline-success btn-sm colorEdit" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
                                                 class="fa fa-edit"></i></button>
                                         <button type="button" value="{{ $color->id }}"
-                                            class="btn btn-outline-danger btn-sm deleteColor"><i
+                                            class="btn btn-outline-danger btn-sm deleteColor" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
                                                 class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -67,11 +67,17 @@
                         @csrf
                         <div class="form-group mt-2">
                             <label for="color_name">Color Name</label>
-                            <input type="text" name="color_name" value="{{ $color->name }}" class="form-control">
+                            <input type="text" name="color_name" value="{{ old('color_name') }}" class="form-control">
+                            @error('color_name')
+                                <span style="color: red;">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group mt-2">
                             <label for="color_name">Color Code</label>
-                            <input type="text" name="color_code" class="form-control">
+                            <input type="text" name="color_code" class="form-control" value="{{ old('color_code') }}">
+                            @error('color_code')
+                                <span style="color: red;">{{ $message }}</span>
+                            @enderror
                         </div>
 
                 </div>
@@ -99,10 +105,16 @@
                         <div class="form-group mt-2">
                             <label for="color_name">Color Name</label>
                             <input type="text" name="color_name" id="color_name" class="form-control">
+                            @error('color_name')
+                                <span style="color: red;">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="form-group mt-2">
                             <label for="color_name">Color Code</label>
                             <input type="text" name="color_code" id="color_code" class="form-control">
+                            @error('color_code')
+                                <span style="color: red;">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -135,6 +147,7 @@
                 </form>
             </div>
         </div>
+    </div>
     @endsection
     @section('scripts')
         <script>

@@ -19,12 +19,16 @@ class ColorController extends Controller
     // color insert 
     public function colorInsert(Request $request)
     {
+        $validated = $request->validate([
+            'color_name' => 'required|unique:colors|max:255',
+            'color_code' => 'required|unique:colors',
+        ]);
         Color::insert([
             'color_name' => $request->color_name,
             'color_code' => $request->color_code,
             'created_at' => Carbon::now(),
         ]);
-        return back();
+        return back()->with('status', 'color added successfully');
     }
     // color edit
     public function colorEdit($id)
@@ -38,12 +42,17 @@ class ColorController extends Controller
     // color update
     public function colorUpdate(Request $request)
     {
+        $validated = $request->validate([
+            'color_name' => 'required|max:255',
+            'color_code' => 'required| max:255',
+        ]);
+
         $color_id = $request->input('colorId');
         Color::find($color_id)->update([
             'color_name' => $request->color_name,
             'color_code' => $request->color_code,
         ]);
-        return redirect()->route('color');
+        return back()->with('status', 'color updated successfully!');
     }
     // color delete
     public function colorDelete(Request $request)
@@ -51,6 +60,6 @@ class ColorController extends Controller
         $colorId = $request->input('colorDeleteId');
         $color = Color::find($colorId);
         $color->delete();
-        return back();
+        return back()->with('status', 'color deleted successfully');
     }
 }

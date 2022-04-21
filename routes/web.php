@@ -45,3 +45,6 @@ Route::delete('/color/delete', [ColorController::class, 'colorDelete'])->name('c
 // size
 Route::get('/size', [SizeController::class, 'size'])->name('size');
 Route::post('/size/insert', [SizeController::class, 'sizeInsert']);
+Route::get('/size/edit/{id}', [SizeController::class, 'edit'])->name('edit');
+Route::put('/size/update', [SizeController::class, 'update'])->name('size.update');
+Route::delete('/size/delete', [SizeController::class, 'sizeDestroy'])->name('size.delete');
