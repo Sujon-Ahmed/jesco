@@ -29,6 +29,7 @@
   
   <!-- Template Main JS File -->
   <script src="{{ asset('backend_assets/js/main.js') }}"></script>
+  @yield('scripts')
 <script>
   $(document).ready(function() {
     $('#myTable').DataTable();

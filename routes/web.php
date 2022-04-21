@@ -39,8 +39,8 @@ Route::post('/change/password', [UserController::class, 'changePassword']);
 Route::get('/color', [ColorController::class, 'color'])->name('color');
 Route::post('/color/insert', [ColorController::class, 'colorInsert']);
 Route::get('/color/edit/{id}', [ColorController::class, 'colorEdit'])->name('color.edit');
-Route::post('/color/update', [ColorController::class, 'colorUpdate']);
-Route::get('/color/delete/{id}', [ColorController::class, 'colorDelete'])->name('color.delete');
+Route::put('/color/update', [ColorController::class, 'colorUpdate'])->name('color.update');
+Route::delete('/color/delete', [ColorController::class, 'colorDelete'])->name('color.delete');
 
 // size
 Route::get('/size', [SizeController::class, 'size'])->name('size');

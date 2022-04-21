@@ -30,23 +30,27 @@ class ColorController extends Controller
     public function colorEdit($id)
     {
         $color_info = Color::find($id);
-        return view('backend.color.edit', [
+        return response()->json([
+            'status' => 200,
             'color_info' => $color_info,
         ]);
     }
     // color update
     public function colorUpdate(Request $request)
     {
-        Color::find($request->id)->update([
+        $color_id = $request->input('colorId');
+        Color::find($color_id)->update([
             'color_name' => $request->color_name,
             'color_code' => $request->color_code,
         ]);
         return redirect()->route('color');
     }
     // color delete
-    public function colorDelete($id)
+    public function colorDelete(Request $request)
     {
-        Color::find($id)->delete();
+        $colorId = $request->input('colorDeleteId');
+        $color = Color::find($colorId);
+        $color->delete();
         return back();
     }
 }
