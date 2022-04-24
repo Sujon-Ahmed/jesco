@@ -12,7 +12,7 @@ class ColorController extends Controller
     public function color()
     {
         $colors = Color::all();
-        return view('backend.color.index', [
+        return view('backend.product_attributes.color.index', [
             'colors' => $colors,
         ]);
     }

@@ -12,7 +12,7 @@ class SizeController extends Controller
     public function size()
     {
         $sizes = Size::all();
-        return view('backend.size.index', [
+        return view('backend.product_attributes.size.index', [
             'sizes' => $sizes,
         ]);
     }

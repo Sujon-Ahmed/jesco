@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -48,3 +49,7 @@ Route::post('/size/insert', [SizeController::class, 'sizeInsert']);
 Route::get('/size/edit/{id}', [SizeController::class, 'edit'])->name('edit');
 Route::put('/size/update', [SizeController::class, 'update'])->name('size.update');
 Route::delete('/size/delete', [SizeController::class, 'sizeDestroy'])->name('size.delete');
+
+// category
+Route::get('/category', [CategoryController::class, 'index'])->name('category');
+Route::post('/category/insert', [CategoryController::class, 'add']);

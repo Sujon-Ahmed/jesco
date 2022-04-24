@@ -108,14 +108,14 @@
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                     <div class="col-md-8 col-lg-9">
-                        @if (Auth::user()->photo == '')                
+                        @if (Auth::user()->photo == null)                
                             <img src="{{ asset('backend_assets/img/avatar.png') }}" alt="Profile" class="img-thumbnail" id="pic">
                         @else 
                             <img src="{{ asset('backend_assets/uploads/users') }}/{{ Auth::user()->photo }}" alt="Profile" class="img-thumbnail" id="pic">
                         @endif
                       <div class="pt-2">
-                        <label class="btn btn-primary btn-sm text-light" title="Upload new profile image" id="photo"> <input type="file" name="photo" id="photo" style="display: none" oninput="pic.src=window.URL.createObjectURL(this.files[0])"><i class="bi bi-upload"></i></label>              
-                        <label class="btn btn-danger btn-sm text-light" title="Remove my profile image" ><input style="display: none" type="reset" id="reset"><i class="bi bi-trash"></i></label>
+                        <label class="btn btn-primary btn-sm text-light" data-bs-toggle="tooltip" data-bs-placement="left" title="Change profile image" id="photo"> <input type="file" name="photo" id="photo" style="display: none" oninput="pic.src=window.URL.createObjectURL(this.files[0])"><i class="bi bi-upload"></i></label>              
+                        <label class="btn btn-danger btn-sm text-light" data-bs-toggle="tooltip" data-bs-placement="right" title="Remove profile image" ><input style="display: none" type="reset" id="reset"><i class="bi bi-trash"></i></label>
                       </div>
                     </div>
                   </div>
