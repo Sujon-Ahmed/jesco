@@ -39,7 +39,7 @@
                                     </td>
                                     <td>
                                         <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
-                                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
+                                        <button type="button" value="{{ $category->id }}" class="btn btn-outline-danger btn-sm categoryDeleteButton" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -50,7 +50,7 @@
         </div>
     </div>
     <!-- Modal for add category -->
-    <div class="modal fade" id="addNewCategory" tabindex="-1" aria-labelledby="deleteColor" aria-hidden="true">
+    <div class="modal fade" id="addNewCategory" tabindex="-1" aria-labelledby="category" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -86,19 +86,19 @@
         </div>
     </div>
     <!-- Modal for delete size -->
-    {{-- <div class="modal fade" id="deleteSizeModal" tabindex="-1" aria-labelledby="deleteColor" aria-hidden="true">
+    <div class="modal fade" id="deleteCategoryModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="deleteColor">size delete confirmed message</h5>
+                    <h5 class="modal-title text-capitalize" id="categoryDelete">confirmed message</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('size.delete') }}" method="POST">
+                <form action="{{ route('category.destroy') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body">
-                        Are You Sure Delete This size ?
-                        <input type="hidden" name="sizeDeleteId" id="sizeDeleteId">
+                        Are You Sure Delete This Category ?
+                        <input type="hidden" name="category_id" id="category_id">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -107,13 +107,20 @@
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('scripts')
     <script>
         $(document).ready(function() {
+            // add modal 
             $(document).on('click', '.addCategory', function() {
                 $('#addNewCategory').modal('show');
+            });
+            // delete modal
+            $(document).on('click', '.categoryDeleteButton', function () {
+                let categoryId = $(this).val();
+                $('#deleteCategoryModal').modal('show');
+                $('#category_id').val(categoryId);
             });
         });
     </script>

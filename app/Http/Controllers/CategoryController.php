@@ -36,4 +36,14 @@ class CategoryController extends Controller
         return back()->with('status', 'category added successfully');
 
     }
+    // delete category
+    public function destroy(Request $request)
+    {
+        $category_id = $request->category_id;
+        $category_thumbnail = Category::where('id', $category_id)->first()->category_thumbnail;
+        $delete_form = public_path('/backend_assets/uploads/category/'.$category_thumbnail);
+        unlink($delete_form);
+        Category::find($category_id)->delete();
+        return back()->with('status', 'category delete successfully!');
+    }
 }

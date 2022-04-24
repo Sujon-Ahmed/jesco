@@ -53,3 +53,4 @@ Route::delete('/size/delete', [SizeController::class, 'sizeDestroy'])->name('siz
 // category
 Route::get('/category', [CategoryController::class, 'index'])->name('category');
 Route::post('/category/insert', [CategoryController::class, 'add']);
+Route::delete('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
