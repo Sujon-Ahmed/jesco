@@ -10,8 +10,8 @@
                 <li class="breadcrumb-item active">Category</li>
             </ol>
         </nav>
-    </div><!-- End Page Title -->
-
+    </div>
+    <!-- End Page Title -->
     <div class="row">
         <div class="col-lg-12">
             <div class="card shadow-sm">
@@ -30,16 +30,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $key=>$category)
+                            @foreach ($categories as $key => $category)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $category->category_name }}</td>
                                     <td>
-                                        <img src="{{ asset('backend_assets/uploads/category') }}/{{ $category->category_thumbnail }}" alt="category_image" class="img-fluid" style="width: 100px">
+                                        <img src="{{ asset('backend_assets/uploads/category') }}/{{ $category->category_thumbnail }}"
+                                            alt="category_image" class="img-fluid" style="width: 100px">
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
-                                        <button type="button" value="{{ $category->id }}" class="btn btn-outline-danger btn-sm categoryDeleteButton" data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
+                                        <button type="button" value="{{ $category->id }}"
+                                            class="btn btn-outline-success btn-sm categoryEditButton"
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
+                                                class="fa fa-edit"></i></button>
+                                        <button type="button" value="{{ $category->id }}"
+                                            class="btn btn-outline-danger btn-sm categoryDeleteButton"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
+                                                class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -85,6 +92,44 @@
             </div>
         </div>
     </div>
+    <!-- Modal for edit / update category -->
+    <div class="modal fade" id="editUpdateCategory" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="category">edit / update category</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url('/category/update') }}" method="POST" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        @csrf
+                        <input type="hidden" name="editUpdateCategoryId" id="editUpdateCategoryId">
+                        <div class="form-group mt-2">
+                            <label for="category_name" class="form-label">Category Name</label>
+                            <input type="text" name="category_edit_name" id="category_edit_name" class="form-control"
+                                value="{{ old('category_name') }}">
+                            @error('category_name')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="category_thumbnail">Category Thumbnail</label>
+                            <input type="file" name="category_edit_thumbnail" id="category_edit_thumbnail"
+                                class="form-control file-control" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                            @error('category_thumbnail')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <img style="width: 300px" id="pic" alt="">
+                        <div class="modal-footer d-flex">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Modal for delete size -->
     <div class="modal fade" id="deleteCategoryModal">
         <div class="modal-dialog">
@@ -116,8 +161,24 @@
             $(document).on('click', '.addCategory', function() {
                 $('#addNewCategory').modal('show');
             });
+            // edit
+            $(document).on('click', '.categoryEditButton', function() {
+                let editCategoryVal = $(this).val();
+                $('#editUpdateCategory').modal('show');
+                $.ajax({
+                    type: "GET",
+                    url: "/edit/category/" + editCategoryVal,
+                    dataType: "json",
+                    success: function (response) {
+                        // console.log(response);
+                        $('#category_edit_name').val(response.category_info.category_name);
+                        $('#editUpdateCategoryId').val(editCategoryVal);
+                        // $('#pic').src(response.category_info.category_thumbnail);
+                    }
+                });
+            });
             // delete modal
-            $(document).on('click', '.categoryDeleteButton', function () {
+            $(document).on('click', '.categoryDeleteButton', function() {
                 let categoryId = $(this).val();
                 $('#deleteCategoryModal').modal('show');
                 $('#category_id').val(categoryId);

@@ -36,6 +36,34 @@ class CategoryController extends Controller
         return back()->with('status', 'category added successfully');
 
     }
+    // edit
+    public function edit($id)
+    {
+        $category_info = Category::find($id);
+        return response()->json([
+            'status' => 200,
+            'category_info' => $category_info,
+        ]);
+    }
+    // update
+    public function update(Request $request)
+    {
+        if ($request->category_edit_thumbnail != '') {
+            $category_info = Category::find($request->editUpdateCategoryId);
+            if ($category_info->category_thumbnail != '') {
+                unlink(public_path('/backend_assets/uploads/category/'.$category_info->category_thumbnail));
+            }
+            $thumbnail_name = $request->editUpdateCategoryId.'.'.$request->category_edit_thumbnail->getClientOriginalExtension();
+            Image::make($request->category_edit_thumbnail)->resize(480, 480)->save(public_path('/backend_assets/uploads/category/'.$thumbnail_name));
+            Category::find($request->editUpdateCategoryId)->update([
+                'category_thumbnail' => $thumbnail_name,
+            ]);
+        }
+        Category::find($request->editUpdateCategoryId)->update([
+            'category_name' => $request->category_edit_name,
+        ]);
+        return back()->with('status', 'category updated successfully!');
+    }
     // delete category
     public function destroy(Request $request)
     {
