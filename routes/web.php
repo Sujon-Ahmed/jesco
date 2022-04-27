@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,10 @@ Route::post('/category/insert', [CategoryController::class, 'add']);
 Route::delete('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
 Route::get('/edit/category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/category/update', [CategoryController::class, 'update']);
+
+// subcategory
+Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('subcategory');
+Route::post('/subcategory/insert', [SubcategoryController::class, 'store']);
+Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('edit');
+Route::put('/subcategory/update', [SubcategoryController::class, 'update'])->name('update');
+Route::delete('/subcategory/destroy', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
