@@ -52,7 +52,7 @@
                 <div class="row">
                     <div class="col-auto align-self-center">
                         <div class="header-logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Site Logo" /></a>
+                            <a href="#"><img src="{{ asset('frontend_assets/images/logo/logo.png') }}" alt="Site Logo" /></a>
                         </div>
                     </div>
                     <div class="col align-self-center d-none d-lg-block">
@@ -102,17 +102,17 @@
                                                 <li>
                                                     <a class="p-0" href="shop-left-sidebar.html"><img
                                                             class="img-responsive w-100"
-                                                            src="assets/images/banner/7.jpg" alt=""></a>
+                                                            src="{{ asset('frontend_assets/images/banner/7.jpg') }}" alt=""></a>
                                                 </li>
                                                 <li>
                                                     <a class="p-0" href="shop-left-sidebar.html"><img
                                                             class="img-responsive w-100"
-                                                            src="assets/images/banner/8.jpg" alt=""></a>
+                                                            src="{{ asset('frontend_assets/images/banner/8.jpg') }}" alt=""></a>
                                                 </li>
                                                 <li>
                                                     <a class="p-0" href="shop-left-sidebar.html"><img
                                                             class="img-responsive w-100"
-                                                            src="assets/images/banner/9.jpg" alt=""></a>
+                                                            src="{{ asset('frontend_assets/images/banner/9.jpg') }}" alt=""></a>
                                                 </li>
                                             </ul>
                                         </li>

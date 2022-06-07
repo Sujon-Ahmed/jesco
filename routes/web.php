@@ -23,7 +23,7 @@ use App\Http\Controllers\SubcategoryController;
 
 // frontend
 Route::get('/', function () {
-    return view('frontend.layouts.master');
+    return view('frontend.index');
 });
 
 Auth::routes();
