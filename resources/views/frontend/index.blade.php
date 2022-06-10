@@ -154,7 +154,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/1.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="new">New</span>
@@ -193,7 +193,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/3.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="sale">-10%</span>
@@ -235,7 +235,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/5.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="sale">-7%</span>
@@ -274,7 +274,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/7.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="new">Sale</span>
@@ -313,7 +313,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/2.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="sale">-5%</span>
@@ -353,7 +353,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/4.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                         </span>
@@ -1119,7 +1119,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/1.jpg') }}" alt="Product" />
 
                                         </a>
                                         <span class="badges">
@@ -1441,7 +1441,7 @@
                                 <div class="product">
                                     <div class="thumb">
                                         <a href="single-product.html" class="image">
-                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
+                                            <img src="{{ asset('frontend_assets/images/product-image/1.jpg') }}" alt="Product" />
                                         </a>
                                         <span class="badges">
                                             <span class="new">New</span>
@@ -1766,7 +1766,7 @@
     <div class="row m-0">
         <div class="col-12 col-lg-4 mb-md-30px mb-lm-30px">
             <div class="single-banner-2">
-                <img src="assets/images/banner/4.jpg" alt="">
+                <img src="{{ asset('frontend_assets/images/banner/4.jpg') }}" alt="">
                 <div class="item-disc">
                     <h4 class="title">Best Collection <br>
                         For Women</h4>
@@ -1777,7 +1777,7 @@
         </div>
         <div class="col-12 col-lg-4 center-col mb-md-30px mb-lm-30px">
             <div class="single-banner-2">
-                <img src="assets/images/banner/5.jpg" alt="">
+                <img src="{{ asset('frontend_assets/images/banner/5.jpg') }}" alt="">
                 <div class="item-disc">
                     <h4 class="title">Best Collection <br>
                         For Men</h4>
@@ -1788,7 +1788,7 @@
         </div>
         <div class="col-12 col-lg-4">
             <div class="single-banner-2">
-                <img src="assets/images/banner/6.jpg" alt="">
+                <img src="{{ asset('frontend_assets/images/banner/6.jpg') }}" alt="">
                 <div class="item-disc">
                     <h4 class="title">New Collection <br>
                         For Kids</h4>

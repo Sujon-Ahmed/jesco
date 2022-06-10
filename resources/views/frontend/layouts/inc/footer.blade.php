@@ -132,9 +132,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="copy-text"> © 2021 <strong>Jesco</strong> Made With <i class="fa fa-heart"
-                                aria-hidden="true"></i> By <a class="company-name" href="https://hasthemes.com/">
-                                <strong> HasThemes</strong></a>.</p>
+                        <p class="copy-text"> © <?= date('Y') ?> <strong>Jesco</strong> Developed By <i class="fa fa-heart"
+                                aria-hidden="true"></i>  <a class="company-name" target="_blank" href="https://github.com/Sujon-Ahmed">
+                                <strong> Sujon Ahmed</strong></a>.</p>
                     </div>
                 </div>
             </div>
@@ -340,20 +340,20 @@
 <!-- Global Vendor, plugins JS -->
 
 <!-- Vendor JS -->
-<!-- <script src="{{ asset('frontend_assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('frontend_assets/js/vendor/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/vendor/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/vendor/jquery-migrate-3.3.2.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/js/vendor/modernizr-3.11.2.min.js') }}"></script> -->
+    <script src="{{ asset('frontend_assets/js/vendor/modernizr-3.11.2.min.js') }}"></script>
 
 <!--Plugins JS-->
-<!-- <script src="{{ asset('frontend_assets/js/plugins/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend_assets/js/plugins/swiper-bundle.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/plugins/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/plugins/jquery.nice-select.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/plugins/countdown.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/plugins/scrollup.js') }}"></script>
-    <script src="{{ asset('frontend_assets/js/plugins/jquery.zoom.min.js"') }}></script>
+    <script src="{{ asset('frontend_assets/js/plugins/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('frontend_assets/js/plugins/venobox.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/js/plugins/ajax-mail.js') }}"></script> -->
+    <script src="{{ asset('frontend_assets/js/plugins/ajax-mail.js') }}"></script>
 
 <!-- Use the minified version files listed below for better performance and remove the files listed above -->
 <script src="{{ asset('frontend_assets/js/vendor/vendor.min.js') }}"></script>

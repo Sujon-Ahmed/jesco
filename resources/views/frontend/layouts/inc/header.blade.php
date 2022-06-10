@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
-
-<!-- Mirrored from template.hasthemes.com/jesco/jesco/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Sep 2021 07:18:43 GMT -->
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -17,24 +13,23 @@
 
 
     <!-- vendor css (Icon Font) -->
-    <!-- <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/bootstrap.bundle.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/bootstrap.bundle.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/pe-icon-7-stroke.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/font.awesome.css') }}" /> -->
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/font.awesome.css') }}" />
 
     <!-- plugins css (All Plugins Files) -->
-    <!-- <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/animate.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/swiper-bundle.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/jquery-ui.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/nice-select.css') }}" />
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/venobox.css') }}" /> -->
-
-    <!-- Use the minified version files listed below for better performance and remove the files listed above -->
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/venobox.css') }}" />
+    
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/vendor.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.min.css') }}">
 
     <!-- Main Style -->
-    <!-- <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}" /> -->
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}" />
 
 </head>
 
@@ -57,12 +52,8 @@
                     </div>
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
-                            <ul>
-                                <li class="dropdown"><a href="#">Home <i class="pe-7s-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home</a></li>
-                                    </ul>
-                                </li>
+                            <ul>                                
+                                <li class="{{ url('/') ? 'active' : ''}}"><a href="">Home</a></li>
                                 <li class="dropdown position-static"><a href="#">Shop <i
                                             class="pe-7s-angle-down"></i></a>
                                     <ul class="mega-menu d-block">
