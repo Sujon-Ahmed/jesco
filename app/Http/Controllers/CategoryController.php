@@ -7,6 +7,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Filesystem\Cache;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -73,5 +76,13 @@ class CategoryController extends Controller
         unlink($delete_form);
         Category::find($category_id)->delete();
         return back()->with('status', 'category delete successfully!');
+    }
+    // update status
+    public function status_update(Request $request)
+    {
+        $category = Category::find($request->id);
+        $category->status = $request->category_status;
+        $category->save();
+        return 1;
     }
 }

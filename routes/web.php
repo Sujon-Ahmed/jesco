@@ -55,6 +55,8 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::delete('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::get('/edit/category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::post('/category/update', [CategoryController::class, 'update']);
+    Route::post('/category/update', [CategoryController::class, 'status_update'])->name('category.change-status');
+
     // subcategory
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('subcategory');
     Route::post('/subcategory/insert', [SubcategoryController::class, 'store'])->name('subcategory.insert');

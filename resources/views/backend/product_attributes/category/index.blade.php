@@ -41,7 +41,7 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" {{ $category->status == '1' ? 'checked' : '' }}>
+                                            <input type="checkbox" onchange="update_category_status(this)" value="{{ $category->id }}" {{ $category->status == '1' ? 'checked' : '' }}>
                                             <span class="slider"></span>
                                         </label>
                                     </td>
@@ -191,6 +191,22 @@
                 $('#deleteCategoryModal').modal('show');
                 $('#category_id').val(categoryId);
             });
+            // update category status
+            
         });
+        
+        function update_category_status(el){
+            var category_status = 0;
+            if(el.checked){
+                var category_status = 1;
+            }
+            $.post('{{ route('category.change-status') }}', {_token:'{{ csrf_token() }}', id:el.value, category_status:category_status}, function(data){
+                if(data == 1)
+                     toastr.success('success', 'Status changed Successfully');
+                else{
+                    toastr.error('error', 'Something went wrong');
+                }
+            });
+        }
     </script>
 @endsection
