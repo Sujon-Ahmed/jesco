@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubcategoryController;
@@ -22,9 +23,8 @@ use App\Http\Controllers\SubcategoryController;
 */
 
 // frontend
-Route::get('/', function () {
-    return view('frontend.index');
-});
+
+Route::get('/', [FrontendController::class, 'index'])->name('index.frontend');
 
 Auth::routes();
 

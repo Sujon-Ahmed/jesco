@@ -26,6 +26,7 @@
                                 <th>sl</th>
                                 <th>category</th>
                                 <th>category thumbnail</th>
+                                <th>status</th>
                                 <th>options</th>
                             </tr>
                         </thead>
@@ -37,6 +38,12 @@
                                     <td>
                                         <img src="{{ asset('backend_assets/uploads/category') }}/{{ $category->category_thumbnail }}"
                                             alt="category_image" class="img-fluid" style="width: 100px">
+                                    </td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" {{ $category->status == '1' ? 'checked' : '' }}>
+                                            <span class="slider"></span>
+                                        </label>
                                     </td>
                                     <td>
                                         <button type="button" value="{{ $category->id }}"
@@ -115,7 +122,8 @@
                         <div class="form-group mt-2">
                             <label for="category_thumbnail">Category Thumbnail</label>
                             <input type="file" name="category_edit_thumbnail" id="category_edit_thumbnail"
-                                class="form-control file-control" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                class="form-control file-control"
+                                oninput="pic.src=window.URL.createObjectURL(this.files[0])">
                             @error('category_thumbnail')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
@@ -169,7 +177,7 @@
                     type: "GET",
                     url: "/edit/category/" + editCategoryVal,
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         // console.log(response);
                         $('#category_edit_name').val(response.category_info.category_name);
                         $('#editUpdateCategoryId').val(editCategoryVal);
