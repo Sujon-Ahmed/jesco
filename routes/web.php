@@ -39,25 +39,25 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/change/password', [UserController::class, 'changePassword']);
     // color
     Route::get('/color', [ColorController::class, 'color'])->name('color');
-    Route::post('/color/insert', [ColorController::class, 'colorInsert']);
+    Route::post('/color/insert', [ColorController::class, 'colorInsert'])->name('color.insert');
     Route::get('/color/edit/{id}', [ColorController::class, 'colorEdit'])->name('color.edit');
     Route::put('/color/update', [ColorController::class, 'colorUpdate'])->name('color.update');
     Route::delete('/color/delete', [ColorController::class, 'colorDelete'])->name('color.delete');
     // size
     Route::get('/size', [SizeController::class, 'size'])->name('size');
-    Route::post('/size/insert', [SizeController::class, 'sizeInsert']);
+    Route::post('/size/insert', [SizeController::class, 'sizeInsert'])->name('size.insert');
     Route::get('/size/edit/{id}', [SizeController::class, 'edit'])->name('edit');
     Route::put('/size/update', [SizeController::class, 'update'])->name('size.update');
     Route::delete('/size/delete', [SizeController::class, 'sizeDestroy'])->name('size.delete');
     // category
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
-    Route::post('/category/insert', [CategoryController::class, 'add']);
+    Route::post('/category/insert', [CategoryController::class, 'add'])->name('category.insert');
     Route::delete('/category/destroy', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::get('/edit/category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::post('/category/update', [CategoryController::class, 'update']);
     // subcategory
     Route::get('/subcategory', [SubcategoryController::class, 'index'])->name('subcategory');
-    Route::post('/subcategory/insert', [SubcategoryController::class, 'store']);
+    Route::post('/subcategory/insert', [SubcategoryController::class, 'store'])->name('subcategory.insert');
     Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('edit');
     Route::put('/subcategory/update', [SubcategoryController::class, 'update'])->name('update');
     Route::delete('/subcategory/destroy', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');

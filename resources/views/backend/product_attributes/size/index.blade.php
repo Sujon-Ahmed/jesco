@@ -53,7 +53,7 @@
                     <h5 class="text-center">add size</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ url('/size/insert') }}" method="POST">
+                    <form action="{{ route('size.insert') }}" method="POST">
                         @csrf
                         <div class="form-group mt-2">
                             <label for="size">size</label>

@@ -63,7 +63,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ url('/color/insert') }}" method="POST">
+                    <form action="{{ route('color.insert') }}" method="POST">
                         @csrf
                         <div class="form-group mt-2">
                             <label for="color_name">Color Name</label>
@@ -104,14 +104,14 @@
                         <input type="hidden" name="colorId" id="colorId">
                         <div class="form-group mt-2">
                             <label for="color_name">Color Name</label>
-                            <input type="text" name="color_name" id="color_name" class="form-control">
+                            <input type="text" name="color_name" id="updated_color_name" class="form-control">
                             @error('color_name')
                                 <span style="color: red;">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group mt-2">
                             <label for="color_name">Color Code</label>
-                            <input type="text" name="color_code" id="color_code" class="form-control">
+                            <input type="text" name="color_code" id="updated_color_code" class="form-control">
                             @error('color_code')
                                 <span style="color: red;">{{ $message }}</span>
                             @enderror
@@ -158,13 +158,13 @@
                     $('#editUpdateColor').modal('show');
                     $.ajax({
                         type: "GET",
-                        url: "/color/edit/" + colorEditId,
+                        url: "admin/color/edit/" + colorEditId,
                         dataType: "json",
                         success: function (response) {
-                            // console.log(response.color_info.color_name);
-                            $('#colorId').val(colorEditId);
-                            $('#color_name').val(response.color_info.color_name);
-                            $('#color_code').val(response.color_info.color_code);
+                            console.log(response);
+                            // $('#colorId').val(colorEditId);
+                            // $('#updated_color_name').val(response.color_info.color_name);
+                            // $('#updated_color_code').val(response.color_info.color_code);
                         }
                     });
                 });

@@ -60,7 +60,7 @@
                     <h5 class="modal-title text-capitalize" id="subcategory">add new subcategory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('/subcategory/insert') }}" method="POST">
+                <form action="{{ route('subcategory.insert') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         <select name="category_id" class="form-select" aria-label="Default select example">

@@ -64,7 +64,7 @@
                     <h5 class="modal-title text-capitalize" id="category">add new category</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('/category/insert') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('category.insert') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group mt-2">

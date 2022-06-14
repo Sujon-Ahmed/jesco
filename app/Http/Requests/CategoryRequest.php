@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'category_name' => 'required | unique:categories| string | max:255',
-            'category_thumbnail' => 'required | image | mimes:jpeg,png,jpg | max:1024',
+            'category_thumbnail' => 'required | image | mimes:jpeg,png,jpg | max:5125',
         ];
     }
     public function messages()
