@@ -9,7 +9,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::where('status', '1')->get();
         return view('frontend.index', [
             'categories' => $categories,
         ]);
