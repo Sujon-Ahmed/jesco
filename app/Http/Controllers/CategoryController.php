@@ -42,7 +42,7 @@ class CategoryController extends Controller
     // edit
     public function edit($id)
     {
-        $category_info = Category::find($id)->get();
+        $category_info = Category::find($id);
         return response()->json([
             'status' => 200,
             'category_info' => $category_info,

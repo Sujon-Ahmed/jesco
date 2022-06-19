@@ -132,7 +132,7 @@
                 $('#editUpdateSizeModal').modal('show');                
                 $.ajax({
                     type: "GET",
-                    url: "/size/edit/" + sizeEditBtnId,                    
+                    url: "/admin/size/edit/" + sizeEditBtnId,                    
                     dataType: "json",
                     success: function (response) {
                         $('#sizeId').val(sizeEditBtnId);

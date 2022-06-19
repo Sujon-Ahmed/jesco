@@ -96,7 +96,7 @@
                     <h5 class="modal-title text-capitalize" id="subcategory">edit / update subcategory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('/subcategory/update') }}" method="POST">
+                <form action="{{ url('/admin/subcategory/update') }}" method="POST">
                     <div class="modal-body">
                         @csrf
                         @method('PUT')
@@ -163,7 +163,7 @@
                 $('#editUpdateSubCategory').modal('show');
                 $.ajax({
                     type: "GET",
-                    url: "/subcategory/edit/" + editSubCategoryVal,
+                    url: "/admin/subcategory/edit/" + editSubCategoryVal,
                     dataType: "json",
                     success: function (response) {
                         console.log(response);
