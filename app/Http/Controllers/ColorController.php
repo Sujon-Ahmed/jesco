@@ -36,7 +36,7 @@ class ColorController extends Controller
         $color_info = Color::find($id);
         return response()->json([
             'status' => 200,
-            'color_info' => $color_info,
+            'color_info' => $color_info
         ]);
     }
     // color update

@@ -154,17 +154,17 @@
             $(document).ready(function() {
                 // color edit script
                 $(document).on('click', '.colorEdit', function() {
-                    let colorEditId = $(this).val();
                     $('#editUpdateColor').modal('show');
+                    let colorEditId = $(this).val();
                     $.ajax({
                         type: "GET",
-                        url: "admin/color/edit/" + colorEditId,
+                        url: "/admin/color/edit/" + colorEditId,
                         dataType: "json",
                         success: function (response) {
-                            console.log(response);
-                            // $('#colorId').val(colorEditId);
-                            // $('#updated_color_name').val(response.color_info.color_name);
-                            // $('#updated_color_code').val(response.color_info.color_code);
+                            // console.log(response);
+                            $('#colorId').val(colorEditId);
+                            $('#updated_color_name').val(response.color_info.color_name);
+                            $('#updated_color_code').val(response.color_info.color_code);
                         }
                     });
                 });
