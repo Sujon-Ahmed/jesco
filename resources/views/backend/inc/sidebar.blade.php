@@ -45,13 +45,20 @@
          </li>
          <!-- pages -->
          <li class="nav-heading">Pages</li>
-
+         {{-- brands --}}
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="{{ route('brands') }}">
+                 <i class="bi bi-person"></i>
+                 <span>Brands</span>
+             </a>
+         </li>
+         {{-- profile --}}
          <li class="nav-item">
              <a class="nav-link collapsed" href="{{ route('profile') }}">
                  <i class="bi bi-person"></i>
                  <span>Profile</span>
              </a>
-         </li><!-- End Profile Page Nav -->
+         </li>
 
          <li class="nav-item">
              <a class="nav-link collapsed" href="pages-faq.html">

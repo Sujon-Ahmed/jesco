@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -63,4 +64,8 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/subcategory/edit/{id}', [SubcategoryController::class, 'edit'])->name('edit');
     Route::put('/subcategory/update', [SubcategoryController::class, 'update'])->name('update');
     Route::delete('/subcategory/destroy', [SubcategoryController::class, 'destroy'])->name('subcategory.destroy');
+
+    // brands
+    Route::get('/brands', [BrandController::class, 'index'])->name('brands');
+    Route::post('/brand/insert', [BrandController::class, 'store'])->name('brand.store');
 });
