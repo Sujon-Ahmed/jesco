@@ -48,7 +48,7 @@
          {{-- brands --}}
          <li class="nav-item">
              <a class="nav-link collapsed" href="{{ route('brands') }}">
-                 <i class="bi bi-person"></i>
+                 <i class="bi bi-building"></i>
                  <span>Brands</span>
              </a>
          </li>

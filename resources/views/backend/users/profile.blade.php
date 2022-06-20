@@ -103,7 +103,7 @@
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                 <!-- Profile Edit Form -->
-                <form action="{{ url('/profile/update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('/admin/profile/update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                   <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
@@ -255,7 +255,7 @@
 
               <div class="tab-pane fade pt-3" id="profile-change-password">
                 <!-- Change Password Form -->
-                <form action="{{ url('/change/password') }}" method="POST">
+                <form action="{{ url('/admin/change/password') }}" method="POST">
                   @csrf
                   @foreach ($errors->all() as $error)
                       <p class="text-danger">{{ $error }}</p>

@@ -30,9 +30,33 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                            </tr>
+                            @foreach ($brands as $key => $brand)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $brand->brand_name }}</td>
+                                    <td>
+                                        <img src="{{ asset('backend_assets/uploads/brands') }}/{{ $brand->brand_image }}"
+                                            alt="brand-logo" width="80">
+                                    </td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" onchange=""
+                                                value="">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button type="button" value=""
+                                            class="btn btn-outline-success btn-sm categoryEditButton"
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
+                                                class="fa fa-edit"></i></button>
+                                        <button type="button" value=""
+                                            class="btn btn-outline-danger btn-sm categoryDeleteButton"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

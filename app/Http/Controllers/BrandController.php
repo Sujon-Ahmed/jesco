@@ -11,7 +11,8 @@ class BrandController extends Controller
 {
     public function index()
     {
-        return view('backend.brands.index');
+        $brands = Brand::all();
+        return view('backend.brands.index', compact('brands'));
     }
     public function store(Request $request)
     {
