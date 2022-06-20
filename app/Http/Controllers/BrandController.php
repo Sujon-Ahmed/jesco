@@ -31,4 +31,13 @@ class BrandController extends Controller
         ]);
         return back()->with('status', 'Brand added successfully');
     }
+    public function delete(Request $request)
+    {
+        $brand_id = $request->deleted_brand_id;
+        $brand_thumbnail = Brand::where('id', $brand_id)->first()->brand_image;
+        $delete_form = public_path('backend_assets/uploads/brands/'.$brand_thumbnail);
+        unlink($delete_form);
+        Brand::find($brand_id)->delete();
+        return redirect()->route('brands')->with('status', 'Brand Delete Successfully!');
+    }
 }

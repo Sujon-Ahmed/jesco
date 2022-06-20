@@ -50,8 +50,8 @@
                                             class="btn btn-outline-success btn-sm categoryEditButton"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
                                                 class="fa fa-edit"></i></button>
-                                        <button type="button" value=""
-                                            class="btn btn-outline-danger btn-sm categoryDeleteButton"
+                                        <button type="button" value="{{ $brand->id }}"
+                                            class="btn btn-outline-danger btn-sm brandDeleteBtn"
                                             data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
                                                 class="fa fa-trash"></i></button>
                                     </td>
@@ -63,7 +63,7 @@
             </div>
         </div>
     </div>
-    {{-- modal section --}}
+    {{-- modal section for add new brand--}}
     <div class="modal fade" id="addNewBrand" tabindex="-1" aria-labelledby="brand" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -99,12 +99,47 @@
             </div>
         </div>
     </div>
+    {{-- modal section for delete brand --}}
+     <div class="modal fade" id="deleteBrandModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-capitalize" id="categoryDelete">confirmed message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ route('brand.delete') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-body">
+                        Are You Sure Delete This Brand ?
+                        <input type="hidden" name="deleted_brand_id" id="deleted_brand_id">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @section('scripts')
+    {{-- script for add new brand --}}
     <script>
         $(document).ready(function() {
             $(document).on('click', '.addBrand', function() {
                 $('#addNewBrand').modal('show');
+            });
+        });
+    </script>
+    {{-- script for delete brand --}}
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.brandDeleteBtn', function () {
+                let brandId = $(this).val();
+                $('#deleteBrandModal').modal('show');
+                $('#deleted_brand_id').val(brandId);
             });
         });
     </script>
