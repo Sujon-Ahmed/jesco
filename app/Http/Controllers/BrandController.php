@@ -40,4 +40,30 @@ class BrandController extends Controller
         Brand::find($brand_id)->delete();
         return redirect()->route('brands')->with('status', 'Brand Delete Successfully!');
     }
+    public function getBrandInformation($id)
+    {
+        $brand_info = Brand::find($id);
+        return response()->json([
+            'status' => 200,
+            'brand_info' => $brand_info,
+        ]);
+    }
+    public function update(Request $request)
+    {
+        if ($request->edited_brand_image != '') {
+            $brand_info = Brand::find($request->edited_brand_id);
+            if ($brand_info->edited_brand_image != '') {
+                unlink(public_path('/backend_assets/uploads/brands/' . $brand_info->edited_brand_image));
+            }
+            $thumbnail_name = $request->edited_brand_id . '.' . $request->edited_brand_image->getClientOriginalExtension();
+            Image::make($request->edited_brand_image)->resize(480, 480)->save(public_path('/backend_assets/uploads/brands/' . $thumbnail_name));
+            Brand::find($request->edited_brand_id)->update([
+                'brand_image' => $thumbnail_name,
+            ]);
+        }
+        Brand::find($request->edited_brand_id)->update([
+            'brand_name' => $request->edited_brand_name,
+        ]);
+        return back()->with('status', 'category updated successfully!');
+    }
 }
