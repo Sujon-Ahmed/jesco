@@ -11,7 +11,7 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubcategoryController;
-
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,26 +34,30 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // dashboard
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    
+
     // users
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [UserController::class, 'profileUpdate']);
     Route::post('/change/password', [UserController::class, 'changePassword']);
-    
+
+    // product
+    Route::get('/product', [ProductController::class, 'index'])->name('product');
+    Route::post('/getCategory', [ProductController::class, 'getCategory']);
+                                            
     // color
     Route::get('/color', [ColorController::class, 'color'])->name('color');
     Route::post('/color/insert', [ColorController::class, 'colorInsert'])->name('color.insert');
     Route::get('/color/edit/{id}', [ColorController::class, 'colorEdit'])->name('color.edit');
     Route::put('/color/update', [ColorController::class, 'colorUpdate'])->name('color.update');
     Route::delete('/color/delete', [ColorController::class, 'colorDelete'])->name('color.delete');
-    
+
     // size
     Route::get('/size', [SizeController::class, 'size'])->name('size');
     Route::post('/size/insert', [SizeController::class, 'sizeInsert'])->name('size.insert');
     Route::get('/size/edit/{id}', [SizeController::class, 'edit'])->name('edit');
     Route::put('/size/update', [SizeController::class, 'update'])->name('size.update');
     Route::delete('/size/delete', [SizeController::class, 'sizeDestroy'])->name('size.delete');
-    
+
     // category
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::post('/category/insert', [CategoryController::class, 'add'])->name('category.insert');

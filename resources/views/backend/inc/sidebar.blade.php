@@ -15,8 +15,14 @@
                  <i class="bi bi-basket"></i><span>Product Attributes</span><i class="bi bi-chevron-down ms-auto"></i>
              </a>
              <ul id="products-nav"
-                 class="nav-content collapse {{ (((Route::currentRouteName() == 'color' ? 'show' : '' || Route::currentRouteName() == 'size') ? 'show' : '' || Route::currentRouteName() == 'category') ? 'show' : '' || Route::currentRouteName() == 'subcategory') ? 'show' : '' }}"
+                 class="nav-content collapse {{ (((Route::currentRouteName() == 'color' ? 'show' : '' || Route::currentRouteName() == 'size') ? 'show' : '' || Route::currentRouteName() == 'category') ? 'show' : '' || Route::currentRouteName() == 'subcategory') ? 'show' : '' || Route::currentRouteName() == 'product' ? 'show' : ''}}"
                  data-bs-parent="#sidebar-nav">
+                 <li>
+                     <a href="{{ route('product') }}"
+                         class="{{ Route::currentRouteName() == 'product' ? 'active' : '' }}">
+                         <i class="bi bi-circle"></i><span>Product</span>
+                     </a>
+                 </li>
                  <li>
                      <a href="{{ route('color') }}"
                          class="{{ Route::currentRouteName() == 'color' ? 'active' : '' }}">

@@ -33,10 +33,17 @@
                             @foreach ($subcategories as $key => $subcategory)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $subcategory->relation_to_category->category_name }}</td>
+                                    <td>
+                                        @if (App\Models\Category::where('id', $subcategory->category_id)->exists())
+                                            {{ $subcategory->relation_to_category->category_name }}
+                                        @else
+                                            {{ "N/A" }}
+                                        @endif
+                                    </td>
                                     <td>{{ $subcategory->subcategory_name }}</td>
                                     <td>
-                                        <button type="button" value="{{ $subcategory->id }}" class="btn btn-outline-success btn-sm editSubcategorybtn"
+                                        <button type="button" value="{{ $subcategory->id }}"
+                                            class="btn btn-outline-success btn-sm editSubcategorybtn"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
                                                 class="fa fa-edit"></i></button>
                                         <button type="button" value="{{ $subcategory->id }}"
@@ -101,7 +108,8 @@
                         @csrf
                         @method('PUT')
                         <input type="hidden" name="updatedSubcategoryId" id="updatedSubcategoryId">
-                        <select name="category_id_updated" id="category_id_updated" class="form-select" aria-label="Default select example">
+                        <select name="category_id_updated" id="category_id_updated" class="form-select"
+                            aria-label="Default select example">
                             <option value="">--Select Category--</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -112,13 +120,15 @@
                         @enderror
                         <div class="form-group mt-2">
                             <label for="subcategory_name_updated">Subcategory Name</label>
-                            <input type="text" name="subcategory_name_updated" id="subcategory_name_updated" class="form-control">
+                            <input type="text" name="subcategory_name_updated" id="subcategory_name_updated"
+                                class="form-control">
                             @error('subcategory_name')
                                 <span style="color:red">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success btn-sm">Update</button>
                         </div>
                     </div>
@@ -141,7 +151,8 @@
                         Are You Sure Delete This SubCategory ?
                         <input type="hidden" name="subcategory_id" id="subcategory_id">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </div>
                     </div>
@@ -153,7 +164,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            // add modal 
+            // add modal
             $(document).on('click', '.addSubcategory', function() {
                 $('#addNewSubCategory').modal('show');
             });
@@ -165,9 +176,10 @@
                     type: "GET",
                     url: "/admin/subcategory/edit/" + editSubCategoryVal,
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
-                        $('#subcategory_name_updated').val(response.subcategory_info.subcategory_name);
+                        $('#subcategory_name_updated').val(response.subcategory_info
+                            .subcategory_name);
                         $('#category_id_updated').val(response.subcategory_info.category_id);
                         $('#updatedSubcategoryId').val(editSubCategoryVal);
                     }
