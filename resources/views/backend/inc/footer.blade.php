@@ -26,10 +26,9 @@
  <script src="{{ asset('backend_assets/vendor/php-email-form/validate.js') }}"></script>
  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
  <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
-
- <!-- Template Main JS File -->
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
  <script src="{{ asset('backend_assets/js/main.js') }}"></script>
- {{-- sweet alert cdn link --}}
  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  {{-- custom script placement --}}
  @yield('scripts')

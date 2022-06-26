@@ -76,6 +76,83 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <select name="brand_id" id="brand_id" class="form-control">
+                                    <option value="" class="form-control">-- Select Brand --</option>
+                                    @foreach ($brands as $brand)
+                                        <option value="{{ $brand->id }}" class="form-control">
+                                            {{ $brand->brand_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number" name="quantity" class="form-control" placeholder="Product Quantity">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label for="color_id">Select Color</label>
+                                <select name="color_id[]" id="color_id" class="form-control" multiple="multiple">
+                                    <option value="" class="form-control">-- Select Color --</option>
+                                    @foreach ($colors as $color)
+                                        <option value="{{ $color->id }}" class="form-control">
+                                            {{ $color->color_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="size_id">Select Size</label>
+                                <select name="size_id[]" id="size_id" class="form-control" multiple="multiple">
+                                    <option value="" class="form-control">-- Select Size --</option>
+                                    @foreach ($sizes as $size)
+                                        <option value="{{ $size->id }}" class="form-control">
+                                            {{ $size->size }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input type="text" name="sku" class="form-control" placeholder="SKU">
+                            </div>
+                            <div class="col">
+                                <input type="number" name="discount" class="form-control" placeholder="Discount %">
+                            </div>
+                            <div class="col">
+                                <input type="checkbox" name="status" value="1" id="status">
+                                <label for="status"> Status</label><br>
+                            </div>
+                            <div class="col">
+                                <input type="checkbox" name="tending" value="1" id="tending">
+                                <label for="tending"> Tending</label><br>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label for="product_image">Product Image</label>
+                                <input type="file" name="product_image" class="form-control" id="product_image"
+                                    oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                <img id="pic" class="mt-2" width="100">
+                            </div>
+                            <div class="col">
+                                <label for="product_thumbnail">Product Gallery</label>
+                                <input type="file" name="product_thumbnail" class="form-control"
+                                    id="product_thumbnail" multiple>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <input type="text" name="short_description" id="short_description"
+                                    class="form-control" placeholder="Product Short Description">
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col">
+                                <label for="description">Description</label>
+                                <textarea name="description" id="description" class="form-control"></textarea>
+                            </div>
+                        </div>
 
                 </div>
                 <div class="modal-footer">
@@ -147,8 +224,8 @@
     </div> --}}
 @endsection
 @section('scripts')
-      <script>
-        $('#category_id').change(function(){
+    <script>
+        $('#category_id').change(function() {
             var category_id = $('#category_id').val();
 
             $.ajaxSetup({
@@ -157,13 +234,31 @@
                 }
             });
 
-            $.ajax ({
-                type:'POST',
-                url:'/admin/getCategory',
-                data:{'category_id':category_id},
-                success:function(data) {
-                   $('#subcategory_id').html(data);
+            $.ajax({
+                type: 'POST',
+                url: '/admin/getCategory',
+                data: {
+                    'category_id': category_id
+                },
+                success: function(data) {
+                    $('#subcategory_id').html(data);
                 }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#color_id, #size_id').select2({
+                width: '100%',
+                dropdownParent: $("#addProduct")
+            })
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#description').summernote({
+                'placeholder' : 'Write here...',
+                'height' : 150,
             });
         });
     </script>

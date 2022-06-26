@@ -16,7 +16,6 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_name');
-            $table->string('product_slug');
             $table->integer('category_id');
             $table->integer('subcategory_id');
             $table->string('product_price');
@@ -31,8 +30,6 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->tinyInteger('status')->default('1')->comment('1=publish, 0=unpublish');
             $table->tinyInteger('tending')->default('0')->comment('1=tending, 0=un-tending');
-            $table->string('meta_title')->nullable();
-            $table->longText('meta_description')->nullable();
             $table->timestamps();
         });
     }
