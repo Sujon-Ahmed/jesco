@@ -40,12 +40,14 @@ class ProductController extends Controller
     {
         Product::insert([
             'product_name' => $request->product_name,
+            'product_slug' => strtolower(str_replace(' ','-',$request->product_name)),
             'product_price' => $request->product_price,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'quantity' => $request->quantity,
             'sku' => $request->sku,
             'discount' => $request->discount,
+            'after_discount' => $request->product_price - $request->product_price * $request->discount / 100,
             'brand_id' => $request->brand_id,
             'status' => $request->status,
             'tending' => $request->tending,
