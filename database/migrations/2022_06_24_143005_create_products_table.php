@@ -26,10 +26,10 @@ class CreateProductsTable extends Migration
             $table->integer('color_id')->nullable();
             $table->integer('size_id')->nullable();
             $table->integer('brand_id')->nullable();
-            $table->string('small_description');
-            $table->longText('description');
-            $table->tinyInteger('status')->default('1')->comment('1=publish, 0=unpublish');
-            $table->tinyInteger('tending')->default('0')->comment('1=tending, 0=un-tending');
+            $table->string('short_description')->nullable();
+            $table->longText('description')->nullable();
+            $table->tinyInteger('status')->nullable()->default('0')->comment('1=publish, 0=unpublish');
+            $table->tinyInteger('tending')->nullable()->default('0')->comment('1=tending, 0=un-tending');
             $table->timestamps();
         });
     }

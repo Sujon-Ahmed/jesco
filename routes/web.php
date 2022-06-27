@@ -43,7 +43,8 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // product
     Route::get('/product', [ProductController::class, 'index'])->name('product');
     Route::post('/getCategory', [ProductController::class, 'getCategory']);
-                                            
+    Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+
     // color
     Route::get('/color', [ColorController::class, 'color'])->name('color');
     Route::post('/color/insert', [ColorController::class, 'colorInsert'])->name('color.insert');
