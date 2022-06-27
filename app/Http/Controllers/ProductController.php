@@ -10,6 +10,7 @@ use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Carbon\Carbon;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProductController extends Controller
 {
@@ -38,7 +39,7 @@ class ProductController extends Controller
     // product store
     public function store(Request $request)
     {
-        Product::insert([
+        $product_id = Product::insertGetId([
             'product_name' => $request->product_name,
             'product_slug' => strtolower(str_replace(' ','-',$request->product_name)),
             'product_price' => $request->product_price,
@@ -54,6 +55,13 @@ class ProductController extends Controller
             'short_description' => $request->short_description,
             'description' => $request->description,
             'created_at' => Carbon::now()
+        ]);
+        $product_image = $request->product_image;
+        $product_image_extension = $product_image->getClientOriginalExtension();
+        $product_image_name = $product_id.'.'.$product_image_extension;
+        Image::make($product_image)->resize(270,310)->save(public_path('/backend_assets/uploads/products/preview/'.$product_image_name));
+        Product::find($product_id)->update([
+            'product_image' => $product_image_name
         ]);
         return redirect()->route('product')->with('status', 'Product has been added successfully');
     }
