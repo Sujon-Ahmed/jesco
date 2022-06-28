@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->string('sku')->nullable();
             $table->string('discount')->nullable()->comment('%');
             $table->string('after_discount');
-            $table->integer('color_id')->nullable();
-            $table->integer('size_id')->nullable();
+            $table->longText('color_id')->nullable()->default('0');
+            $table->longText('size_id')->nullable()->default('0');
             $table->integer('brand_id')->nullable();
             $table->string('short_description')->nullable();
             $table->longText('description')->nullable();

@@ -9,6 +9,7 @@ use App\Models\Size;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductThumbnail;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -39,30 +40,59 @@ class ProductController extends Controller
     // product store
     public function store(Request $request)
     {
-        $product_id = Product::insertGetId([
-            'product_name' => $request->product_name,
-            'product_slug' => strtolower(str_replace(' ','-',$request->product_name)),
-            'product_price' => $request->product_price,
-            'category_id' => $request->category_id,
-            'subcategory_id' => $request->subcategory_id,
-            'quantity' => $request->quantity,
-            'sku' => $request->sku,
-            'discount' => $request->discount,
-            'after_discount' => $request->product_price - $request->product_price * $request->discount / 100,
-            'brand_id' => $request->brand_id,
-            'status' => $request->status,
-            'tending' => $request->tending,
-            'short_description' => $request->short_description,
-            'description' => $request->description,
-            'created_at' => Carbon::now()
-        ]);
-        $product_image = $request->product_image;
-        $product_image_extension = $product_image->getClientOriginalExtension();
-        $product_image_name = $product_id.'.'.$product_image_extension;
+        $product = new Product();
+        $product->product_name      = $request->product_name;
+        $product->product_slug      = strtolower(str_replace(' ', '-', $request->product_name));
+        $product->product_price     = $request->product_price;
+        $product->category_id       = $request->category_id;
+        $product->subcategory_id    = $request->subcategory_id;
+        $product->quantity          = $request->quantity;
+        // color id store
+        $color_id = [];
+        if ($request->color_id != null) {
+            foreach ($request->color_id as $key => $color) {
+                array_push($color_id, $color);
+            }
+        }
+        $product->color_id          = json_encode($color_id);
+        // size id store
+        $size_id = [];
+        if ($request->size_id != null) {
+            foreach ($request->size_id as $key => $size) {
+                array_push($size_id, $size);
+            }
+        }
+        $product->size_id           = json_encode($size_id);
+
+        $product->sku               = $request->sku;
+        $product->discount          = $request->discount;
+        $product->after_discount    = $request->product_price - $request->product_price * $request->discount / 100;
+        $product->brand_id          = $request->brand_id;
+        $product->status            = $request->status;
+        $product->tending           = $request->tending;
+        $product->short_description = $request->short_description;
+        $product->description       = $request->description;
+        // product image store
+        $product_image              = $request->product_image;
+        $product_image_extension    = $product_image->getClientOriginalExtension();
+        $product_image_name         = uniqid().'.'.$product_image_extension;
         Image::make($product_image)->resize(270,310)->save(public_path('/backend_assets/uploads/products/preview/'.$product_image_name));
-        Product::find($product_id)->update([
-            'product_image' => $product_image_name
-        ]);
+        $product->product_image     = $product_image_name;
+
+        $product->save();
+
+        $loop = 1;
+        foreach ($request->product_thumbnail as $thumbnail) {
+            $thumbnail_extension =  $thumbnail->getClientOriginalExtension();
+            $thumbnail_name = $product->id . '-' . $loop . '.' . $thumbnail_extension;
+            Image::make($thumbnail)->resize(100, 134)->save(public_path('/backend_assets/uploads/products/thumbnails/' . $thumbnail_name));
+            ProductThumbnail::insert([
+                'product_id' => $product->id,
+                'product_thumbnail' => $thumbnail_name,
+                'created_at' => Carbon::now(),
+            ]);
+            $loop++;
+        }
         return redirect()->route('product')->with('status', 'Product has been added successfully');
     }
 

@@ -137,7 +137,7 @@
                             </div>
                             <div class="col">
                                 <label for="product_thumbnail">Product Gallery</label>
-                                <input type="file" name="product_thumbnail" class="form-control"
+                                <input type="file" name="product_thumbnail[]" class="form-control"
                                     id="product_thumbnail" multiple>
                             </div>
                         </div>
