@@ -26,21 +26,23 @@
                     <!-- Swiper -->
                     <div class="swiper-container zoom-top">
                         <div class="swiper-wrapper">
-                             @foreach ($product_info->rel_to_thumbnail as $thumbnail)
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{{ asset('backend_assets/uploads/products/thumbnails')}}/{{ $thumbnail->product_thumbnail }}"
-                                alt="">
-                            </div>
+                            @foreach ($product_info->rel_to_thumbnail as $thumbnail)
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto"
+                                        src="{{ asset('backend_assets/uploads/products/thumbnails') }}/{{ $thumbnail->product_thumbnail }}"
+                                        alt="">
+                                </div>
                             @endforeach
                         </div>
                     </div>
                     <div class="swiper-container zoom-thumbs mt-3 mb-3">
                         <div class="swiper-wrapper">
                             @foreach ($product_info->rel_to_thumbnail as $thumbnail)
-                            <div class="swiper-slide">
-                                <img class="img-responsive m-auto" src="{{ asset('backend_assets/uploads/products/thumbnails')}}/{{ $thumbnail->product_thumbnail }}"
-                                alt="">
-                            </div>
+                                <div class="swiper-slide">
+                                    <img class="img-responsive m-auto"
+                                        src="{{ asset('backend_assets/uploads/products/thumbnails') }}/{{ $thumbnail->product_thumbnail }}"
+                                        alt="">
+                                </div>
                             @endforeach
                         </div>
                     </div>
@@ -63,14 +65,18 @@
                             </div>
                             <span class="read-review"><a class="reviews" href="#">( 5 Customer Review )</a></span>
                         </div>
-                            <div class="pro-details-color-info d-flex align-items-center">
+                        <div class="pro-details-color-info d-flex align-items-center">
                             <span>Color</span>
-                            <div class="pro-details-color">
+                            <div class="pro-details-color" >
                                 <ul>
-                                    <li><a class="active-color yellow" href="#"></a></li>
-                                    <li><a class="black" href="#"></a></li>
-                                    <li><a class="red" href="#"></a></li>
-                                    <li><a class="pink" href="#"></a></li>
+                                    @php
+                                        $pc = json_decode($product_info->color_id);
+                                    @endphp
+                                    @forelse($pc as $item)
+                                        <li><a title="{{ App\Models\Color::where('id', $item)->first()->color_name }}" class="{{ App\Models\Color::where('id', $item)->first()->color_name }}" href="#"  ></a></li>
+                                    @empty
+                                        {{ 'N/A' }}
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
@@ -79,10 +85,14 @@
                             <span>Size</span>
                             <div class="pro-details-size">
                                 <ul>
-                                    <li><a class="active-size gray" href="#">S</a></li>
-                                    <li><a class="gray" href="#">M</a></li>
-                                    <li><a class="gray" href="#">L</a></li>
-                                    <li><a class="gray" href="#">XL</a></li>
+                                     @php
+                                        $ps = json_decode($product_info->size_id);
+                                    @endphp
+                                    @forelse($ps as $item)
+                                        <li><a title="{{ App\Models\Size::where('id', $item)->first()->size }}" class="gray" href="#"  >{{ App\Models\Size::where('id', $item)->first()->size }}</a></li>
+                                    @empty
+                                        {{ 'N/A' }}
+                                    @endforelse
                                 </ul>
                             </div>
                         </div>
@@ -114,7 +124,7 @@
                             <span>Categories: </span>
                             <ul class="d-flex">
                                 <li>
-                                    <a href="#">{{$product_info->relation_to_category->category_name}}</a>
+                                    <a href="#">{{ $product_info->relation_to_category->category_name }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -143,7 +153,7 @@
             </div>
         </div>
     </div>
-     <!-- product details description area start -->
+    <!-- product details description area start -->
     <div class="description-review-area pb-100px" data-aos="fade-up" data-aos-delay="200">
         <div class="container">
             <div class="description-review-wrapper">
@@ -155,7 +165,7 @@
                 <div class="tab-content description-review-bottom">
                     <div id="des-details2" class="tab-pane">
                         <div class="product-anotherinfo-wrapper text-start">
-                          <?= $product_info->description ?>
+                            <?= $product_info->description ?>
                         </div>
                     </div>
                     <div id="des-details1" class="tab-pane active">
