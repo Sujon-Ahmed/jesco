@@ -26,6 +26,7 @@ use App\Http\Controllers\ProductController;
 // frontend
 
 Route::get('/', [FrontendController::class, 'index'])->name('index.frontend');
+Route::get('/single/product/{id}', [FrontendController::class, 'singleProduct'])->name('single.product');
 
 Auth::routes();
 

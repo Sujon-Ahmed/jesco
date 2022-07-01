@@ -151,7 +151,7 @@
                                         <!-- Single Prodect -->
                                         <div class="product">
                                             <div class="thumb">
-                                                <a href="single-product.html" class="image">
+                                                <a href="{{ route('single.product',$product->id) }}" class="image">
                                                     <img src="{{ asset('backend_assets/uploads/products/preview/' . $product->product_image) }}"
                                                         alt="Product" />
                                                 </a>
@@ -173,7 +173,7 @@
                                                     <a href="compare.html" class="action compare" title="Compare"><i
                                                             class="pe-7s-refresh-2"></i></a>
                                                 </div>
-                                                <button title="Add To Cart" class=" add-to-cart">Add
+                                                <button title="Add To Cart" class="add-to-cart" >Add
                                                     To Cart</button>
                                             </div>
                                             <div class="content">
@@ -345,7 +345,7 @@
     <!-- Product Area End -->
 
     <!-- Deal Area Start -->
-    <div class="deal-area deal-bg deal-bg-2" data-bg-image="assets/images/deal-img/deal-bg-2.jpg">
+    <div class="deal-area deal-bg deal-bg-2" data-bg-image="{{ asset('frontend_assets/images/deal-img/deal-bg-2.jpg') }}">
         <div class="container ">
             <div class="row">
                 <div class="col-12">
@@ -360,7 +360,7 @@
                                 Now <i class="fa fa-shopping-basket ml-15px" aria-hidden="true"></i></a>
                         </div>
                         <div class="deal-image">
-                            <img class="img-fluid" src="assets/images/deal-img/woman.png" alt="">
+                            <img class="img-fluid" src="{{ asset('frontend_assets/images/deal-img/woman.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -368,7 +368,7 @@
         </div>
     </div>
     <!-- Deal Area End -->
-    
+
     <!--  Blog area Start -->
     <div class="main-blog-area pb-100px pt-100px">
         <div class="container">
@@ -388,7 +388,7 @@
                 <div class="col-lg-4 mb-md-30px mb-lm-30px">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-image/1.jpg"
+                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/1.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">
@@ -413,7 +413,7 @@
                 <div class="col-lg-4 mb-md-30px mb-lm-30px">
                     <div class="single-blog ">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-image/2.jpg"
+                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/2.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">
@@ -438,7 +438,7 @@
                 <div class="col-lg-4">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="assets/images/blog-image/3.jpg"
+                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/3.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">

@@ -76,7 +76,7 @@ class ProductController extends Controller
         $product_image              = $request->product_image;
         $product_image_extension    = $product_image->getClientOriginalExtension();
         $product_image_name         = uniqid().'.'.$product_image_extension;
-        Image::make($product_image)->resize(270,310)->save(public_path('/backend_assets/uploads/products/preview/'.$product_image_name));
+        Image::make($product_image)->resize(800, 800)->save(public_path('/backend_assets/uploads/products/preview/'.$product_image_name));
         $product->product_image     = $product_image_name;
 
         $product->save();
@@ -85,7 +85,7 @@ class ProductController extends Controller
         foreach ($request->product_thumbnail as $thumbnail) {
             $thumbnail_extension =  $thumbnail->getClientOriginalExtension();
             $thumbnail_name = $product->id . '-' . $loop . '.' . $thumbnail_extension;
-            Image::make($thumbnail)->resize(100, 134)->save(public_path('/backend_assets/uploads/products/thumbnails/' . $thumbnail_name));
+            Image::make($thumbnail)->resize(800, 800)->save(public_path('/backend_assets/uploads/products/thumbnails/' . $thumbnail_name));
             ProductThumbnail::insert([
                 'product_id' => $product->id,
                 'product_thumbnail' => $thumbnail_name,

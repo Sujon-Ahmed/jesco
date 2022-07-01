@@ -23,13 +23,22 @@
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/jquery-ui.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/nice-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/venobox.css') }}" />
-    
+
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/vendor/vendor.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/plugins/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.min.css') }}">
 
     <!-- Main Style -->
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}" />
+    <style>
+        .product {
+            border: 1px solid #f1f1f1;
+            box-shadow: 0 5px 15px rgba(0,0,0,.1);
+        }
+        .product .content {
+            padding: 5px 5px;
+        }
+    </style>
 
 </head>
 
@@ -47,13 +56,13 @@
                 <div class="row">
                     <div class="col-auto align-self-center">
                         <div class="header-logo">
-                            <a href="#"><img src="{{ asset('frontend_assets/images/logo/logo.png') }}" alt="Site Logo" /></a>
+                            <a href="{{ route('index.frontend') }}"><img src="{{ asset('frontend_assets/images/logo/logo.png') }}" alt="Site Logo" /></a>
                         </div>
                     </div>
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
-                            <ul>                                
-                                <li class="{{ url('/') ? 'active' : ''}}"><a href="">Home</a></li>
+                            <ul>
+                                <li class="{{ url('/') ? 'active' : ''}}"><a href="{{ route('index.frontend') }}">Home</a></li>
                                 <li class="dropdown position-static"><a href="#">Shop <i
                                             class="pe-7s-angle-down"></i></a>
                                     <ul class="mega-menu d-block">
@@ -66,7 +75,7 @@
                                             </ul>
                                             <ul class="d-block">
                                                 <li class="title"><a href="#">product Details Page</a></li>
-                                                <li><a href="single-product.html">Product Single</a></li>
+                                                <li><a href="#">Product Single</a></li>
                                                 <li><a href="single-product-variable.html">Product Variable</a></li>
                                             </ul>
 
