@@ -17,11 +17,13 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $products = Product::all();
         $categories = Category::all();
         $brands = Brand::all();
         $colors = Color::all();
         $sizes = Size::all();
         return view('backend.product_attributes.product.index', [
+            'products' => $products,
             'categories' => $categories,
             'brands' => $brands,
             'colors' => $colors,

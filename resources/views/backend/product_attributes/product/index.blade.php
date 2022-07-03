@@ -27,14 +27,55 @@
                                 <th>product img</th>
                                 <th>name</th>
                                 <th>qty</th>
-                                <th>reg-price</th>
-                                <th>sale-price</th>
-                                <th>discount</th>
+                                <th>price</th>
+                                <th>color</th>
+                                <th>size</th>
+                                <th>discount%</th>
                                 <th>options</th>
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($products as $key => $product)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td><img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
+                                            alt="product" width="70"></td>
+                                    <td>{{ $product->product_name }}</td>
+                                    <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->product_price }}</td>
+                                    <td>
+                                        @php
+                                            $pc = json_decode($product->color_id);
+                                        @endphp
+                                        @forelse($pc as $item)
+                                            {{ App\Models\Color::where('id', $item)->first()->color_name }}
+                                            @if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @empty
+                                            {{ 'N/A' }}
+                                        @endforelse
+                                    </td>
+                                    <td>
+                                        @php
+                                            $ps = json_decode($product->size_id);
+                                        @endphp
+                                        @forelse($ps as $item)
+                                            {{ App\Models\Size::where('id', $item)->first()->size }}
+                                            @if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @empty
+                                            {{ 'N/A' }}
+                                        @endforelse
+                                    </td>
+                                    <td>{{ $product->discount }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-success btn-sm"><i class="fa fa-edit"></i></button>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
