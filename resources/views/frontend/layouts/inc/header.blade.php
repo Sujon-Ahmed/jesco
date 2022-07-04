@@ -86,9 +86,12 @@
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
                             <ul>
-                                <li class="{{ url('/') ? 'active' : '' }}"><a
+                                <li class="{{ Request::is('/') ? 'active' : ''}}"><a
                                         href="{{ route('index.frontend') }}">Home</a></li>
-                                <li class="dropdown position-static"><a href="#">Shop <i
+                                <li class="{{  Request::is('shop') ? 'active' : '' }}"><a
+                                        href="{{ route('shop') }}">Shop</a></li>
+
+                                {{-- <li class="dropdown position-static"><a href="#">Shop <i
                                             class="pe-7s-angle-down"></i></a>
                                     <ul class="mega-menu d-block">
                                         <li class="d-flex">
@@ -145,7 +148,7 @@
                                             </ul>
                                         </li>
                                     </ul>
-                                </li>
+                                </li> --}}
                                 <li class="dropdown "><a href="#">Blogs <i class="pe-7s-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="blog-grid.html">Blog Grid Page</a></li>

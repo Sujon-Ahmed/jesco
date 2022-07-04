@@ -26,6 +26,7 @@
                                 <th>sl</th>
                                 <th>product img</th>
                                 <th>name</th>
+                                <th>category</th>
                                 <th>qty</th>
                                 <th>price</th>
                                 <th>color</th>
@@ -41,6 +42,7 @@
                                     <td><img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                             alt="product" width="70"></td>
                                     <td>{{ $product->product_name }}</td>
+                                    <td>{{ $product->relation_to_category->category_name }}</td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>{{ $product->product_price }}</td>
                                     <td>

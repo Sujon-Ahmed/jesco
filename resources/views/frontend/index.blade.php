@@ -127,7 +127,7 @@
                                         href="#tab-product--all">All</a></li>
                                 @foreach ($categories as $category)
                                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="#tab-product--new">{{ $category->category_name }}</a>
+                                            href="{{ url('/filter/category/product', $category->id) }}">{{ $category->category_name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -321,7 +321,7 @@
                                                     </h5>
                                                     <span class="price">
                                                         <span class="new">৳{{ $item->after_discount }}</span>
-                                                        <span class="old">৳{{ $product->product_price }}</span>
+                                                        <span class="old">৳{{ $item->product_price }}</span>
                                                     </span>
                                                 </div>
                                             </div>
