@@ -55,11 +55,27 @@
         .product-details-content .pro-details-color-info .pro-details-color ul li a.blue::before {
             background-color: blue;
         }
+
         .product-details-content .pro-details-color-info .pro-details-color ul li a.white::before {
             background-color: #fff;
         }
+
         .product-details-content .pro-details-color-info .pro-details-color ul li a.yellow::before {
             background-color: yellow;
+        }
+        .shop-sidebar-wrap .sidebar-widget-list.color ul li a {
+            width: 42px;
+            height: 42px;
+            background-color: transparent;
+            border: 1px solid #d9d9d9;
+            display: block;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .shop-sidebar-wrap .sidebar-widget-list.color ul li a.blue::before {
+            background-color: blue;
         }
     </style>
 
@@ -86,9 +102,9 @@
                     <div class="col align-self-center d-none d-lg-block">
                         <div class="main-menu">
                             <ul>
-                                <li class="{{ Request::is('/') ? 'active' : ''}}"><a
+                                <li class="{{ Request::is('/') ? 'active' : '' }}"><a
                                         href="{{ route('index.frontend') }}">Home</a></li>
-                                <li class="{{  Request::is('shop') ? 'active' : '' }}"><a
+                                <li class="{{ Request::is('shop') ? 'active' : '' }}"><a
                                         href="{{ route('shop') }}">Shop</a></li>
 
                                 {{-- <li class="dropdown position-static"><a href="#">Shop <i

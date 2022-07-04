@@ -1014,7 +1014,8 @@
                             <div class="sidebar-widget-category">
                                 <ul>
                                     @foreach ($categories as $category)
-                                        <li><a href="#" class="">{{ $category->category_name }} <span>({{ $category->rel_to_product->count() }})</span> </a></li>
+                                        <li><a href="#" class="">{{ $category->category_name }}
+                                                <span>({{ $category->rel_to_product->count() }})</span> </a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -1024,10 +1025,9 @@
                             <h4 class="sidebar-title">Color</h4>
                             <div class="sidebar-widget-list color">
                                 <ul>
-                                    <li><a class="active yellow" href="#"></a></li>
-                                    <li><a class="black" href="#"></a></li>
-                                    <li><a class="red" href="#"></a></li>
-                                    <li><a class="pink" href="#"></a></li>
+                                    @foreach ($colors as $color)
+                                        <li><a class="{{ $color->color_name }}" href="#"></a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
