@@ -9,4 +9,8 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function rel_to_product()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

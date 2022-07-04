@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('content')
-<!-- breadcrumb-area start -->
+    <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
         <div class="container">
             <div class="row align-items-center justify-content-center">
@@ -71,10 +71,9 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/1.jpg"
+                                                            <img src="assets/images/product-image/1.jpg" alt="Product" />
+                                                            <img class="hover-image" src="assets/images/product-image/1.jpg"
                                                                 alt="Product" />
-                                                            <img class="hover-image"
-                                                                src="assets/images/product-image/1.jpg" alt="Product" />
                                                         </a>
                                                         <span class="badges">
                                                             <span class="new">New</span>
@@ -86,8 +85,8 @@
                                                                 data-link-action="quickview" title="Quick view"
                                                                 data-bs-toggle="modal" data-bs-target="#exampleModal"><i
                                                                     class="pe-7s-search"></i></a>
-                                                            <a href="compare.html" class="action compare"
-                                                                title="Compare"><i class="pe-7s-refresh-2"></i></a>
+                                                            <a href="compare.html" class="action compare" title="Compare"><i
+                                                                    class="pe-7s-refresh-2"></i></a>
                                                         </div>
                                                         <button title="Add To Cart" class=" add-to-cart">Add
                                                             To Cart</button>
@@ -115,10 +114,9 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/2.jpg"
+                                                            <img src="assets/images/product-image/2.jpg" alt="Product" />
+                                                            <img class="hover-image" src="assets/images/product-image/2.jpg"
                                                                 alt="Product" />
-                                                            <img class="hover-image"
-                                                                src="assets/images/product-image/2.jpg" alt="Product" />
                                                         </a>
                                                         <span class="badges">
                                                             <span class="sale">-10%</span>
@@ -162,8 +160,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/3.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/3.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/3.jpg" alt="Product" />
                                                         </a>
@@ -206,8 +203,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/4.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/4.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/4.jpg" alt="Product" />
                                                         </a>
@@ -250,8 +246,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/5.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/5.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/5.jpg" alt="Product" />
                                                         </a>
@@ -295,8 +290,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/6.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/6.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/6.jpg" alt="Product" />
                                                         </a>
@@ -339,8 +333,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/7.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/7.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/7.jpg" alt="Product" />
                                                         </a>
@@ -381,8 +374,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/8.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/8.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/8.jpg" alt="Product" />
                                                         </a>
@@ -425,8 +417,7 @@
                                                 <div class="product">
                                                     <div class="thumb">
                                                         <a href="single-product.html" class="image">
-                                                            <img src="assets/images/product-image/9.jpg"
-                                                                alt="Product" />
+                                                            <img src="assets/images/product-image/9.jpg" alt="Product" />
                                                             <img class="hover-image"
                                                                 src="assets/images/product-image/9.jpg" alt="Product" />
                                                         </a>
@@ -1022,13 +1013,9 @@
                             <h4 class="sidebar-title">Category</h4>
                             <div class="sidebar-widget-category">
                                 <ul>
-                                    <li><a href="#" class="selected m-0">Accesasories <span>(6)</span> </a></li>
-                                    <li><a href="#" class="">Computer <span>(4)</span> </a></li>
-                                    <li><a href="#" class="">Covid-19 <span>(2)</span> </a></li>
-                                    <li><a href="#" class="">Electronics <span>(6)</span> </a></li>
-                                    <li><a href="#" class="">Frame Sunglasses <span>(12)</span> </a></li>
-                                    <li><a href="#" class="">Furniture <span>(7)</span> </a></li>
-                                    <li><a href="#" class="">Genuine Leather <span>(9)</span> </a></li>
+                                    @foreach ($categories as $category)
+                                        <li><a href="#" class="">{{ $category->category_name }} <span>({{ $category->rel_to_product->count() }})</span> </a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
