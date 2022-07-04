@@ -1036,10 +1036,9 @@
                             <h4 class="sidebar-title">Size</h4>
                             <div class="sidebar-widget-list size">
                                 <ul>
-                                    <li><a class="active-2 gray" href="#">S</a></li>
-                                    <li><a class="gray" href="#">M</a></li>
-                                    <li><a class="gray" href="#">L</a></li>
-                                    <li><a class="gray" href="#">XL</a></li>
+                                    @foreach ($sizes as $size)
+                                        <li><a class="gray" href="#">{{ $size->size }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
