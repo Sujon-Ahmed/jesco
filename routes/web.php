@@ -29,7 +29,7 @@ use App\Http\Controllers\ShopController;
 
 Route::get('/', [FrontendController::class, 'index'])->name('index.frontend');
 Route::get('/single/product/{id}', [FrontendController::class, 'singleProduct'])->name('single.product');
-Route::get('/filter/category/product/{id}', [FrontendController::class, 'filterCategoryProduct'])->name('filter.category.product');
+Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCategoryProduct'])->name('filter.category.product');
 
 // shop page
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');

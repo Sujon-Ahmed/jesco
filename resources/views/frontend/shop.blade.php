@@ -227,7 +227,7 @@
                             <div class="sidebar-widget-category">
                                 <ul>
                                     @foreach ($categories as $category)
-                                        <li><a href="#" class="">{{ $category->category_name }}
+                                        <li><a href="{{ url('/filter/category/product',$category->id) }}" class="">{{ $category->category_name }}
                                                 <span>({{ $category->rel_to_product->count() }})</span> </a></li>
                                     @endforeach
                                 </ul>

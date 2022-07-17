@@ -32,19 +32,5 @@ class FrontendController extends Controller
             'product_info' => $product_info,
         ]);
     }
-    // filter category product
-    public function filterCategoryProduct($id)
-    {
-        $categories = Category::where('status', '1')->get();
-        $latest_categories = Category::latest()->take(4)->get();
-        $latest_product = Product::latest()->get();
-        $products = Product::orderBy('id', 'desc')->where('category_id', $id)->paginate(12);
-
-        return view('frontend.index', [
-            'categories' => $categories,
-            'latest_categories' => $latest_categories,
-            'products' => $products,
-            'latest_product' => $latest_product,
-        ]);
-    }
+   
 }

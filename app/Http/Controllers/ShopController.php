@@ -23,4 +23,19 @@ class ShopController extends Controller
             'products' => $products,
         ]);
     }
+    // filter category product
+    public function filterCategoryProduct($id)
+    {
+        $categories = Category::all();
+        $colors = Color::all();
+        $sizes = Size::all();
+        $products = Product::orderBy('id', 'desc')->where('category_id', $id)->paginate(12);
+
+        return view('frontend.shop', [
+            'categories' => $categories,
+            'colors' => $colors,
+            'sizes' => $sizes,
+            'products' => $products,
+        ]);
+    }
 }
