@@ -35,10 +35,16 @@ class FrontendController extends Controller
     // filter category product
     public function filterCategoryProduct($id)
     {
-        return 'ok';
-        // $products = Product::where('category_id',$id)->get();
-        // return view('frontend.index', [
-        //     'products' => $products,
-        // ]);
+        $categories = Category::where('status', '1')->get();
+        $latest_categories = Category::latest()->take(4)->get();
+        $latest_product = Product::latest()->get();
+        $products = Product::orderBy('id', 'desc')->where('category_id', $id)->paginate(12);
+
+        return view('frontend.index', [
+            'categories' => $categories,
+            'latest_categories' => $latest_categories,
+            'products' => $products,
+            'latest_product' => $latest_product,
+        ]);
     }
 }

@@ -123,11 +123,9 @@
                         <!-- Tab Start -->
                         <div class="nav-center">
                             <ul class="product-tab-nav nav align-items-center justify-content-center">
-                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab"
-                                        href="#tab-product--all">All</a></li>
                                 @foreach ($categories as $category)
                                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="{{ url('/filter/category/product', $category->id) }}">{{ $category->category_name }}</a>
+                                            href="{{ url('/filter/category/product',$category->id) }}">{{ $category->category_name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -142,59 +140,56 @@
             <div class="row">
                 <div class="col">
                     <div class="tab-content mb-30px0px">
-                        <!-- 1st tab start -->
-                        <div class="tab-pane fade show active" id="tab-product--all">
-                            <div class="row">
-                                @foreach ($products as $product)
-                                    <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
-                                        data-aos-delay="400">
-                                        <!-- Single Prodect -->
-                                        <div class="product">
-                                            <div class="thumb">
-                                                <a href="{{ route('single.product',$product->id) }}" class="image">
-                                                    <img src="{{ asset('backend_assets/uploads/products/preview/' . $product->product_image) }}"
-                                                        alt="Product" />
-                                                </a>
-                                                <span class="badges">
-                                                    @if ($product->discount)
+                        <div class="row">
+                            @foreach ($products as $product)
+                                <div class="col-lg-4 col-xl-3 col-md-6 col-sm-6 col-xs-6 mb-30px" data-aos="fade-up"
+                                    data-aos-delay="400">
+                                    <!-- Single Prodect -->
+                                    <div class="product">
+                                        <div class="thumb">
+                                            <a href="{{ route('single.product', $product->id) }}" class="image">
+                                                <img src="{{ asset('backend_assets/uploads/products/preview/' . $product->product_image) }}"
+                                                    alt="Product" />
+                                            </a>
+                                            <span class="badges">
+                                                @if ($product->discount)
                                                     <span class="sale">-{{ $product->discount }}%</span>
-                                                    @endif
-                                                    @if ($product->tending)
-                                                    <span class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
-                                                    @endif
-                                                </span>
-                                                <div class="actions">
-                                                    <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
-                                                            class="pe-7s-like"></i></a>
-                                                    <a href="#" class="action quickview"
-                                                        data-link-action="quickview" title="Quick view"
-                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                                                            class="pe-7s-search"></i></a>
-                                                    <a href="compare.html" class="action compare" title="Compare"><i
-                                                            class="pe-7s-refresh-2"></i></a>
-                                                </div>
-                                                <button title="Add To Cart" class="add-to-cart" >Add
-                                                    To Cart</button>
+                                                @endif
+                                                @if ($product->tending)
+                                                    <span
+                                                        class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
+                                                @endif
+                                            </span>
+                                            <div class="actions">
+                                                <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
+                                                        class="pe-7s-like"></i></a>
+                                                <a href="#" class="action quickview" data-link-action="quickview"
+                                                    title="Quick view" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal"><i class="pe-7s-search"></i></a>
+                                                <a href="compare.html" class="action compare" title="Compare"><i
+                                                        class="pe-7s-refresh-2"></i></a>
                                             </div>
-                                            <div class="content">
-                                                <span class="ratings">
-                                                    <span class="rating-wrap">
-                                                        <span class="star" style="width: 80%"></span>
-                                                    </span>
-                                                    <span class="rating-num">( 4 Review )</span>
+                                            <button title="Add To Cart" class="add-to-cart">Add
+                                                To Cart</button>
+                                        </div>
+                                        <div class="content">
+                                            <span class="ratings">
+                                                <span class="rating-wrap">
+                                                    <span class="star" style="width: 80%"></span>
                                                 </span>
-                                                <h5 class="title"><a
-                                                        href="single-product.html">{{ $product->product_name }}</a>
-                                                </h5>
-                                                <span class="price">
-                                                    <span class="new">৳{{ ceil($product->after_discount) }}</span>
-                                                    <span class="old">৳{{ $product->product_price }}</span>
-                                                </span>
-                                            </div>
+                                                <span class="rating-num">( 4 Review )</span>
+                                            </span>
+                                            <h5 class="title"><a
+                                                    href="single-product.html">{{ $product->product_name }}</a>
+                                            </h5>
+                                            <span class="price">
+                                                <span class="new">৳{{ ceil($product->after_discount) }}</span>
+                                                <span class="old">৳{{ $product->product_price }}</span>
+                                            </span>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <a href="shop-left-sidebar.html" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
@@ -290,13 +285,14 @@
                                                             alt="Product" />
                                                     </a>
                                                     <span class="badges">
-                                                    @if ($item->discount)
-                                                    <span class="sale">-{{ $item->discount }}%</span>
-                                                    @endif
-                                                    @if ($item->tending)
-                                                    <span class="new">{{ $item->tending == 1 ? 'Tending' : '' }}</span>
-                                                    @endif
-                                                </span>
+                                                        @if ($item->discount)
+                                                            <span class="sale">-{{ $item->discount }}%</span>
+                                                        @endif
+                                                        @if ($item->tending)
+                                                            <span
+                                                                class="new">{{ $item->tending == 1 ? 'Tending' : '' }}</span>
+                                                        @endif
+                                                    </span>
                                                     <div class="actions">
                                                         <a href="wishlist.html" class="action wishlist"
                                                             title="Wishlist"><i class="pe-7s-like"></i></a>
@@ -317,7 +313,8 @@
                                                         </span>
                                                         <span class="rating-num">( 5 Review )</span>
                                                     </span>
-                                                    <h5 class="title"><a href="single-product.html">{{ $item->product_name }}</a>
+                                                    <h5 class="title"><a
+                                                            href="single-product.html">{{ $item->product_name }}</a>
                                                     </h5>
                                                     <span class="price">
                                                         <span class="new">৳{{ $item->after_discount }}</span>
@@ -345,7 +342,8 @@
     <!-- Product Area End -->
 
     <!-- Deal Area Start -->
-    <div class="deal-area deal-bg deal-bg-2" data-bg-image="{{ asset('frontend_assets/images/deal-img/deal-bg-2.jpg') }}">
+    <div class="deal-area deal-bg deal-bg-2"
+        data-bg-image="{{ asset('frontend_assets/images/deal-img/deal-bg-2.jpg') }}">
         <div class="container ">
             <div class="row">
                 <div class="col-12">
@@ -360,7 +358,8 @@
                                 Now <i class="fa fa-shopping-basket ml-15px" aria-hidden="true"></i></a>
                         </div>
                         <div class="deal-image">
-                            <img class="img-fluid" src="{{ asset('frontend_assets/images/deal-img/woman.png') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('frontend_assets/images/deal-img/woman.png') }}"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -388,7 +387,8 @@
                 <div class="col-lg-4 mb-md-30px mb-lm-30px">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/1.jpg') }}"
+                            <a href="blog-single-left-sidebar.html"><img
+                                    src="{{ asset('frontend_assets/images/blog-image/1.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">
@@ -413,7 +413,8 @@
                 <div class="col-lg-4 mb-md-30px mb-lm-30px">
                     <div class="single-blog ">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/2.jpg') }}"
+                            <a href="blog-single-left-sidebar.html"><img
+                                    src="{{ asset('frontend_assets/images/blog-image/2.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">
@@ -438,7 +439,8 @@
                 <div class="col-lg-4">
                     <div class="single-blog">
                         <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img src="{{ asset('frontend_assets/images/blog-image/3.jpg') }}"
+                            <a href="blog-single-left-sidebar.html"><img
+                                    src="{{ asset('frontend_assets/images/blog-image/3.jpg') }}"
                                     class="img-responsive w-100" alt=""></a>
                         </div>
                         <div class="blog-text">
