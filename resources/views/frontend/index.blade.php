@@ -180,7 +180,7 @@
                                                 <span class="rating-num">( 4 Review )</span>
                                             </span>
                                             <h5 class="title"><a
-                                                    href="single-product.html">{{ $product->product_name }}</a>
+                                                    href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
                                             </h5>
                                             <span class="price">
                                                 <span class="new">৳{{ ceil($product->after_discount) }}</span>

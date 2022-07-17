@@ -128,15 +128,20 @@
                                                     <div class="product">
                                                         <div class="thumb">
                                                             <a href="single-product.html" class="image">
-                                                                <img src="assets/images/product-image/2.jpg"
+                                                                <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
                                                                 <img class="hover-image"
-                                                                    src="assets/images/product-image/2.jpg"
+                                                                    src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
                                                             </a>
                                                             <span class="badges">
-                                                                <span class="sale">-10%</span>
-                                                                <span class="new">New</span>
+                                                                 @if ($product->discount)
+                                                                    <span class="sale">-{{ $product->discount }}%</span>
+                                                                @endif
+                                                                @if ($product->tending)
+                                                                    <span
+                                                                        class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
+                                                                @endif
                                                             </span>
                                                         </div>
                                                     </div>
@@ -150,18 +155,14 @@
                                                                 </span>
                                                                 <span class="rating-num">( 4 Review )</span>
                                                             </span>
-                                                            <h5 class="title"><a href="single-product.html">Ardene
-                                                                    Microfiber
-                                                                    Tights</a>
+                                                            <h5 class="title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
                                                             </h5>
-                                                            <p>More room to move.With 80GB or 160GB of storage and up to
-                                                                40 hours of battery life, the new iPod classic lets you
-                                                                enjoy up to 40,000 songs or..</p>
+                                                            <p><?= $product->short_description ?></p>
                                                         </div>
                                                         <div class="box-inner">
                                                             <span class="price">
-                                                                <span class="new">$38.50</span>
-                                                                <span class="old">$48.50</span>
+                                                                <span class="new">৳{{ ceil($product->after_discount) }}</span>
+                                                                <span class="old">$৳{{ $product->product_price }}</span>
                                                             </span>
                                                             <div class="actions">
                                                                 <a href="wishlist.html" class="action wishlist"
