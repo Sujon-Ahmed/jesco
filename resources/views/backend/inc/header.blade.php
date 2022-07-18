@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Favicons -->
-    <link href="{{ asset('backend_assets/img/favicon.ico') }}" rel="icon">
+    <link rel="shortcut icon" href="{{ asset('frontend_assets/images/favicon/favicon.ico') }}" type="image/png">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

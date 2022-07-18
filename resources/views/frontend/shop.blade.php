@@ -26,7 +26,7 @@
                     <!-- Shop Top Area Start -->
                     <div class="shop-top-bar d-flex">
                         <!-- Left Side start -->
-                        <p><span>12</span> Product Found of <span>30</span></p>
+                        <p> Totla Product Found of <span>{{ $total_products }}</span></p>
                         <!-- Left Side End -->
                         <div class="shop-tab nav">
                             <a class="active" href="#shop-grid" data-bs-toggle="tab">

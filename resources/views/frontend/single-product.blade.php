@@ -67,13 +67,15 @@
                         </div>
                         <div class="pro-details-color-info d-flex align-items-center">
                             <span>Color</span>
-                            <div class="pro-details-color" >
+                            <div class="pro-details-color">
                                 <ul>
                                     @php
                                         $pc = json_decode($product_info->color_id);
                                     @endphp
                                     @forelse($pc as $item)
-                                        <li><a title="{{ App\Models\Color::where('id', $item)->first()->color_name }}" class="{{ App\Models\Color::where('id', $item)->first()->color_name }}" href="#"  ></a></li>
+                                        <li><a title="{{ App\Models\Color::where('id', $item)->first()->color_name }}"
+                                                class="{{ App\Models\Color::where('id', $item)->first()->color_name }}"
+                                                href="#"></a></li>
                                     @empty
                                         {{ 'N/A' }}
                                     @endforelse
@@ -85,11 +87,14 @@
                             <span>Size</span>
                             <div class="pro-details-size">
                                 <ul>
-                                     @php
+                                    @php
                                         $ps = json_decode($product_info->size_id);
                                     @endphp
                                     @forelse($ps as $item)
-                                        <li><a title="{{ App\Models\Size::where('id', $item)->first()->size }}" class="gray" href="#"  >{{ App\Models\Size::where('id', $item)->first()->size }}</a></li>
+                                        <li><a title="{{ App\Models\Size::where('id', $item)->first()->size }}"
+                                                class="gray"
+                                                href="#">{{ App\Models\Size::where('id', $item)->first()->size }}</a>
+                                        </li>
                                     @empty
                                         {{ 'N/A' }}
                                     @endforelse
@@ -284,4 +289,74 @@
         </div>
     </div>
     <!-- product details description area end -->
+    <!-- Related product Area Start -->
+    <div class="related-product-area pb-100px">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title text-center mb-30px0px line-height-1">
+                        <h2 class="title m-0">Related Products</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="new-product-slider swiper-container slider-nav-style-1 small-nav">
+                <div class="new-product-wrapper swiper-wrapper">
+                    @foreach ($related_products as $product)
+                        <div class="new-product-item swiper-slide">
+                            <!-- Single Prodect -->
+                            <div class="product">
+                                <div class="thumb">
+                                    <a href="{{ route('single.product', $product->id) }}" class="image">
+                                        <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
+                                            alt="Product" />
+                                    </a>
+                                    <span class="badges">
+                                        @if ($product->discount)
+                                            <span class="sale">-{{ $product->discount }}%</span>
+                                        @endif
+                                        @if ($product->tending)
+                                            <span class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
+                                        @endif
+                                    </span>
+                                    <div class="actions">
+                                        <a href="wishlist.html" class="action wishlist" title="Wishlist"><i
+                                                class="pe-7s-like"></i></a>
+                                        <a href="#" class="action quickview" data-link-action="quickview"
+                                            title="Quick view" data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                                class="pe-7s-search"></i></a>
+                                        <a href="compare.html" class="action compare" title="Compare"><i
+                                                class="pe-7s-refresh-2"></i></a>
+                                    </div>
+                                    <button title="Add To Cart" class=" add-to-cart">Add
+                                        To Cart</button>
+                                </div>
+                                <div class="content">
+                                    <span class="ratings">
+                                        <span class="rating-wrap">
+                                            <span class="star" style="width: 80%"></span>
+                                        </span>
+                                        <span class="rating-num">( 4 Review )</span>
+                                    </span>
+                                    <h5 class="title"><a
+                                            href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+                                    </h5>
+                                    <span class="price">
+                                        <span class="new">৳{{ ceil($product->after_discount) }}</span>
+                                        <span class="old">$৳{{ $product->product_price }}</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Single Prodect -->
+                        </div>
+                    @endforeach
+                </div>
+                <!-- Add Arrows -->
+                <div class="swiper-buttons">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Related product Area End -->
 @endsection
