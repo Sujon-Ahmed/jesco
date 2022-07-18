@@ -301,7 +301,7 @@
             </div>
             <div class="new-product-slider swiper-container slider-nav-style-1 small-nav">
                 <div class="new-product-wrapper swiper-wrapper">
-                    @foreach ($related_products as $product)
+                    @forelse ($related_products as $product)
                         <div class="new-product-item swiper-slide">
                             <!-- Single Prodect -->
                             <div class="product">
@@ -348,7 +348,9 @@
                             </div>
                             <!-- Single Prodect -->
                         </div>
-                    @endforeach
+                    @empty
+                        <em style="color:red;">{{ "There are no related products found!" }}</em>
+                    @endforelse
                 </div>
                 <!-- Add Arrows -->
                 <div class="swiper-buttons">

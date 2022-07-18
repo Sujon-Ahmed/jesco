@@ -71,7 +71,7 @@
                                                     <!-- Single Prodect -->
                                                     <div class="product">
                                                         <div class="thumb">
-                                                            <a href="single-product.html" class="image">
+                                                            <a href="{{ route('single.product', $product->id) }}" class="image">
                                                                 <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
                                                                 <img class="hover-image"
@@ -107,7 +107,7 @@
                                                                 </span>
                                                                 <span class="rating-num">( 4 Review )</span>
                                                             </span>
-                                                            <h5 class="title"><a href="single-product.html">{{ $product->product_name }}</a>
+                                                            <h5 class="title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
                                                             </h5>
                                                             <span class="price">
                                                                 <span class="new">৳{{ ceil($product->after_discount) }}</span>
@@ -127,7 +127,7 @@
                                                 <div class="col-md-5 col-lg-5 col-xl-4">
                                                     <div class="product">
                                                         <div class="thumb">
-                                                            <a href="single-product.html" class="image">
+                                                            <a href="{{ route('single.product', $product->id) }}" class="image">
                                                                 <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
                                                                 <img class="hover-image"
