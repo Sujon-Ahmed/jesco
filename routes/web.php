@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HomepageSliderController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
@@ -41,6 +42,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // dashboard
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+
+    // home page slider
+    Route::get('/slider', [HomepageSliderController::class, 'index'])->name('slider');
+
 
     // users
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');

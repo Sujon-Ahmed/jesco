@@ -3,9 +3,16 @@
      <ul class="sidebar-nav" id="sidebar-nav">
          <!-- Dashboard Nav -->
          <li class="nav-item">
-             <a class="nav-link " href="{{ route('dashboard') }}">
+             <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? '' : 'collapsed' }}" href="{{ route('dashboard') }}">
                  <i class="bi bi-grid"></i>
                  <span>Dashboard</span>
+             </a>
+         </li>
+         <!-- Homepage slider  -->
+         <li class="nav-item">
+             <a class="nav-link {{ Route::currentRouteName() == 'slider' ? '' : 'collapsed' }}" href="{{ route('slider') }}">
+                 <i class="bi bi-sliders"></i>
+                 <span>Slider</span>
              </a>
          </li>
          <!-- Components Nav -->
@@ -53,14 +60,14 @@
          <li class="nav-heading">Pages</li>
          {{-- brands --}}
          <li class="nav-item">
-             <a class="nav-link collapsed" href="{{ route('brands') }}">
+             <a class="nav-link {{ Route::currentRouteName() == 'brands' ? '' : 'collapsed' }}" href="{{ route('brands') }}">
                  <i class="bi bi-building"></i>
                  <span>Brands</span>
              </a>
          </li>
          {{-- profile --}}
          <li class="nav-item">
-             <a class="nav-link collapsed" href="{{ route('profile') }}">
+             <a class="nav-link {{ Route::currentRouteName() == 'profile' ? '' : 'collapsed' }}" href="{{ route('profile') }}">
                  <i class="bi bi-person"></i>
                  <span>Profile</span>
              </a>
