@@ -16,7 +16,7 @@
             <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
                     <h5>Slider list</h5>
-                    <button type="button" class="btn btn-dark btn-sm float-end addCategory">add slider</button>
+                    <button type="button" class="btn btn-dark btn-sm float-end addSlider">add slider</button>
                 </div>
                 <div class="card-body mt-3">
                     <table class="table" id="myTable">
@@ -38,29 +38,37 @@
         </div>
     </div>
     <!-- Modal for add category -->
-    {{-- <div class="modal fade" id="addNewCategory" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+    <div class="modal fade" id="addNewSlider" tabindex="-1" aria-labelledby="slider" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="category">add new category</h5>
+                    <h5 class="modal-title text-capitalize" id="category">add new slider</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('category.insert') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('slider.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group mt-2">
-                            <label for="category_name" class="form-label">Category Name</label>
-                            <input type="text" name="category_name" id="category_name" class="form-control"
-                                value="{{ old('category_name') }}">
-                            @error('category_name')
+                            <label for="sub_title" class="form-label">Sub Title</label>
+                            <input type="text" name="sub_title" id="sub_title" class="form-control"
+                                value="{{ old('sub_title') }}">
+                            @error('sub_title')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group mt-2">
-                            <label for="category_thumbnail">Category Thumbnail</label>
-                            <input type="file" name="category_thumbnail" id="category_thumbnail"
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" name="title" id="title" class="form-control"
+                                value="{{ old('title') }}">
+                            @error('title')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="image">Slider Image</label>
+                            <input type="file" name="image" id="image"
                                 class="form-control file-control">
-                            @error('category_thumbnail')
+                            @error('image')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
@@ -72,7 +80,7 @@
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Modal for edit / update category -->
     {{-- <div class="modal fade" id="editUpdateCategory" tabindex="-1" aria-labelledby="category" aria-hidden="true">
         <div class="modal-dialog">
@@ -137,5 +145,11 @@
     </div> --}}
 @endsection
 @section('scripts')
-
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.addSlider', function () {
+                $('#addNewSlider').modal('show');
+            });
+        });
+    </script>
 @endsection

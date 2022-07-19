@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
     // home page slider
     Route::get('/slider', [HomepageSliderController::class, 'index'])->name('slider');
+    Route::post('/slider/store', [HomepageSliderController::class, 'store'])->name('slider.store');
 
 
     // users
