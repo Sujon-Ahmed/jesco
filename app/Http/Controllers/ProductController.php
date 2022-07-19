@@ -17,17 +17,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
-        $categories = Category::all();
-        $brands = Brand::all();
-        $colors = Color::all();
-        $sizes = Size::all();
+        $products   =  Product::all();
+        $categories =  Category::all();
+        $brands     =  Brand::all();
+        $colors     =  Color::all();
+        $sizes      =  Size::all();
+
         return view('backend.product_attributes.product.index', [
-            'products' => $products,
-            'categories' => $categories,
-            'brands' => $brands,
-            'colors' => $colors,
-            'sizes' => $sizes,
+            'products'      => $products,
+            'categories'    => $categories,
+            'brands'        => $brands,
+            'colors'        => $colors,
+            'sizes'         => $sizes,
         ]);
     }
     // get category wise subcategory

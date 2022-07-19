@@ -30,7 +30,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($sliders as $key=>$slider)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $slider->sub_title }}</td>
+                                    <td>{{ $slider->title }}</td>
+                                    <td><img src="{{ asset('backend_assets/uploads/slider') }}/{{ $slider->image }}" width="50" alt=""></td>
+                                    <td>
+                                        <button type="button" value="{{ $slider->id }}"
+                                            class="btn btn-outline-success btn-sm brandEditBtn"
+                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
+                                                class="fa fa-edit"></i></button>
+                                        <button type="button" value="{{ $slider->id }}"
+                                            class="btn btn-outline-danger btn-sm brandDeleteBtn"
+                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

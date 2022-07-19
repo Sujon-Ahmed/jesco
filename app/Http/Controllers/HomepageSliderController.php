@@ -10,12 +10,13 @@ class HomepageSliderController extends Controller
 {
     public function index()
     {
-        return view('backend.homepage_sliders.index');
+        $sliders = HomepageSlider::all();
+        return view('backend.homepage_sliders.index', compact('sliders'));
     }
     // store slider
     public function store(Request $request)
     {
-        $slider = new HomepageSlider();
+        $slider             = new HomepageSlider();
         $slider->sub_title  = $request->sub_title;
         $slider->title      = $request->title;
         // store slider image
