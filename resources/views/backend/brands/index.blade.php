@@ -40,20 +40,18 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" onchange=""
-                                                value="">
+                                            <input type="checkbox" onchange="update_brand_status(this)"
+                                                value="{{ $brand->id }}" {{ $brand->status == '1' ? 'checked' : '' }}>
                                             <span class="slider"></span>
                                         </label>
                                     </td>
                                     <td>
                                         <button type="button" value="{{ $brand->id }}"
-                                            class="btn btn-outline-success btn-sm brandEditBtn"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
-                                                class="fa fa-edit"></i></button>
+                                            class="btn btn-outline-success btn-sm brandEditBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
                                         <button type="button" value="{{ $brand->id }}"
-                                            class="btn btn-outline-danger btn-sm brandDeleteBtn"
-                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
-                                                class="fa fa-trash"></i></button>
+                                            class="btn btn-outline-danger btn-sm brandDeleteBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,7 +61,7 @@
             </div>
         </div>
     </div>
-    {{-- modal section for add new brand--}}
+    {{-- modal section for add new brand --}}
     <div class="modal fade" id="addNewBrand" tabindex="-1" aria-labelledby="brand" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -100,7 +98,7 @@
         </div>
     </div>
     {{-- modal section for delete brand --}}
-     <div class="modal fade" id="deleteBrandModal">
+    <div class="modal fade" id="deleteBrandModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -123,7 +121,7 @@
         </div>
     </div>
     {{-- modal section for edit / update brand --}}
-     <div class="modal fade" id="editUpdatebrand" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+    <div class="modal fade" id="editUpdatebrand" tabindex="-1" aria-labelledby="category" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -153,7 +151,8 @@
                         </div>
                         <img style="width: 300px" id="pic" alt="">
                         <div class="modal-footer d-flex">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success btn-sm">Update</button>
                         </div>
                     </div>
@@ -161,7 +160,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('scripts')
     {{-- script for add new brand --}}
@@ -174,8 +172,8 @@
     </script>
     {{-- script for delete brand --}}
     <script>
-        $(document).ready(function () {
-            $(document).on('click', '.brandDeleteBtn', function () {
+        $(document).ready(function() {
+            $(document).on('click', '.brandDeleteBtn', function() {
                 let brandId = $(this).val();
                 $('#deleteBrandModal').modal('show');
                 $('#deleted_brand_id').val(brandId);
@@ -184,20 +182,42 @@
     </script>
     {{-- script for edit / update brand --}}
     <script>
-        $(document).ready(function () {
-            $(document).on('click', '.brandEditBtn', function () {
+        $(document).ready(function() {
+            $(document).on('click', '.brandEditBtn', function() {
                 $('#editUpdatebrand').modal('show');
                 let = brandId = $(this).val();
                 $.ajax({
                     type: "GET",
                     url: "/admin/get-brand-info/" + brandId,
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         $('#edited_brand_id').val(brandId);
                         $('#edited_brand_name').val(response.brand_info.brand_name);
                     }
                 });
             });
+        });
+    </script>
+    {{-- script for update brand status --}}
+    <script>
+        $(document).ready(function() {
+            function update_brand_status(el) {
+                var brand_status = 0;
+                if (el.checked) {
+                    var brand_status = 1;
+                }
+                $.post('{{ route('brand.change-status') }}', {
+                    _token: '{{ csrf_token() }}',
+                    id: el.value,
+                    brand_status: brand_status
+                }, function(data) {
+                    if (data == 1) {
+                        toastr.success('success', 'Status changed Successfully');
+                    } else {
+                        toastr.error('error', 'Something went wrong');
+                    }
+                });
+            }
         });
     </script>
 @endsection

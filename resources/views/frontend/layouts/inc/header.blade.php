@@ -171,7 +171,7 @@
                                         <li><a href="blog-single.html">Blog Single Page</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About us</a></li>
+                                <li><a href="{{ route('about') }}">About us</a></li>
                                 <li><a href="contact.html">Contact us</a></li>
                             </ul>
                         </div>

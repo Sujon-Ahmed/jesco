@@ -66,4 +66,13 @@ class BrandController extends Controller
         ]);
         return back()->with('status', 'category updated successfully!');
     }
+    // update brand status
+    function statusUpdate(Request $request)
+    {
+        $brand = Brand::find($request->id);
+        $brand->status = $request->brand_status;
+        $brand->save();
+        return 1;
+
+    }
 }

@@ -17,6 +17,7 @@ class CreateBrandsTable extends Migration
             $table->id();
             $table->string('brand_name');
             $table->string('brand_image')->nullable();
+            $table->tinyInteger('status')->default('0')->comment('0=unpublish, 1=publish');
             $table->timestamps();
         });
     }

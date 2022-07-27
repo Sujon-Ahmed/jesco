@@ -4,7 +4,7 @@
          &copy; Copyright <strong><span>JESCO</span></strong>. All Rights Reserved
      </div>
      <div class="credits">
-         Develop by <a href="https://github.com/Sujon-Ahmed">Sujon Ahmed</a>
+         Develop by <a target="_blank" href="https://github.com/Sujon-Ahmed">Sujon Ahmed</a>
      </div>
  </footer><!-- End Footer -->
 

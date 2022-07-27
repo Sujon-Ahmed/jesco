@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
@@ -34,6 +35,9 @@ Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCateg
 
 // shop page
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+
+// about controller
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 Auth::routes();
 
@@ -93,4 +97,5 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::delete('/brand/delete', [BrandController::class, 'delete'])->name('brand.delete');
     Route::get('/get-brand-info/{id}', [BrandController::class, 'getBrandInformation']);
     Route::post('/brand/update', [BrandController::class, 'update'])->name('brand.update');
+    Route::post('/brand/status', [BrandController::class, 'statusUpdate'])->name('brand.change-status');
 });
