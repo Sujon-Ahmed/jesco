@@ -330,21 +330,11 @@
         <div class="container">
             <div class="brand-slider swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach ($brands as $brand)
                     <div class="swiper-slide brand-slider-item text-center">
-                        <a href="#"><img class=" img-fluid" src="{{ asset('frontend_assets/images/brand-logo/1.png') }}" alt="" /></a>
+                        <a href="#"><img class="img-fluid" width="100" src="{{ asset('backend_assets/uploads/brands') }}/{{ $brand->brand_image }}" alt="" /></a>
                     </div>
-                    <div class="swiper-slide brand-slider-item text-center">
-                        <a href="#"><img class=" img-fluid" src="{{ asset('frontend_assets/images/brand-logo/2.png') }}" alt="" /></a>
-                    </div>
-                    <div class="swiper-slide brand-slider-item text-center">
-                        <a href="#"><img class=" img-fluid" src="{{ asset('frontend_assets/images/brand-logo/3.png') }}" alt="" /></a>
-                    </div>
-                    <div class="swiper-slide brand-slider-item text-center">
-                        <a href="#"><img class=" img-fluid" src="{{ asset('frontend_assets/images/brand-logo/4.png') }}" alt="" /></a>
-                    </div>
-                    <div class="swiper-slide brand-slider-item text-center">
-                        <a href="#"><img class=" img-fluid" src="{{ asset('frontend_assets/images/brand-logo/5.png') }}" alt="" /></a>
-                    </div>
+                     @endforeach
                 </div>
             </div>
         </div>
