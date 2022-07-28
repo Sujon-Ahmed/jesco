@@ -37,30 +37,38 @@
             </div>
         </div>
     </div>
-    {{-- modal section for add new brand --}}
-    <div class="modal fade" id="addNewMember" tabindex="-1" aria-labelledby="brand" aria-hidden="true">
+    {{-- modal section for add new team --}}
+    <div class="modal fade" id="addNewMember" tabindex="-1" aria-labelledby="team" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="brand">add new brand</h5>
+                    <h5 class="modal-title text-capitalize" id="team">Add New Member</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('team.member.store') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group mt-2">
-                            <label for="category_name" class="form-label">Brand Name</label>
-                            <input type="text" name="brand_name" id="brand_name" class="form-control"
-                                value="{{ old('category_name') }}">
-                            @error('brand_name')
+                            <label for="member_name" class="form-label">Member Name</label>
+                            <input type="text" name="member_name" id="member_name" class="form-control"
+                                value="{{ old('member_name') }}">
+                            @error('member_name')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group mt-2">
-                            <label for="category_thumbnail">Brand Thumbnail</label>
-                            <input type="file" name="brand_thumbnail" id="brand_thumbnail"
+                            <label for="member_designation" class="form-label">Member Designation</label>
+                            <input type="text" name="member_designation" id="member_designation" class="form-control"
+                                value="{{ old('member_designation') }}">
+                            @error('member_designation')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group mt-2">
+                            <label for="member_photo">Brand Thumbnail</label>
+                            <input type="file" name="member_photo" id="member_photo"
                                 class="form-control file-control">
-                            @error('brand_thumbnail')
+                            @error('member_photo')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>

@@ -102,4 +102,5 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
     // teams
     Route::get('/team/members', [TeamController::class, 'index'])->name('team.member');
+    Route::post('/team/member/store', [TeamController::class, 'store'])->name('team.member.store');
 });
