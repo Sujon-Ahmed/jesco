@@ -30,7 +30,31 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($members as $key => $member)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $member->name }}</td>
+                                    <td>
+                                        <img src="{{ asset('backend_assets/uploads/teams') }}/{{ $member->photo }}"
+                                            alt="team member" width="100">
+                                    </td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" onchange="update_team_status(this)"
+                                                value="{{ $member->id }}" {{ $member->status == '1' ? 'checked' : '' }}>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <button type="button" value="{{ $member->id }}"
+                                            class="btn btn-outline-success btn-sm memberEditBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
+                                        <button type="button" value="{{ $member->id }}"
+                                            class="btn btn-outline-danger btn-sm memberDeleteBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -66,8 +90,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="member_photo">Brand Thumbnail</label>
-                            <input type="file" name="member_photo" id="member_photo"
-                                class="form-control file-control">
+                            <input type="file" name="member_photo" id="member_photo" class="form-control file-control">
                             @error('member_photo')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror

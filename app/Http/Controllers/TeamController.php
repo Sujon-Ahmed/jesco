@@ -10,7 +10,10 @@ class TeamController extends Controller
 {
     public function index()
     {
-        return view('backend.teams.index');
+        $members = Team::all();
+        return view('backend.teams.index', [
+            'members' => $members,
+        ]);
     }
     // store team member
     public function store(Request $request)
