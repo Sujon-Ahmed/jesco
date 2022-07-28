@@ -65,6 +65,13 @@
                  <span>Brands</span>
              </a>
          </li>
+         {{-- team membrs --}}
+         <li class="nav-item">
+             <a class="nav-link {{ Route::currentRouteName() == 'team.member' ? '' : 'collapsed' }}" href="{{ route('team.member') }}">
+                 <i class="bi bi-people"></i>
+                 <span>Team Members</span>
+             </a>
+         </li>
          {{-- profile --}}
          <li class="nav-item">
              <a class="nav-link {{ Route::currentRouteName() == 'profile' ? '' : 'collapsed' }}" href="{{ route('profile') }}">

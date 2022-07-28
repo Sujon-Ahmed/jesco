@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Brands</h1>
+        <h1>Teams</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li class="breadcrumb-item active">Brands</li>
+                <li class="breadcrumb-item active">Team Members</li>
             </ol>
         </nav>
     </div>
@@ -15,46 +15,22 @@
         <div class="col-lg-12">
             <div class="card shadow-sm">
                 <div class="card-header d-flex justify-content-between">
-                    <h5>Brands list</h5>
-                    <button type="button" class="btn btn-dark btn-sm float-end addBrand">add brand</button>
+                    <h5>Team Members</h5>
+                    <button type="button" class="btn btn-dark btn-sm float-end addMember">add member</button>
                 </div>
                 <div class="card-body mt-3">
                     <table class="table" id="myTable">
                         <thead>
                             <tr>
                                 <th>sl</th>
-                                <th>brand name</th>
-                                <th>brand thumbnail</th>
+                                <th>member name</th>
+                                <th>member photo</th>
                                 <th>status</th>
                                 <th>options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($brands as $key => $brand)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $brand->brand_name }}</td>
-                                    <td>
-                                        <img src="{{ asset('backend_assets/uploads/brands') }}/{{ $brand->brand_image }}"
-                                            alt="brand-logo" width="80">
-                                    </td>
-                                    <td>
-                                        <label class="switch">
-                                            <input type="checkbox" onchange="update_brand_status(this)"
-                                                value="{{ $brand->id }}" {{ $brand->status == '1' ? 'checked' : '' }}>
-                                            <span class="slider"></span>
-                                        </label>
-                                    </td>
-                                    <td>
-                                        <button type="button" value="{{ $brand->id }}"
-                                            class="btn btn-outline-success btn-sm brandEditBtn" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
-                                        <button type="button" value="{{ $brand->id }}"
-                                            class="btn btn-outline-danger btn-sm brandDeleteBtn" data-bs-toggle="tooltip"
-                                            data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
@@ -62,14 +38,14 @@
         </div>
     </div>
     {{-- modal section for add new brand --}}
-    <div class="modal fade" id="addNewBrand" tabindex="-1" aria-labelledby="brand" aria-hidden="true">
+    <div class="modal fade" id="addNewMember" tabindex="-1" aria-labelledby="brand" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-capitalize" id="brand">add new brand</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
                         <div class="form-group mt-2">
@@ -98,7 +74,7 @@
         </div>
     </div>
     {{-- modal section for delete brand --}}
-    <div class="modal fade" id="deleteBrandModal">
+    {{-- <div class="modal fade" id="deleteBrandModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -119,9 +95,9 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
     {{-- modal section for edit / update brand --}}
-    <div class="modal fade" id="editUpdatebrand" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+    {{-- <div class="modal fade" id="editUpdatebrand" tabindex="-1" aria-labelledby="category" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -159,14 +135,14 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('scripts')
     {{-- script for add new brand --}}
     <script>
         $(document).ready(function() {
-            $(document).on('click', '.addBrand', function() {
-                $('#addNewBrand').modal('show');
+            $(document).on('click', '.addMember', function() {
+                $('#addNewMember').modal('show');
             });
         });
     </script>
@@ -200,22 +176,24 @@
     </script>
     {{-- script for update brand status --}}
     <script>
-        function update_brand_status(el) {
-            var brand_status = 0;
-            if (el.checked) {
-                var brand_status = 1;
-            }
-            $.post('{{ route('brand.change-status') }}', {
-                _token: '{{ csrf_token() }}',
-                id: el.value,
-                brand_status: brand_status
-            }, function(data) {
-                if (data == 1) {
-                    toastr.success('success', 'Status changed Successfully');
-                } else {
-                    toastr.error('error', 'Something went wrong');
+        $(document).ready(function() {
+            function update_brand_status(el) {
+                var brand_status = 0;
+                if (el.checked) {
+                    var brand_status = 1;
                 }
-            });
-        }
+                $.post('{{ route('brand.change-status') }}', {
+                    _token: '{{ csrf_token() }}',
+                    id: el.value,
+                    brand_status: brand_status
+                }, function(data) {
+                    if (data == 1) {
+                        toastr.success('success', 'Status changed Successfully');
+                    } else {
+                        toastr.error('error', 'Something went wrong');
+                    }
+                });
+            }
+        });
     </script>
 @endsection

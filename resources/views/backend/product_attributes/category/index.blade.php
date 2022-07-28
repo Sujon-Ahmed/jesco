@@ -41,7 +41,8 @@
                                     </td>
                                     <td>
                                         <label class="switch">
-                                            <input type="checkbox" onchange="update_category_status(this)" value="{{ $category->id }}" {{ $category->status == '1' ? 'checked' : '' }}>
+                                            <input type="checkbox" onchange="update_category_status(this)"
+                                                value="{{ $category->id }}" {{ $category->status == '1' ? 'checked' : '' }}>
                                             <span class="slider"></span>
                                         </label>
                                     </td>
@@ -130,7 +131,8 @@
                         </div>
                         <img style="width: 300px" id="pic" alt="">
                         <div class="modal-footer d-flex">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-success btn-sm">Update</button>
                         </div>
                     </div>
@@ -153,7 +155,8 @@
                         Are You Sure Delete This Category ?
                         <input type="hidden" name="category_id" id="category_id">
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </div>
                     </div>
@@ -165,7 +168,7 @@
 @section('scripts')
     <script>
         $(document).ready(function() {
-            // add modal 
+            // add modal
             $(document).on('click', '.addCategory', function() {
                 $('#addNewCategory').modal('show');
             });
@@ -192,18 +195,22 @@
                 $('#category_id').val(categoryId);
             });
             // update category status
-            
+
         });
-        
-        function update_category_status(el){
+
+        function update_category_status(el) {
             var category_status = 0;
-            if(el.checked){
+            if (el.checked) {
                 var category_status = 1;
             }
-            $.post('{{ route('category.change-status') }}', {_token:'{{ csrf_token() }}', id:el.value, category_status:category_status}, function(data){
-                if(data == 1)
-                     toastr.success('success', 'Status changed Successfully');
-                else{
+            $.post('{{ route('category.change-status') }}', {
+                _token: '{{ csrf_token() }}',
+                id: el.value,
+                category_status: category_status
+            }, function(data) {
+                if (data == 1)
+                    toastr.success('success', 'Status changed Successfully');
+                else {
                     toastr.error('error', 'Something went wrong');
                 }
             });

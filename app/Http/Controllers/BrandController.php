@@ -73,6 +73,5 @@ class BrandController extends Controller
         $brand->status = $request->brand_status;
         $brand->save();
         return 1;
-
     }
 }

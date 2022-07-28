@@ -15,6 +15,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SubcategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,4 +99,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/get-brand-info/{id}', [BrandController::class, 'getBrandInformation']);
     Route::post('/brand/update', [BrandController::class, 'update'])->name('brand.update');
     Route::post('/brand/status', [BrandController::class, 'statusUpdate'])->name('brand.change-status');
+
+    // teams
+    Route::get('/team/members', [TeamController::class, 'index'])->name('team.member');
 });
