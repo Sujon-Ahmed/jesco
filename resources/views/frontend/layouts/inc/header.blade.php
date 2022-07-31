@@ -63,6 +63,7 @@
         .product-details-content .pro-details-color-info .pro-details-color ul li a.yellow::before {
             background-color: yellow;
         }
+
         .shop-sidebar-wrap .sidebar-widget-list.color ul li a {
             width: 42px;
             height: 42px;
@@ -74,8 +75,38 @@
             overflow: hidden;
             z-index: 1;
         }
+
         .shop-sidebar-wrap .sidebar-widget-list.color ul li a.blue::before {
             background-color: blue;
+        }
+
+        /* css for paginate */
+        .center {
+            text-align: center;
+        }
+
+        .pagination {
+            display: inline-block;
+        }
+
+        .pagination a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+        }
+
+        .pagination a.active {
+            background-color: tomato;
+            color: white;
+            border: 1px solid tomato;
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
         }
     </style>
 

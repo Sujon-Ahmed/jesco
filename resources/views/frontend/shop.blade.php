@@ -71,7 +71,8 @@
                                                     <!-- Single Prodect -->
                                                     <div class="product">
                                                         <div class="thumb">
-                                                            <a href="{{ route('single.product', $product->id) }}" class="image">
+                                                            <a href="{{ route('single.product', $product->id) }}"
+                                                                class="image">
                                                                 <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
                                                                 <img class="hover-image"
@@ -107,10 +108,12 @@
                                                                 </span>
                                                                 <span class="rating-num">( 4 Review )</span>
                                                             </span>
-                                                            <h5 class="title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+                                                            <h5 class="title"><a
+                                                                    href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
                                                             </h5>
                                                             <span class="price">
-                                                                <span class="new">৳{{ ceil($product->after_discount) }}</span>
+                                                                <span
+                                                                    class="new">৳{{ ceil($product->after_discount) }}</span>
                                                                 <span class="old">$৳{{ $product->product_price }}</span>
                                                             </span>
                                                         </div>
@@ -122,66 +125,72 @@
                                     </div>
                                     <div class="tab-pane fade" id="shop-list">
                                         @foreach ($products as $product)
-                                        <div class="shop-list-wrapper">
-                                            <div class="row">
-                                                <div class="col-md-5 col-lg-5 col-xl-4">
-                                                    <div class="product">
-                                                        <div class="thumb">
-                                                            <a href="{{ route('single.product', $product->id) }}" class="image">
-                                                                <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
-                                                                    alt="Product" />
-                                                                <img class="hover-image"
-                                                                    src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
-                                                                    alt="Product" />
-                                                            </a>
-                                                            <span class="badges">
-                                                                 @if ($product->discount)
-                                                                    <span class="sale">-{{ $product->discount }}%</span>
-                                                                @endif
-                                                                @if ($product->tending)
-                                                                    <span
-                                                                        class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
-                                                                @endif
-                                                            </span>
+                                            <div class="shop-list-wrapper">
+                                                <div class="row">
+                                                    <div class="col-md-5 col-lg-5 col-xl-4">
+                                                        <div class="product">
+                                                            <div class="thumb">
+                                                                <a href="{{ route('single.product', $product->id) }}"
+                                                                    class="image">
+                                                                    <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
+                                                                        alt="Product" />
+                                                                    <img class="hover-image"
+                                                                        src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
+                                                                        alt="Product" />
+                                                                </a>
+                                                                <span class="badges">
+                                                                    @if ($product->discount)
+                                                                        <span
+                                                                            class="sale">-{{ $product->discount }}%</span>
+                                                                    @endif
+                                                                    @if ($product->tending)
+                                                                        <span
+                                                                            class="new">{{ $product->tending == 1 ? 'Tending' : '' }}</span>
+                                                                    @endif
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-7 col-lg-7 col-xl-8">
-                                                    <div class="content-desc-wrap">
-                                                        <div class="content">
-                                                            <span class="ratings">
-                                                                <span class="rating-wrap">
-                                                                    <span class="star" style="width: 80%"></span>
+                                                    <div class="col-md-7 col-lg-7 col-xl-8">
+                                                        <div class="content-desc-wrap">
+                                                            <div class="content">
+                                                                <span class="ratings">
+                                                                    <span class="rating-wrap">
+                                                                        <span class="star" style="width: 80%"></span>
+                                                                    </span>
+                                                                    <span class="rating-num">( 4 Review )</span>
                                                                 </span>
-                                                                <span class="rating-num">( 4 Review )</span>
-                                                            </span>
-                                                            <h5 class="title"><a href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
-                                                            </h5>
-                                                            <p><?= $product->short_description ?></p>
-                                                        </div>
-                                                        <div class="box-inner">
-                                                            <span class="price">
-                                                                <span class="new">৳{{ ceil($product->after_discount) }}</span>
-                                                                <span class="old">$৳{{ $product->product_price }}</span>
-                                                            </span>
-                                                            <div class="actions">
-                                                                <a href="wishlist.html" class="action wishlist"
-                                                                    title="Wishlist"><i class="pe-7s-like"></i></a>
-                                                                <a href="#" class="action quickview"
-                                                                    data-link-action="quickview" title="Quick view"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#exampleModal"><i
-                                                                        class="pe-7s-search"></i></a>
-                                                                <a href="compare.html" class="action compare"
-                                                                    title="Compare"><i class="pe-7s-refresh-2"></i></a>
+                                                                <h5 class="title"><a
+                                                                        href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+                                                                </h5>
+                                                                <p><?= $product->short_description ?></p>
                                                             </div>
-                                                            <button title="Add To Cart" class=" add-to-cart">Add
-                                                                To Cart</button>
+                                                            <div class="box-inner">
+                                                                <span class="price">
+                                                                    <span
+                                                                        class="new">৳{{ ceil($product->after_discount) }}</span>
+                                                                    <span
+                                                                        class="old">$৳{{ $product->product_price }}</span>
+                                                                </span>
+                                                                <div class="actions">
+                                                                    <a href="wishlist.html" class="action wishlist"
+                                                                        title="Wishlist"><i class="pe-7s-like"></i></a>
+                                                                    <a href="#" class="action quickview"
+                                                                        data-link-action="quickview" title="Quick view"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleModal"><i
+                                                                            class="pe-7s-search"></i></a>
+                                                                    <a href="compare.html" class="action compare"
+                                                                        title="Compare"><i
+                                                                            class="pe-7s-refresh-2"></i></a>
+                                                                </div>
+                                                                <button title="Add To Cart" class=" add-to-cart">Add
+                                                                    To Cart</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -190,10 +199,26 @@
                         <!-- Tab Content Area End -->
 
                         <!--  Pagination Area Start -->
-                        <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
+                        <div class="mt-5 text-center">
+                             {{ $products->links() }}
+                        </div>
+                        {{-- <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
                             <a href="#" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
                                     class="fa fa-refresh ml-15px" aria-hidden="true"></i></a>
-                        </div>
+                        </div> --}}
+                        {{-- <div class="center mt-5">
+                            <div class="pagination">
+
+                                <a href="#">&laquo;</a>
+                                <a href="#">1</a>
+                                <a href="#" class="active">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">&raquo;</a>
+                            </div>
+                        </div> --}}
                         <!--  Pagination Area End -->
                     </div>
                     <!-- Shop Bottom Area End -->
@@ -227,7 +252,8 @@
                             <div class="sidebar-widget-category">
                                 <ul>
                                     @foreach ($categories as $category)
-                                        <li><a href="{{ url('/filter/category/product',$category->id) }}" class="">{{ $category->category_name }}
+                                        <li><a href="{{ url('/filter/category/product', $category->id) }}"
+                                                class="">{{ $category->category_name }}
                                                 <span>({{ $category->rel_to_product->count() }})</span> </a></li>
                                     @endforeach
                                 </ul>

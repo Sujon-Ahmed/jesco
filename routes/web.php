@@ -51,8 +51,8 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // home page slider
     Route::get('/slider', [HomepageSliderController::class, 'index'])->name('slider');
     Route::post('/slider/store', [HomepageSliderController::class, 'store'])->name('slider.store');
-
-
+    Route::get('/getBannerSlider/{id}', [HomepageSliderController::class, 'GetBanner'])->name('getBanner');
+    Route::put('/slider/update', [HomepageSliderController::class, 'update'])->name('slider.update');
     // users
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [UserController::class, 'profileUpdate']);

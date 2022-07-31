@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Color;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ColorController extends Controller
 {
@@ -16,7 +16,7 @@ class ColorController extends Controller
             'colors' => $colors,
         ]);
     }
-    // color insert 
+    // color insert
     public function colorInsert(Request $request)
     {
         $validated = $request->validate([
@@ -26,7 +26,7 @@ class ColorController extends Controller
         Color::insert([
             'color_name' => $request->color_name,
             'color_code' => $request->color_code,
-            'created_at' => Carbon::now(),
+            'created_at' => Carbon::now()
         ]);
         return back()->with('status', 'color added successfully');
     }
@@ -35,7 +35,7 @@ class ColorController extends Controller
     {
         $color_info = Color::find($id);
         return response()->json([
-            'status' => 200,
+            'status'     => 200,
             'color_info' => $color_info
         ]);
     }

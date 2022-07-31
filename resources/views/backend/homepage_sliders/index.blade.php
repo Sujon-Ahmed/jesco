@@ -37,7 +37,7 @@
                                     <td>{{ $slider->title }}</td>
                                     <td><img src="{{ asset('backend_assets/uploads/slider') }}/{{ $slider->image }}" width="50" alt=""></td>
                                     <td>
-                                        <button type="button" value="{{ $slider->id }}"
+                                        <button type="button" data-id="{{ $slider->id }}"
                                             class="btn btn-outline-success btn-sm brandEditBtn"
                                             data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
                                                 class="fa fa-edit"></i></button>
@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal for add category -->
+    <!-- Modal for add slider -->
     <div class="modal fade" id="addNewSlider" tabindex="-1" aria-labelledby="slider" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -98,45 +98,52 @@
             </div>
         </div>
     </div>
-    <!-- Modal for edit / update category -->
-    {{-- <div class="modal fade" id="editUpdateCategory" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+    <!-- Modal for edit / update slider -->
+      <div class="modal fade" id="ModifySlider" tabindex="-1" aria-labelledby="slider" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="category">edit / update category</h5>
+                    <h5 class="modal-title text-capitalize" id="category">Edit / Update Slider</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('/admin/category/update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        <input type="hidden" name="editUpdateCategoryId" id="editUpdateCategoryId">
+                        @method('PUT')
+                        <input type="hidden" name="sliderId" id="sliderId">
                         <div class="form-group mt-2">
-                            <label for="category_name" class="form-label">Category Name</label>
-                            <input type="text" name="category_edit_name" id="category_edit_name" class="form-control"
-                                value="{{ old('category_name') }}">
-                            @error('category_name')
+                            <label for="modify_sub_title" class="form-label">Sub Title</label>
+                            <input type="text" name="modify_sub_title" id="modify_sub_title" class="form-control"
+                                value="{{ old('modify_sub_title') }}">
+                            @error('modify_sub_title')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group mt-2">
-                            <label for="category_thumbnail">Category Thumbnail</label>
-                            <input type="file" name="category_edit_thumbnail" id="category_edit_thumbnail"
-                                class="form-control file-control"
-                                oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                            @error('category_thumbnail')
+                            <label for="modify_title" class="form-label">Title</label>
+                            <input type="text" name="modify_title" id="modify_title" class="form-control"
+                                value="{{ old('modify_title') }}">
+                            @error('modify_title')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
-                        <img style="width: 300px" id="pic" alt="">
+                        <div class="form-group mt-2">
+                            <label for="modify_image">Slider Image</label>
+                            <input type="file" name="modify_image" id="modify_image"
+                                class="form-control file-control">
+                            @error('modify_image')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="modal-footer d-flex">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Modal for delete size -->
     {{-- <div class="modal fade" id="deleteCategoryModal">
         <div class="modal-dialog">
@@ -166,6 +173,21 @@
         $(document).ready(function () {
             $(document).on('click', '.addSlider', function () {
                 $('#addNewSlider').modal('show');
+            });
+            $(document).on('click', '.brandEditBtn', function () {
+                $('#ModifySlider').modal('show');
+                var bannerSliderId = $(this).data('id');
+                $.ajax({
+                    type: "GET",
+                    url: "/admin/getBannerSlider/" + bannerSliderId,
+                    dataType: "json",
+                    success: function (response) {
+                        console.log(response);
+                        $('#modify_sub_title').val(response.data.sub_title);
+                        $('#modify_title').val(response.data.title);
+                        $('#modify_image').val(response.data.image);
+                    }
+                });
             });
         });
     </script>

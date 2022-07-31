@@ -28,4 +28,40 @@ class HomepageSliderController extends Controller
         $slider->save();
         return redirect()->route('slider')->with('status', 'Slider has been added successfully');
     }
+    // get banner slider information
+    public function GetBanner($id)
+    {
+        $data = HomepageSlider::find($id);
+        return response()->json([
+            'data' => $data
+        ]);
+    }
+    // update banner slider
+    public function update(Request $request)
+    {
+
+        // if ($request->modify_image != '') {
+
+        //     $slider_info = HomepageSlider::find($request->sliderId);
+
+        //     if ($slider_info->modify_image != '') {
+        //         unlink(public_path('backend_assets/uploads/slider/' . $slider_info->modify_image));
+        //     }
+
+        //     $image_name = $request->id . '.' . $request->modify_image->getClientOriginalExtension();
+
+        //     Image::make($request->modify_image)->save(public_path('backend_assets/uploads/slider/' . $image_name));
+
+
+        //     HomepageSlider::find($request->sliderId)->update([
+        //         'image' => $image_name,
+        //     ]);
+        // }
+
+        HomepageSlider::find($request->sliderId)->update([
+            'sub_title' => $request->modify_sub_title,
+            'title' => $request->modify_title,
+        ]);
+        return back()->with('status', 'slider updated successfully!');
+    }
 }
