@@ -53,6 +53,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/slider/store', [HomepageSliderController::class, 'store'])->name('slider.store');
     Route::get('/getBannerSlider/{id}', [HomepageSliderController::class, 'GetBanner'])->name('getBanner');
     Route::put('/slider/update', [HomepageSliderController::class, 'update'])->name('slider.update');
+    Route::post('/slider/status/update', [HomepageSliderController::class, 'statusUpdate'])->name('slider.status.update');
     // users
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [UserController::class, 'profileUpdate']);

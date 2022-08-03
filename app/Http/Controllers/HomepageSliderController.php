@@ -64,4 +64,12 @@ class HomepageSliderController extends Controller
         ]);
         return back()->with('status', 'slider updated successfully!');
     }
+    // update slider status
+    public function statusUpdate(Request $request)
+    {
+        $slider = HomepageSlider::find($request->id);
+        $slider->status = $request->slider_status;
+        $slider->save();
+        return 1;
+    }
 }

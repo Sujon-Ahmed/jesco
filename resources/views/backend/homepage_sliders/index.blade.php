@@ -198,4 +198,25 @@
             });
         });
     </script>
+    {{-- slider banner status update --}}
+    <script>
+        function update_slider_status(el) {
+            var slider_status = 0;
+            if (el.checked) {
+                var slider_status = 1;
+            }
+            $.post('{{ route('slider.status.update') }}', {
+                _token: '{{ csrf_token() }}',
+                id: el.value,
+                slider_status: slider_status
+            }, function(data) {
+                if (data == 1) {
+                    toastr.success('success', 'Status changed Successfully');
+                } else {
+                    toastr.error('error', 'Something went wrong');
+                }
+            });
+        }
+    </script>
+
 @endsection

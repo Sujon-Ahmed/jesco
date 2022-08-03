@@ -17,7 +17,7 @@ class FrontendController extends Controller
         $latest_categories  = Category::latest()->take(4)->get();
         $latest_product     = Product::latest()->get();
         $products           = Product::latest()->take(12)->get();
-        $sliders            = HomepageSlider::all();
+        $sliders            = HomepageSlider::where('status', 1)->get();
 
         return view('frontend.index', [
             'sliders'           =>  $sliders,
