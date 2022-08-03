@@ -104,4 +104,5 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // teams
     Route::get('/team/members', [TeamController::class, 'index'])->name('team.member');
     Route::post('/team/member/store', [TeamController::class, 'store'])->name('team.member.store');
+    Route::post('/team/member/status/update', [TeamController::class, 'statusUpdate'])->name('team.member.status.update');
 });

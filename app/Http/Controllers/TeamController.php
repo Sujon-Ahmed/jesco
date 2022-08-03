@@ -30,4 +30,12 @@ class TeamController extends Controller
         $team->save();
         return back()->with('status', 'Team member inserted successfully!');
     }
+    // update team member status update
+    public function statusUpdate(Request $request)
+    {
+        $team = Team::find($request->id);
+        $team->status = $request->team_status;
+        $team->save();
+        return 1;
+    }
 }

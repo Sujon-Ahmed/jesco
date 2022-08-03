@@ -207,24 +207,22 @@
     </script>
     {{-- script for update brand status --}}
     <script>
-        $(document).ready(function() {
-            function update_brand_status(el) {
-                var brand_status = 0;
-                if (el.checked) {
-                    var brand_status = 1;
-                }
-                $.post('{{ route('brand.change-status') }}', {
-                    _token: '{{ csrf_token() }}',
-                    id: el.value,
-                    brand_status: brand_status
-                }, function(data) {
-                    if (data == 1) {
-                        toastr.success('success', 'Status changed Successfully');
-                    } else {
-                        toastr.error('error', 'Something went wrong');
-                    }
-                });
+        function update_team_status(el) {
+            var team_status = 0;
+            if (el.checked) {
+                var team_status = 1;
             }
-        });
+            $.post('{{ route('team.member.status.update') }}', {
+                _token: '{{ csrf_token() }}',
+                id: el.value,
+                team_status: team_status
+            }, function(data) {
+                if (data == 1) {
+                    toastr.success('success', 'Status changed Successfully');
+                } else {
+                    toastr.error('error', 'Something went wrong');
+                }
+            });
+        }
     </script>
 @endsection
