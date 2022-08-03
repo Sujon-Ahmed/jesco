@@ -65,15 +65,16 @@
                 </div>
             </div>
             <div class="row">
+                @foreach ($team_members as $member)
                 <div class="col-md-4 mb-lm-30px">
                     <!-- Single Team -->
                     <div class="team-wrapper">
                         <div class="team-image overflow-hidden">
-                            <img src="{{ asset('frontend_assets/images/team/1.jpg') }}" alt="">
+                            <img src="{{ asset('backend_assets/uploads/teams') }}/{{ $member->photo }}" alt="">
                         </div>
                         <div class="team-content">
-                            <h6 class="title">Howard Burns</h6>
-                            <span class="sub-title">Our Team</span>
+                            <h6 class="title">{{ $member->name }}</h6>
+                            <span class="sub-title">{{ $member->designation }}</span>
                         </div>
                         <ul class="team-social d-flex">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -84,44 +85,7 @@
                     </div>
                     <!-- Single Team -->
                 </div>
-                <div class="col-md-4 mb-lm-30px">
-                    <!-- Single Team -->
-                    <div class="team-wrapper">
-                        <div class="team-image overflow-hidden">
-                            <img src="{{ asset('frontend_assets/images/team/2.jpg') }}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h6 class="title">Lester Houser</h6>
-                            <span class="sub-title">Our Team</span>
-                        </div>
-                        <ul class="team-social d-flex">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- Single Team -->
-                </div>
-                <div class="col-md-4">
-                    <!-- Single Team -->
-                    <div class="team-wrapper">
-                        <div class="team-image overflow-hidden">
-                            <img src="{{ asset('frontend_assets/images/team/3.jpg') }}" alt="">
-                        </div>
-                        <div class="team-content">
-                            <h6 class="title">Craig Chaney</h6>
-                            <span class="sub-title">Our Team</span>
-                        </div>
-                        <ul class="team-social d-flex">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- Single Team -->
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
