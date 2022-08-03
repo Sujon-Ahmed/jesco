@@ -172,8 +172,8 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <a href="shop-left-sidebar.html" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
-                            class="fa fa-arrow-right ml-15px" aria-hidden="true"></i></a> --}}
+                    <a href="{{ route('shop') }}" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
+                            class="fa fa-arrow-right ml-15px" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -260,7 +260,7 @@
                                             <!-- Single Prodect -->
                                             <div class="product">
                                                 <div class="thumb">
-                                                    <a href="single-product.html" class="image">
+                                                    <a href="{{ route('single.product', $item->id) }}" class="image">
                                                         <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $item->product_image }}"
                                                             alt="Product" />
                                                     </a>
@@ -294,7 +294,7 @@
                                                         <span class="rating-num">( 5 Review )</span>
                                                     </span>
                                                     <h5 class="title"><a
-                                                            href="single-product.html">{{ $item->product_name }}</a>
+                                                            href="{{ route('single.product', $item->id) }}">{{ $item->product_name }}</a>
                                                     </h5>
                                                     <span class="price">
                                                         <span class="new">৳{{ $item->after_discount }}</span>

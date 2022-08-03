@@ -18,6 +18,7 @@ class CreateHomepageSlidersTable extends Migration
             $table->string('sub_title');
             $table->string('title');
             $table->string('image')->nullable();
+            $table->tinyInteger('status')->default(0)->comment('0=unpublish, 1=publish');
             $table->timestamps();
         });
     }

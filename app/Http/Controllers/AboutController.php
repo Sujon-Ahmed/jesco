@@ -9,7 +9,7 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::where('status', 1)->get();
         return view('frontend.about',[
             'brands' => $brands,
         ]);

@@ -26,25 +26,32 @@
                                 <th>sub-title</th>
                                 <th>title</th>
                                 <th>image</th>
+                                <th>status</th>
                                 <th>options</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($sliders as $key=>$slider)
+                            @foreach ($sliders as $key => $slider)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $slider->sub_title }}</td>
                                     <td>{{ $slider->title }}</td>
-                                    <td><img src="{{ asset('backend_assets/uploads/slider') }}/{{ $slider->image }}" width="50" alt=""></td>
+                                    <td><img src="{{ asset('backend_assets/uploads/slider') }}/{{ $slider->image }}"
+                                            width="50" alt=""></td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" onchange="update_slider_status(this)"
+                                                value="{{ $slider->id }}" {{ $slider->status == '1' ? 'checked' : '' }}>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </td>
                                     <td>
                                         <button type="button" data-id="{{ $slider->id }}"
-                                            class="btn btn-outline-success btn-sm brandEditBtn"
-                                            data-bs-toggle="tooltip" data-bs-placement="left" title="Edit"><i
-                                                class="fa fa-edit"></i></button>
+                                            class="btn btn-outline-success btn-sm brandEditBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
                                         <button type="button" value="{{ $slider->id }}"
-                                            class="btn btn-outline-danger btn-sm brandDeleteBtn"
-                                            data-bs-toggle="tooltip" data-bs-placement="right" title="Delete"><i
-                                                class="fa fa-trash"></i></button>
+                                            class="btn btn-outline-danger btn-sm brandDeleteBtn" data-bs-toggle="tooltip"
+                                            data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -83,8 +90,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <label for="image">Slider Image</label>
-                            <input type="file" name="image" id="image"
-                                class="form-control file-control">
+                            <input type="file" name="image" id="image" class="form-control file-control">
                             @error('image')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
@@ -99,7 +105,7 @@
         </div>
     </div>
     <!-- Modal for edit / update slider -->
-      <div class="modal fade" id="ModifySlider" tabindex="-1" aria-labelledby="slider" aria-hidden="true">
+    <div class="modal fade" id="ModifySlider" tabindex="-1" aria-labelledby="slider" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -136,7 +142,8 @@
                             @enderror
                         </div>
                         <div class="modal-footer d-flex">
-                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </div>
                     </div>
@@ -170,18 +177,18 @@
 @endsection
 @section('scripts')
     <script>
-        $(document).ready(function () {
-            $(document).on('click', '.addSlider', function () {
+        $(document).ready(function() {
+            $(document).on('click', '.addSlider', function() {
                 $('#addNewSlider').modal('show');
             });
-            $(document).on('click', '.brandEditBtn', function () {
+            $(document).on('click', '.brandEditBtn', function() {
                 $('#ModifySlider').modal('show');
                 var bannerSliderId = $(this).data('id');
                 $.ajax({
                     type: "GET",
                     url: "/admin/getBannerSlider/" + bannerSliderId,
                     dataType: "json",
-                    success: function (response) {
+                    success: function(response) {
                         console.log(response);
                         $('#modify_sub_title').val(response.data.sub_title);
                         $('#modify_title').val(response.data.title);
