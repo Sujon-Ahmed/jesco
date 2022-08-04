@@ -47,9 +47,9 @@
                                     </td>
                                     <td>
                                         <button type="button" data-id="{{ $slider->id }}"
-                                            class="btn btn-outline-success btn-sm brandEditBtn" data-bs-toggle="tooltip"
+                                            class="btn btn-outline-success btn-sm sliderEditBtn" data-bs-toggle="tooltip"
                                             data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
-                                        <button type="button" value="{{ $slider->id }}"
+                                        <button type="button" data-id="{{ $slider->id }}"
                                             class="btn btn-outline-danger btn-sm brandDeleteBtn" data-bs-toggle="tooltip"
                                             data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
@@ -181,7 +181,7 @@
             $(document).on('click', '.addSlider', function() {
                 $('#addNewSlider').modal('show');
             });
-            $(document).on('click', '.brandEditBtn', function() {
+            $(document).on('click', '.sliderEditBtn', function() {
                 $('#ModifySlider').modal('show');
                 var bannerSliderId = $(this).data('id');
                 $.ajax({

@@ -14,7 +14,7 @@ class FrontendController extends Controller
     public function index()
     {
         $categories         = Category::where('status', '1')->get();
-        $latest_categories  = Category::latest()->take(4)->get();
+        $latest_categories  = Category::where('status', '1')->latest()->take(4)->get();
         $latest_product     = Product::latest()->get();
         $products           = Product::latest()->take(12)->get();
         $sliders            = HomepageSlider::where('status', 1)->get();

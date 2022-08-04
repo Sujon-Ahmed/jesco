@@ -39,6 +39,7 @@ class HomepageSliderController extends Controller
     // update banner slider
     public function update(Request $request)
     {
+        $slider = HomepageSlider::find();
 
         // if ($request->modify_image != '') {
 
@@ -58,10 +59,9 @@ class HomepageSliderController extends Controller
         //     ]);
         // }
 
-        HomepageSlider::find($request->sliderId)->update([
-            'sub_title' => $request->modify_sub_title,
-            'title' => $request->modify_title,
-        ]);
+        $slider->sub_title = $request->modify_sub_title;
+        $slider->title = $request->modify_title;
+        $slider->save();
         return back()->with('status', 'slider updated successfully!');
     }
     // update slider status
