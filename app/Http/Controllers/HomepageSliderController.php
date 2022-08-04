@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HomepageSlider;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
+use Laravel\Ui\Presets\React;
 
 class HomepageSliderController extends Controller
 {
@@ -55,6 +56,16 @@ class HomepageSliderController extends Controller
             'title'     => $request->modify_title,
         ]);
         return back()->with('status', 'slider updated successfully!');
+    }
+    // destroy slider banner
+    public function destroy(Request $request)
+    {
+        $slider_id = $request->slider_id;
+        $slider_image = HomepageSlider::where('id', $slider_id)->first()->image;
+        $delete_form = public_path('/backend_assets/uploads/slider/'.$slider_image);
+        unlink($delete_form);
+        HomepageSlider::find($slider_id)->delete();
+        return back()->with('status', 'Slider Delete Successfully!');
     }
     // update slider status
     public function statusUpdate(Request $request)

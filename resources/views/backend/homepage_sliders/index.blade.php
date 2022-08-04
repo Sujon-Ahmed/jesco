@@ -50,7 +50,7 @@
                                             class="btn btn-outline-success btn-sm sliderEditBtn" data-bs-toggle="tooltip"
                                             data-bs-placement="left" title="Edit"><i class="fa fa-edit"></i></button>
                                         <button type="button" data-id="{{ $slider->id }}"
-                                            class="btn btn-outline-danger btn-sm brandDeleteBtn" data-bs-toggle="tooltip"
+                                            class="btn btn-outline-danger btn-sm sliderDeleteBtn" data-bs-toggle="tooltip"
                                             data-bs-placement="right" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
@@ -115,6 +115,7 @@
                 <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
+                        @method('PUT')
                         <input type="hidden" name="sliderId" id="sliderId">
                         <div class="form-group mt-2">
                             <label for="modify_sub_title" class="form-label">Sub Title</label>
@@ -135,7 +136,8 @@
                         <div class="form-group mt-2">
                             <label for="modify_image">Slider Image</label>
                             <input type="file" name="modify_image" id="modify_image"
-                                class="form-control file-control" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
+                                class="form-control file-control"
+                                oninput="pic.src=window.URL.createObjectURL(this.files[0])">
                             @error('modify_image')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
@@ -144,7 +146,7 @@
                         <div class="modal-footer d-flex">
                             <button type="button" class="btn btn-secondary btn-sm"
                                 data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                            <button type="submit" class="btn btn-success btn-sm">Update</button>
                         </div>
                     </div>
                 </form>
@@ -152,19 +154,19 @@
         </div>
     </div>
     <!-- Modal for delete size -->
-    {{-- <div class="modal fade" id="deleteCategoryModal">
+    <div class="modal fade" id="deleteSliderModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-capitalize" id="categoryDelete">confirmed message</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('category.destroy') }}" method="POST">
+                <form action="{{ route('slider.destroy') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body">
-                        Are You Sure Delete This Category ?
-                        <input type="hidden" name="category_id" id="category_id">
+                        Are You Sure Delete This Banner Slider ?
+                        <input type="hidden" name="slider_id" id="slider_id">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -173,7 +175,7 @@
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('scripts')
     <script>
@@ -197,6 +199,11 @@
                     }
                 });
             });
+            $(document).on('click', '.sliderDeleteBtn', function () {
+                let sliderId = $(this).data('id');
+                $('#deleteSliderModal').modal('show');
+                $('#slider_id').val(sliderId);
+            });
         });
     </script>
     {{-- slider banner status update --}}
@@ -219,5 +226,4 @@
             });
         }
     </script>
-
 @endsection

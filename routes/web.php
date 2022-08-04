@@ -52,8 +52,9 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/slider', [HomepageSliderController::class, 'index'])->name('slider');
     Route::post('/slider/store', [HomepageSliderController::class, 'store'])->name('slider.store');
     Route::get('/getBannerSlider/{id}', [HomepageSliderController::class, 'GetBanner'])->name('getBanner');
-    Route::post('/slider/update', [HomepageSliderController::class, 'update'])->name('slider.update');
+    Route::put('/slider/update', [HomepageSliderController::class, 'update'])->name('slider.update');
     Route::post('/slider/status/update', [HomepageSliderController::class, 'statusUpdate'])->name('slider.status.update');
+    Route::delete('/slider/destroy', [HomepageSliderController::class, 'destroy'])->name('slider.destroy');
     // users
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [UserController::class, 'profileUpdate']);
