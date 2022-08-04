@@ -39,29 +39,21 @@ class HomepageSliderController extends Controller
     // update banner slider
     public function update(Request $request)
     {
-        $slider = HomepageSlider::find();
-
-        // if ($request->modify_image != '') {
-
-        //     $slider_info = HomepageSlider::find($request->sliderId);
-
-        //     if ($slider_info->modify_image != '') {
-        //         unlink(public_path('backend_assets/uploads/slider/' . $slider_info->modify_image));
-        //     }
-
-        //     $image_name = $request->id . '.' . $request->modify_image->getClientOriginalExtension();
-
-        //     Image::make($request->modify_image)->save(public_path('backend_assets/uploads/slider/' . $image_name));
-
-
-        //     HomepageSlider::find($request->sliderId)->update([
-        //         'image' => $image_name,
-        //     ]);
-        // }
-
-        $slider->sub_title = $request->modify_sub_title;
-        $slider->title = $request->modify_title;
-        $slider->save();
+        if ($request->modify_image != '') {
+            $slider_info = HomepageSlider::find($request->sliderId);
+            if ($slider_info->image != '') {
+                unlink(public_path('/backend_assets/uploads/slider/'.$slider_info->image));
+            }
+            $slider_banner_name = $request->sliderId.'.'.$request->modify_image->getClientOriginalExtension();
+            Image::make($request->modify_image)->resize(472, 634)->save(public_path('/backend_assets/uploads/slider/' . $slider_banner_name));
+            HomepageSlider::find($request->sliderId)->update([
+                'image' => $slider_banner_name,
+            ]);
+        }
+        HomepageSlider::find($request->sliderId)->update([
+            'sub_title' => $request->modify_sub_title,
+            'title'     => $request->modify_title,
+        ]);
         return back()->with('status', 'slider updated successfully!');
     }
     // update slider status

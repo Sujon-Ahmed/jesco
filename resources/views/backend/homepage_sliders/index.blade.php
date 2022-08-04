@@ -115,7 +115,6 @@
                 <form action="{{ route('slider.update') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        @method('PUT')
                         <input type="hidden" name="sliderId" id="sliderId">
                         <div class="form-group mt-2">
                             <label for="modify_sub_title" class="form-label">Sub Title</label>
@@ -136,11 +135,12 @@
                         <div class="form-group mt-2">
                             <label for="modify_image">Slider Image</label>
                             <input type="file" name="modify_image" id="modify_image"
-                                class="form-control file-control">
+                                class="form-control file-control" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
                             @error('modify_image')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
+                        <img style="width: 300px" id="pic" alt="">
                         <div class="modal-footer d-flex">
                             <button type="button" class="btn btn-secondary btn-sm"
                                 data-bs-dismiss="modal">Close</button>
@@ -189,7 +189,8 @@
                     url: "/admin/getBannerSlider/" + bannerSliderId,
                     dataType: "json",
                     success: function(response) {
-                        console.log(response);
+                        // console.log(response);
+                        $('#sliderId').val(bannerSliderId);
                         $('#modify_sub_title').val(response.data.sub_title);
                         $('#modify_title').val(response.data.title);
                         $('#modify_image').val(response.data.image);
