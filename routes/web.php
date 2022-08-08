@@ -106,4 +106,6 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/team/members', [TeamController::class, 'index'])->name('team.member');
     Route::post('/team/member/store', [TeamController::class, 'store'])->name('team.member.store');
     Route::post('/team/member/status/update', [TeamController::class, 'statusUpdate'])->name('team.member.status.update');
+    Route::post('/team/member/update', [TeamController::class, 'update'])->name('team.member.update');
+    Route::get('/get-team-member-info/{id}', [TeamController::class, 'getTeamMemberInfo']);
 });

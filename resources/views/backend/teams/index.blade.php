@@ -128,45 +128,49 @@
         </div>
     </div> --}}
     {{-- modal section for edit / update brand --}}
-    {{-- <div class="modal fade" id="editUpdatebrand" tabindex="-1" aria-labelledby="category" aria-hidden="true">
+    <div class="modal fade" id="editUpdateMember" tabindex="-1" aria-labelledby="team" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-capitalize" id="category">edit / update brand</h5>
+                    <h5 class="modal-title text-capitalize" id="team">edit / update brand</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('brand.update') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('team.member.update') }}" method="POST" enctype="multipart/form-data">
                     <div class="modal-body">
                         @csrf
-                        <input type="hidden" name="edited_brand_id" id="edited_brand_id">
+                        <input type="hidden" name="edit_member_id" id="edit_member_id" class="form-control">
                         <div class="form-group mt-2">
-                            <label for="edited_brand_name" class="form-label">Brand Name</label>
-                            <input type="text" name="edited_brand_name" id="edited_brand_name" class="form-control"
-                                value="{{ old('edited_brand_name') }}">
-                            @error('edited_brand_name')
+                            <label for="edit_member_name" class="form-label">Member Name</label>
+                            <input type="text" name="edit_member_name" id="edit_member_name" class="form-control"
+                                value="{{ old('edit_member_name') }}">
+                            @error('edit_member_name')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="form-group mt-2">
-                            <label for="edited_brand_image">Brand Thumbnail</label>
-                            <input type="file" name="edited_brand_image" id="edited_brand_image"
-                                class="form-control file-control"
-                                oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                            @error('edited_brand_image')
+                            <label for="edit_member_designation" class="form-label">Member Designation</label>
+                            <input type="text" name="edit_member_designation" id="edit_member_designation" class="form-control"
+                                value="{{ old('edit_member_designation') }}">
+                            @error('edit_member_designation')
                                 <span style="color:red;">{{ $message }}</span>
                             @enderror
                         </div>
-                        <img style="width: 300px" id="pic" alt="">
+                        <div class="form-group mt-2">
+                            <label for="edit_member_photo">Brand Thumbnail</label>
+                            <input type="file" name="edit_member_photo" id="edit_member_photo" class="form-control file-control">
+                            @error('edit_member_photo')
+                                <span style="color:red;">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="modal-footer d-flex">
-                            <button type="button" class="btn btn-secondary btn-sm"
-                                data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('scripts')
     {{-- script for add new brand --}}
@@ -190,16 +194,19 @@
     {{-- script for edit / update brand --}}
     <script>
         $(document).ready(function() {
-            $(document).on('click', '.brandEditBtn', function() {
-                $('#editUpdatebrand').modal('show');
-                let = brandId = $(this).val();
+            $(document).on('click', '.memberEditBtn', function() {
+                $('#editUpdateMember').modal('show');
+                let = teamMemberId = $(this).val();
                 $.ajax({
                     type: "GET",
-                    url: "/admin/get-brand-info/" + brandId,
+                    url: "/admin/get-team-member-info/" + teamMemberId,
                     dataType: "json",
                     success: function(response) {
-                        $('#edited_brand_id').val(brandId);
-                        $('#edited_brand_name').val(response.brand_info.brand_name);
+                        console.log(response);
+                        $('#edit_member_id').val(teamMemberId);
+                        $('#edit_member_name').val(response.member_info.name);
+                        $('#edit_member_designation').val(response.member_info.designation);
+                        $('#edit_member_photo').val(response.member_info.photo);
                     }
                 });
             });
