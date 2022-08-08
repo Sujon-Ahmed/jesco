@@ -52,8 +52,8 @@ class BrandController extends Controller
     {
         if ($request->edited_brand_image != '') {
             $brand_info = Brand::find($request->edited_brand_id);
-            if ($brand_info->edited_brand_image != '') {
-                unlink(public_path('/backend_assets/uploads/brands/' . $brand_info->edited_brand_image));
+            if ($brand_info->brand_image != '') {
+                unlink(public_path('/backend_assets/uploads/brands/' . $brand_info->brand_image));
             }
             $thumbnail_name = $request->edited_brand_id . '.' . $request->edited_brand_image->getClientOriginalExtension();
             Image::make($request->edited_brand_image)->resize(480, 480)->save(public_path('/backend_assets/uploads/brands/' . $thumbnail_name));

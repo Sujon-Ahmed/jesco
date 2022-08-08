@@ -78,8 +78,8 @@ class ProductController extends Controller
         // product image store
         $product_image              = $request->product_image;
         $product_image_extension    = $product_image->getClientOriginalExtension();
-        $product_image_name         = uniqid().'.'.$product_image_extension;
-        Image::make($product_image)->resize(800, 800)->save(public_path('/backend_assets/uploads/products/preview/'.$product_image_name));
+        $product_image_name         = uniqid() . '.' . $product_image_extension;
+        Image::make($product_image)->resize(800, 800)->save(public_path('/backend_assets/uploads/products/preview/' . $product_image_name));
         $product->product_image     = $product_image_name;
 
         $product->save();
@@ -98,5 +98,4 @@ class ProductController extends Controller
         }
         return redirect()->route('product')->with('status', 'Product has been added successfully');
     }
-
 }

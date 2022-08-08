@@ -193,6 +193,7 @@
                     success: function(response) {
                         $('#edited_brand_id').val(brandId);
                         $('#edited_brand_name').val(response.brand_info.brand_name);
+                        $('#edited_brand_image').val(response.brand_info.brand_image);
                     }
                 });
             });
