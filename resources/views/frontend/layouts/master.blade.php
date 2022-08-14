@@ -209,6 +209,10 @@
 
 @yield('content')
 
+
 {{-- footer section start here --}}
 @include('frontend.layouts.inc.footer')
 {{-- footer section end here --}}
+
+
+

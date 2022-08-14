@@ -42,12 +42,12 @@
                                 <p>Sort By:</p>
                             </div>
                             <div class="shop-select">
-                                <select class="shop-sort">
-                                    <option data-display="Relevance">Relevance</option>
-                                    <option value="1"> Name, A to Z</option>
-                                    <option value="2"> Name, Z to A</option>
-                                    <option value="3"> Price, low to high</option>
-                                    <option value="4"> Price, high to low</option>
+                                <select class="shop-sort" onchange="sortProduct()" id="sortby">
+                                    <option {{ $sort_text == 'default' ? 'selected' : '' }} value="default">Default</option>
+                                    <option {{ $sort_text == 'newest' ? 'selected' : '' }} value="newest"> Newest</option>
+                                    <option {{ $sort_text == 'oldest' ? 'selected' : '' }} value="oldest"> Oldest</option>
+                                    <option {{ $sort_text == 'low-to-high' ? 'selected' : '' }} value="low-to-high"> Price, low to high</option>
+                                    <option {{ $sort_text == 'high-to-low' ? 'selected' : '' }} value="high-to-low"> Price, high to low</option>
                                 </select>
 
                             </div>
@@ -200,7 +200,7 @@
 
                         <!--  Pagination Area Start -->
                         <div class="mt-5 text-center">
-                             {{ $products->links() }}
+                            {{ $products->links() }}
                         </div>
                         {{-- <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
                             <a href="#" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
@@ -312,4 +312,7 @@
         </div>
     </div>
     <!-- Shop Page End  -->
+    <form id="filterForm">
+        <input type="hidden" name="sort" id="sort">
+    </form>
 @endsection
