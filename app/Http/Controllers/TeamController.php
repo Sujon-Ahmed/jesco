@@ -69,4 +69,15 @@ class TeamController extends Controller
         $team->save();
         return 1;
     }
+
+    // delete team member
+    public function teamMemberDelete(Request $request)
+    {
+        $team_member_id = $request->input('deleted_tem_member_id');
+        $team_member_photo = Team::where('id', $team_member_id)->first()->photo;
+        $delete_form = public_path('/backend_assets/uploads/teams/'.$team_member_photo);
+        unlink($delete_form);
+        Team::find($team_member_id)->delete();
+        return back()->with('status', 'Team member deleted successfully!');
+    }
 }

@@ -105,19 +105,19 @@
         </div>
     </div>
     {{-- modal section for delete brand --}}
-    {{-- <div class="modal fade" id="deleteBrandModal">
+    <div class="modal fade" id="deleteMemberModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title text-capitalize" id="categoryDelete">confirmed message</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ route('brand.delete') }}" method="POST">
+                <form action="{{ route('team.member.delete') }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <div class="modal-body">
                         Are You Sure Delete This Brand ?
-                        <input type="hidden" name="deleted_brand_id" id="deleted_brand_id">
+                        <input type="hidden" name="deleted_tem_member_id" id="deleted_tem_member_id">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -126,7 +126,7 @@
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     {{-- modal section for edit / update brand --}}
     <div class="modal fade" id="editUpdateMember" tabindex="-1" aria-labelledby="team" aria-hidden="true">
         <div class="modal-dialog">
@@ -184,10 +184,10 @@
     {{-- script for delete brand --}}
     <script>
         $(document).ready(function() {
-            $(document).on('click', '.brandDeleteBtn', function() {
-                let brandId = $(this).val();
-                $('#deleteBrandModal').modal('show');
-                $('#deleted_brand_id').val(brandId);
+            $(document).on('click', '.memberDeleteBtn', function() {
+                let memberId = $(this).val();
+                $('#deleteMemberModal').modal('show');
+                $('#deleted_tem_member_id').val(memberId);
             });
         });
     </script>
