@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminDashboardController extends Controller
 {
@@ -28,5 +29,10 @@ class AdminDashboardController extends Controller
     public function category()
     {
         return view('backend.category.index');
+    }
+    function clearCache(Request $request)
+    {
+        Artisan::call('cache:clear');
+        return back()->with('status', 'Cache Cleared Successfully');
     }
 }

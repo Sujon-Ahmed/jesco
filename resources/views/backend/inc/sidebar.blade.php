@@ -3,14 +3,16 @@
      <ul class="sidebar-nav" id="sidebar-nav">
          <!-- Dashboard Nav -->
          <li class="nav-item">
-             <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? '' : 'collapsed' }}" href="{{ route('dashboard') }}">
+             <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? '' : 'collapsed' }}"
+                 href="{{ route('dashboard') }}">
                  <i class="bi bi-grid"></i>
                  <span>Dashboard</span>
              </a>
          </li>
          <!-- Homepage slider  -->
          <li class="nav-item">
-             <a class="nav-link {{ Route::currentRouteName() == 'slider' ? '' : 'collapsed' }}" href="{{ route('slider') }}">
+             <a class="nav-link {{ Route::currentRouteName() == 'slider' ? '' : 'collapsed' }}"
+                 href="{{ route('slider') }}">
                  <i class="bi bi-sliders"></i>
                  <span>Slider</span>
              </a>
@@ -22,7 +24,7 @@
                  <i class="bi bi-basket"></i><span>Product Attributes</span><i class="bi bi-chevron-down ms-auto"></i>
              </a>
              <ul id="products-nav"
-                 class="nav-content collapse {{ (((Route::currentRouteName() == 'color' ? 'show' : '' || Route::currentRouteName() == 'size') ? 'show' : '' || Route::currentRouteName() == 'category') ? 'show' : '' || Route::currentRouteName() == 'subcategory') ? 'show' : '' || Route::currentRouteName() == 'product' ? 'show' : ''}}"
+                 class="nav-content collapse {{ ((((Route::currentRouteName() == 'color' ? 'show' : '' || Route::currentRouteName() == 'size') ? 'show' : '' || Route::currentRouteName() == 'category') ? 'show' : '' || Route::currentRouteName() == 'subcategory') ? 'show' : '' || Route::currentRouteName() == 'product') ? 'show' : '' }}"
                  data-bs-parent="#sidebar-nav">
                  <li>
                      <a href="{{ route('product') }}"
@@ -31,26 +33,24 @@
                      </a>
                  </li>
                  <li>
-                     <a href="{{ route('color') }}"
-                         class="{{ Route::currentRouteName() == 'color' ? 'active' : '' }}">
+                     <a href="{{ route('color') }}" class="{{ (Route::currentRouteName() == 'color' ? 'active' : '') }}">
                          <i class="bi bi-circle"></i><span>Color</span>
                      </a>
                  </li>
                  <li>
-                     <a href="{{ route('size') }}"
-                         class="{{ Route::currentRouteName() == 'size' ? 'active' : '' }}">
+                     <a href="{{ route('size') }}" class="{{ (Route::currentRouteName() == 'size' ? 'active' : '') }}">
                          <i class="bi bi-circle"></i><span>Size</span>
                      </a>
                  </li>
                  <li>
                      <a href="{{ route('category') }}"
-                         class="{{ Route::currentRouteName() == 'category' ? 'active' : '' }}">
+                         class="{{ (Route::currentRouteName() == 'category' ? 'active' : '') }}">
                          <i class="bi bi-circle"></i><span>Category</span>
                      </a>
                  </li>
                  <li>
                      <a href="{{ route('subcategory') }}"
-                         class="{{ Route::currentRouteName() == 'subcategory' ? 'active' : '' }}">
+                         class="{{ (Route::currentRouteName() == 'subcategory' ? 'active' : '') }}">
                          <i class="bi bi-circle"></i><span>Subcategory</span>
                      </a>
                  </li>
@@ -60,21 +60,24 @@
          <li class="nav-heading">Pages</li>
          {{-- brands --}}
          <li class="nav-item">
-             <a class="nav-link {{ Route::currentRouteName() == 'brands' ? '' : 'collapsed' }}" href="{{ route('brands') }}">
+             <a class="nav-link {{ (Route::currentRouteName() == 'brands' ? '' : 'collapsed') }}"
+                 href="{{ route('brands') }}">
                  <i class="bi bi-building"></i>
                  <span>Brands</span>
              </a>
          </li>
          {{-- team membrs --}}
          <li class="nav-item">
-             <a class="nav-link {{ Route::currentRouteName() == 'team.member' ? '' : 'collapsed' }}" href="{{ route('team.member') }}">
+             <a class="nav-link {{ (Route::currentRouteName() == 'team.member' ? '' : 'collapsed') }}"
+                 href="{{ route('team.member') }}">
                  <i class="bi bi-people"></i>
                  <span>Team Members</span>
              </a>
          </li>
          {{-- profile --}}
          <li class="nav-item">
-             <a class="nav-link {{ Route::currentRouteName() == 'profile' ? '' : 'collapsed' }}" href="{{ route('profile') }}">
+             <a class="nav-link {{ (Route::currentRouteName() == 'profile' ? '' : 'collapsed') }}"
+                 href="{{ route('profile') }}">
                  <i class="bi bi-person"></i>
                  <span>Profile</span>
              </a>

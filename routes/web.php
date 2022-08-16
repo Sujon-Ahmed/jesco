@@ -47,6 +47,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // dashboard
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/cache-clear', [AdminDashboardController::class, 'clearCache'])->name('cache.clear');
 
     // home page slider
     Route::get('/slider', [HomepageSliderController::class, 'index'])->name('slider');

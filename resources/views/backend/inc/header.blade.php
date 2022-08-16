@@ -70,7 +70,13 @@
                     </a>
                 </li><!-- End Search Icon-->
 
-                <li class="nav-item">
+                <li class="nav-item ">
+                    <a class="nav-link nav-icon" href="{{ route('cache.clear') }}">
+                        <button type="button" class="btn btn-danger btn-sm">Cache Clear</button>
+                    </a><!-- End Notification Icon -->
+                </li><!-- End Notification Nav -->
+
+                 <li class="nav-item">
                     <a class="nav-link nav-icon" href="{{ url('/') }}" data-bs-toggle="tooltip" data-bs-placement="left" title="Browse Webpage" target="_blank">
                         <i class="bi bi-globe"></i>
                     </a><!-- End Notification Icon -->
