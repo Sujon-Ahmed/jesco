@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+@section('title', 'Jesco Shop')
 @section('content')
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">

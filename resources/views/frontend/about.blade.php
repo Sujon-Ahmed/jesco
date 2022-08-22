@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+@section('title', 'Jesco About')
 @section('content')
  <!-- About Intro Area start-->
     <div class="about-intro-area">
