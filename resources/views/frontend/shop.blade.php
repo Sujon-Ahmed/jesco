@@ -47,8 +47,10 @@
                                     <option {{ $sort_text == 'default' ? 'selected' : '' }} value="default">Default</option>
                                     <option {{ $sort_text == 'newest' ? 'selected' : '' }} value="newest"> Newest</option>
                                     <option {{ $sort_text == 'oldest' ? 'selected' : '' }} value="oldest"> Oldest</option>
-                                    <option {{ $sort_text == 'low-to-high' ? 'selected' : '' }} value="low-to-high"> Price, low to high</option>
-                                    <option {{ $sort_text == 'high-to-low' ? 'selected' : '' }} value="high-to-low"> Price, high to low</option>
+                                    <option {{ $sort_text == 'low-to-high' ? 'selected' : '' }} value="low-to-high"> Price,
+                                        low to high</option>
+                                    <option {{ $sort_text == 'high-to-low' ? 'selected' : '' }} value="high-to-low"> Price,
+                                        high to low</option>
                                 </select>
 
                             </div>
@@ -201,7 +203,7 @@
 
                         <!--  Pagination Area Start -->
                         <div class="mt-5 text-center">
-                            {{ $products->links() }}
+                            {{ $products->links('vendor.pagination.custom') }}
                         </div>
                         {{-- <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
                             <a href="#" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i

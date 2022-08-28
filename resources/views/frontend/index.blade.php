@@ -172,8 +172,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('shop') }}" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
-                            class="fa fa-arrow-right ml-15px" aria-hidden="true"></i></a>
+                    {{-- <a href="{{ route('shop') }}" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
+                            class="fa fa-arrow-right ml-15px" aria-hidden="true"></i></a> --}}
                 </div>
             </div>
         </div>
