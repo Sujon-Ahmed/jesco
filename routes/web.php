@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HomepageSliderController;
@@ -39,6 +40,9 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 // about controller
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+// contact
+Route::resource('/contact', ContactController::class);
 
 Auth::routes();
 

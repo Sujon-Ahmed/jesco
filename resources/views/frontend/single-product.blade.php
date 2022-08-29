@@ -52,7 +52,7 @@
                         <h2>{{ $product_info->product_name }}</h2>
                         <div class="pricing-meta">
                             <ul>
-                                <li class="old-price not-cut">৳{{ ceil($product_info->after_discount) }}</li>
+                                <li class="old-price not-cut after_discount_price">৳{{ ceil($product_info->after_discount) }}</li>
                             </ul>
                         </div>
                         <div class="pro-details-rating-wrap">
