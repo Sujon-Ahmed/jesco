@@ -353,6 +353,7 @@
 
 <!-- Main Js -->
 <script src="{{ asset('frontend_assets/js/main.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     function sortProduct() {
@@ -361,6 +362,47 @@
         $('#filterForm').submit();
     }
 </script>
+{{-- session flash message toastr alert --}}
+ @if (session('status'))
+     <script>
+         const Toast = Swal.mixin({
+             toast: true,
+             position: 'top-end',
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true,
+             didOpen: (toast) => {
+                 toast.addEventListener('mouseenter', Swal.stopTimer)
+                 toast.addEventListener('mouseleave', Swal.resumeTimer)
+             }
+         })
+
+         Toast.fire({
+             icon: 'success',
+             title: '{{ session('status') }}',
+         })
+     </script>
+ @endif
+ @if (session('error'))
+     <script>
+         const Toast = Swal.mixin({
+             toast: true,
+             position: 'top-end',
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true,
+             didOpen: (toast) => {
+                 toast.addEventListener('mouseenter', Swal.stopTimer)
+                 toast.addEventListener('mouseleave', Swal.resumeTimer)
+             }
+         })
+
+         Toast.fire({
+             icon: 'error',
+             title: '{{ session('error') }}',
+         })
+     </script>
+ @endif
 
 </body>
 
