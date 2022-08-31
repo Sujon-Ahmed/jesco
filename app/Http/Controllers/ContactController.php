@@ -93,9 +93,10 @@ class ContactController extends Controller
      * @param  \App\Models\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function visitorQuoteDelete(Contact $contact, $id)
     {
-        //
+        Contact::find(decrypt($id))->delete();
+        return back()->with('status', 'Visitor Quote Delete Successfully!');
     }
     // visitor quotes
     public function visitorQuotes()

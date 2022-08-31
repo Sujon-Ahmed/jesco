@@ -117,4 +117,5 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
 
     // visitor quotes
     Route::get('/visitor/quotes', [ContactController::class, 'visitorQuotes'])->name('visitor.quotes');
+    Route::get('/visitor/quote/delete/{id}', [ContactController::class, 'visitorQuoteDelete'])->name('visitor.quote.delete');
 });

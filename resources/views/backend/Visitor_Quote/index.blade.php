@@ -36,7 +36,7 @@
                                     <td>{{ $visitor->email }}</td>
                                     <td>{{ $visitor->message }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="{{ route('visitor.quote.delete', encrypt($visitor->id)) }}" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
