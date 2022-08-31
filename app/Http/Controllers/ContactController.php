@@ -39,7 +39,18 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'    => 'required',
+            'email'   => 'required | email:rfc,dns',
+            'message' => 'required'
+        ]);
+
+        $contact = new Contact();
+        $contact->name      = $request->name;
+        $contact->email     = $request->email;
+        $contact->message   = $request->message;
+        $contact->save();
+        return back()->with('status', 'Your Message Submit Successfully!');
     }
 
     /**
