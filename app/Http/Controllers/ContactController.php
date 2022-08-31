@@ -97,4 +97,10 @@ class ContactController extends Controller
     {
         //
     }
+    // visitor quotes
+    public function visitorQuotes()
+    {
+        $visitors = Contact::orderBy('id', 'DESC')->get();
+        return view('backend.Visitor_Quote.index', compact('visitors'));
+    }
 }

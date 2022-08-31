@@ -114,4 +114,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/team/member/update', [TeamController::class, 'update'])->name('team.member.update');
     Route::get('/get-team-member-info/{id}', [TeamController::class, 'getTeamMemberInfo']);
     Route::delete('/team/member/delete', [TeamController::class, 'teamMemberDelete'])->name('team.member.delete');
+
+    // visitor quotes
+    Route::get('/visitor/quotes', [ContactController::class, 'visitorQuotes'])->name('visitor.quotes');
 });
