@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
@@ -38,8 +39,11 @@ Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCateg
 // shop page
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
-// about controller
+// about
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
+// blog
+Route::resource('/blogs', BlogController::class);
 
 // contact
 Route::resource('/contact', ContactController::class);

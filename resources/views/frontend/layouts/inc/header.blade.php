@@ -137,12 +137,7 @@
                                         href="{{ route('index.frontend') }}">Home</a></li>
                                 <li class="{{ Request::is('shop') ? 'active' : '' }}"><a
                                         href="{{ route('shop') }}">Shop</a></li>
-                                <li class="dropdown "><a href="#">Blogs <i class="pe-7s-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                        <li><a href="blog-single.html">Blog Single Page</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ route('blogs.index') }}">Blogs</a></li>
                                 <li><a href="{{ route('about') }}">About us</a></li>
                                 <li><a href="{{ route('contact.index') }}">Contact us</a></li>
                             </ul>
