@@ -74,7 +74,7 @@
                                                     <!-- Single Prodect -->
                                                     <div class="product">
                                                         <div class="thumb">
-                                                            <a href="{{ route('single.product', $product->id) }}"
+                                                            <a href="{{ route('single.product', encrypt($product->id)) }}"
                                                                 class="image">
                                                                 <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                     alt="Product" />
@@ -112,7 +112,7 @@
                                                                 <span class="rating-num">( 4 Review )</span>
                                                             </span>
                                                             <h5 class="title"><a
-                                                                    href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+                                                                    href="{{ route('single.product', encrypt($product->id)) }}">{{ $product->product_name }}</a>
                                                             </h5>
                                                             <span class="price">
                                                                 <span
@@ -133,7 +133,7 @@
                                                     <div class="col-md-5 col-lg-5 col-xl-4">
                                                         <div class="product">
                                                             <div class="thumb">
-                                                                <a href="{{ route('single.product', $product->id) }}"
+                                                                <a href="{{ route('single.product', encrypt($product->id)) }}"
                                                                     class="image">
                                                                     <img src="{{ asset('backend_assets/uploads/products/preview') }}/{{ $product->product_image }}"
                                                                         alt="Product" />
@@ -205,24 +205,6 @@
                         <div class="mt-5 text-center">
                             {{ $products->links('vendor.pagination.custom') }}
                         </div>
-                        {{-- <div class="load-more-items text-center mb-md-60px mb-lm-60px mt-30px0px" data-aos="fade-up">
-                            <a href="#" class="btn btn-lg btn-primary btn-hover-dark m-auto"> Load More <i
-                                    class="fa fa-refresh ml-15px" aria-hidden="true"></i></a>
-                        </div> --}}
-                        {{-- <div class="center mt-5">
-                            <div class="pagination">
-
-                                <a href="#">&laquo;</a>
-                                <a href="#">1</a>
-                                <a href="#" class="active">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div> --}}
-                        <!--  Pagination Area End -->
                     </div>
                     <!-- Shop Bottom Area End -->
                 </div>
@@ -255,7 +237,7 @@
                             <div class="sidebar-widget-category">
                                 <ul>
                                     @foreach ($categories as $category)
-                                        <li><a href="{{ url('/filter/category/product', $category->id) }}"
+                                        <li><a href="{{ url('/filter/category/product', encrypt($category->id)) }}"
                                                 class="">{{ $category->category_name }}
                                                 <span>({{ $category->rel_to_product->count() }})</span> </a></li>
                                     @endforeach

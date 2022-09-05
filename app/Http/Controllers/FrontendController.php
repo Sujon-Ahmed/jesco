@@ -30,9 +30,9 @@ class FrontendController extends Controller
     // single product page
     public function singleProduct($id)
     {
-        $product_info       = Product::find($id);
-        $related_products   = Product::where('category_id', $product_info->category_id)->where('id', '!=',  $id)->get();
-        $product_info       = Product::find($id);
+        $product_info       = Product::find(decrypt($id));
+        $related_products   = Product::where('category_id', $product_info->category_id)->where('id', '!=',  decrypt($id))->get();
+        $product_info       = Product::find(decrypt($id));
 
         return view('frontend.single-product', [
             'product_info'      =>  $product_info,

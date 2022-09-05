@@ -103,7 +103,7 @@
                             <ul class="product-tab-nav nav align-items-center justify-content-center">
                                 @foreach ($categories as $category)
                                     <li class="nav-item"><a class="nav-link" data-bs-toggle="tab"
-                                            href="{{ url('/filter/category/product', $category->id) }}">{{ $category->category_name }}</a>
+                                            href="{{ url('/filter/category/product', encrypt($category->id)) }}">{{ $category->category_name }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -126,7 +126,7 @@
                                         <!-- Single Prodect -->
                                         <div class="product">
                                             <div class="thumb">
-                                                <a href="{{ route('single.product', $product->id) }}" class="image">
+                                                <a href="{{ route('single.product', encrypt($product->id)) }}" class="image">
                                                     <img src="{{ asset('backend_assets/uploads/products/preview/' . $product->product_image) }}"
                                                         alt="Product" />
                                                 </a>
@@ -159,7 +159,7 @@
                                                     <span class="rating-num">( 4 Review )</span>
                                                 </span>
                                                 <h5 class="title"><a
-                                                        href="{{ route('single.product', $product->id) }}">{{ $product->product_name }}</a>
+                                                        href="{{ route('single.product', encrypt($product->id)) }}">{{ $product->product_name }}</a>
                                                 </h5>
                                                 <span class="price">
                                                     <span class="new">৳{{ ceil($product->after_discount) }}</span>
