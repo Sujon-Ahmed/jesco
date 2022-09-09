@@ -45,7 +45,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
@@ -66,6 +66,12 @@
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <textarea name="description" id="description"></textarea>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                        <button class="btn btn-primary btn-sm me-md-2" type="submit">Submit</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

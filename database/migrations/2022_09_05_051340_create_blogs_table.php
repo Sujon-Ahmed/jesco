@@ -17,8 +17,9 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('image')->nullable();
-            $table->string('category');
+            $table->integer('category_id');
             $table->longText('description');
+            $table->tinyInteger('status')->default(0)->comment('0=unpublish, 1=publish');
             $table->timestamps();
         });
     }

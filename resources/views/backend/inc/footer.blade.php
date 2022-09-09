@@ -41,7 +41,7 @@
      $(document).ready(function() {
          $('#description').summernote({
              tabsize: 2,
-             height: 300
+             height: 200
          });
      });
  </script>
