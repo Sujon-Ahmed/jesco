@@ -30,10 +30,12 @@ use App\Http\Controllers\TeamController;
 |
 */
 
-// frontend
-
+// frontend section
 Route::get('/', [FrontendController::class, 'index'])->name('index.frontend');
 Route::get('/single/product/{id}', [FrontendController::class, 'singleProduct'])->name('single.product');
+Route::get('/blogs-grid', [FrontendController::class, 'blogsGrid'])->name('blogs-grid');
+
+// shop section
 Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCategoryProduct'])->name('filter.category.product');
 
 // shop page
@@ -41,9 +43,6 @@ Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 
 // about
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-
-// blog
-Route::resource('/blogs', BlogController::class);
 
 // contact
 Route::resource('/contact', ContactController::class);
@@ -122,4 +121,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // visitor quotes
     Route::get('/visitor/quotes', [ContactController::class, 'visitorQuotes'])->name('visitor.quotes');
     Route::get('/visitor/quote/delete/{id}', [ContactController::class, 'visitorQuoteDelete'])->name('visitor.quote.delete');
+
+    // blog
+    Route::resource('/blogs', BlogController::class);
 });

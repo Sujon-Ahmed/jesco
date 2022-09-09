@@ -83,12 +83,14 @@
              </a>
          </li>
 
+         {{-- blogs section --}}
          <li class="nav-item">
-             <a class="nav-link collapsed" href="pages-faq.html">
-                 <i class="bi bi-question-circle"></i>
-                 <span>F.A.Q</span>
+             <a class="nav-link {{ (Route::currentRouteName() == 'blogs.index' ? '' : 'collapsed') }}"
+                 href="{{ route('blogs.index') }}">
+                 <i class="bi bi-people"></i>
+                 <span>Blogs</span>
              </a>
-         </li><!-- End F.A.Q Page Nav -->
+         </li>
 
          <li class="nav-item">
              <a class="nav-link collapsed" href="{{ route('visitor.quotes') }}">

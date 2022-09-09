@@ -137,7 +137,7 @@
                                         href="{{ route('index.frontend') }}">Home</a></li>
                                 <li class="{{ Request::is('shop') ? 'active' : '' }}"><a
                                         href="{{ route('shop') }}">Shop</a></li>
-                                <li><a href="{{ route('blogs.index') }}">Blogs</a></li>
+                                <li><a href="{{ route('blogs-grid') }}">Blogs</a></li>
                                 <li><a href="{{ route('about') }}">About us</a></li>
                                 <li><a href="{{ route('contact.index') }}">Contact us</a></li>
                             </ul>

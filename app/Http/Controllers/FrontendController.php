@@ -39,5 +39,10 @@ class FrontendController extends Controller
             'related_products'  =>  $related_products,
         ]);
     }
+    // blog grid
+    public function blogsGrid()
+    {
+        return view('frontend.blogs');
+    }
 
 }
