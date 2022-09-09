@@ -87,7 +87,7 @@
          <li class="nav-item">
              <a class="nav-link {{ (Route::currentRouteName() == 'blogs.index' ? '' : 'collapsed') }}"
                  href="{{ route('blogs.index') }}">
-                 <i class="bi bi-people"></i>
+                 <i class="bi bi-chat-left-text-fill"></i>
                  <span>Blogs</span>
              </a>
          </li>

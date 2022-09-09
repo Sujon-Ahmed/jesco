@@ -2,9 +2,9 @@
 @include('backend.inc.sidebar')
 
 <main id="main" class="main">
-      <section class="section dashboard">
-            @yield('content')
-      </section>
+    <section class="section dashboard">
+        @yield('content')
+    </section>
 </main>
 
-@include('backend.inc.footer') 
+@include('backend.inc.footer')
