@@ -45,12 +45,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('blogs.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="text" name="title" class="form-control"
-                                        placeholder="Enter blog title..." />
+                                    <input type="text" name="title" class="form-control" placeholder="Enter blog title..." />
+                                    @error('title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-6 mt-3">
                                     <select name="category_id" class="form-select">
@@ -59,10 +62,16 @@
                                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                         @endforeach
                                     </select>
+                                    @error('category_id')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-6 mt-3">
                                     <input type="file" name="thumbnail_image" id="thumbnail_image"
                                         class="form-control" />
+                                    @error('thumbnail_image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-md-12 mt-3">
                                     <textarea name="description" id="description"></textarea>
@@ -70,7 +79,8 @@
                                 <div class="col-md-12 mt-4">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                         <button class="btn btn-primary btn-sm me-md-2" type="submit">Submit</button>
-                                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
                                     </div>
                                 </div>
                             </div>

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
+use Mockery\Expectation;
 
 class BlogController extends Controller
 {
@@ -39,7 +41,29 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required | max:255',
+            'category_id' => 'required',
+            'thumbnail_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required'
+        ]);
+        try {
+            $image = $request->thumbnail_image;
+            $extension = $image->getClientOriginalExtension();
+            $img_new_name = uniqid().'.'.$extension;
+            $destination_path = public_path().'/backend_assets/uploads/blogs/';
+            $image->move($destination_path,$img_new_name);
+
+            Blog::create([
+                'title' => $request->title,
+                'category_id' => $request->category_id,
+                'image' => $img_new_name,
+                'description' => $request->description,
+            ]);
+            return back()->with('status', 'Blog Uploaded Successfully');
+        } catch (Expectation $error) {
+            return back()->with('error', 'Blog can not uploaded');
+        }
     }
 
     /**
