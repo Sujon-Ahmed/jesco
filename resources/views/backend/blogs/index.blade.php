@@ -49,17 +49,26 @@
                                     </td>
                                     <td>
                                         @if ($blog->status == 0)
-                                        <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}" class="btn btn-warning btn-sm">Unpublish</a>
+                                            <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}"
+                                                class="btn btn-warning btn-sm">Unpublish</a>
                                         @else
-                                        <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}" class="btn btn-success btn-sm">Publish</a>
+                                            <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}"
+                                                class="btn btn-success btn-sm">Publish</a>
                                         @endif
                                     </td>
                                     <td>
                                         <a href="#!" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a href="#!" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                        <a onclick="javascript:return confirm('Are You Sure?')"
+                                            href="{{ route('blogs.delete', encrypt($blog->id)) }}"
+                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @empty
+                                <tr>
+                                    <td colspan="6">
+                                        {{ 'No Blog Found!' }}
+                                    </td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>

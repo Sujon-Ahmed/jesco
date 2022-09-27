@@ -125,4 +125,5 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     // blog
     Route::resource('/blogs', BlogController::class);
     Route::get('/blogs/status-change/{id}', [BlogController::class, 'statusChange'])->name('blogs.status-change');
+    Route::get('/blogs/delete/{id}', [BlogController::class, 'destroy'])->name('blogs.delete');
 });

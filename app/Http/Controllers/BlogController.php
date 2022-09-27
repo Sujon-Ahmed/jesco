@@ -66,9 +66,9 @@ class BlogController extends Controller
         try {
             $image = $request->thumbnail_image;
             $extension = $image->getClientOriginalExtension();
-            $img_new_name = uniqid().'.'.$extension;
-            $destination_path = public_path().'/backend_assets/uploads/blogs/';
-            $image->move($destination_path,$img_new_name);
+            $img_new_name = uniqid() . '.' . $extension;
+            $destination_path = public_path() . '/backend_assets/uploads/blogs/';
+            $image->move($destination_path, $img_new_name);
 
             Blog::create([
                 'title' => $request->title,
@@ -122,8 +122,17 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Blog $blog, $id)
     {
-        //
+        $image = Blog::where('id', decrypt($id))->first()->image;
+        if ($image != null) {
+            $delete_from = public_path('/backend_assets/uploads/blogs/' . $image);
+            unlink($delete_from);
+            Blog::findOrFail(decrypt($id))->delete();
+            return back()->with('status', 'Blog Delete Successfully');
+        } else {
+            Blog::findOrFail(decrypt($id))->delete();
+            return back()->with('status', 'Blog Delete Successfully');
+        }
     }
 }
