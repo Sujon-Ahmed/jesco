@@ -49,9 +49,9 @@
                                     </td>
                                     <td>
                                         @if ($blog->status == 0)
-                                        <a href="#" class="btn btn-warning btn-sm">Unpublish</a>
+                                        <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}" class="btn btn-warning btn-sm">Unpublish</a>
                                         @else
-                                        <a href="#" class="btn btn-success btn-sm">Unpublish</a>
+                                        <a href="{{ route('blogs.status-change', encrypt($blog->id)) }}" class="btn btn-success btn-sm">Publish</a>
                                         @endif
                                     </td>
                                     <td>

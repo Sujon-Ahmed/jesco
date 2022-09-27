@@ -24,6 +24,20 @@ class BlogController extends Controller
             'blogs'         => $blogs,
         ]);
     }
+    // status change
+    public function statusChange($id)
+    {
+        $blog = Blog::findOrFail(decrypt($id));
+        if ($blog->status == 1) {
+            $blog->status = 0;
+            $blog->save();
+            return back()->with('status', 'status pending');
+        } else {
+            $blog->status = 1;
+            $blog->save();
+            return back()->with('status', 'status approve');
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
