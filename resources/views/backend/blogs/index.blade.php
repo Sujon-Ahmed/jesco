@@ -23,13 +23,44 @@
                         <thead>
                             <tr>
                                 <th>sl</th>
-                                <th>member name</th>
-                                <th>member photo</th>
-                                <th>status</th>
+                                <th>Title</th>
+                                <th>Thumbnail</th>
+                                <th>Description</th>
+                                <th>Status</th>
                                 <th>options</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @forelse ($blogs as $key=>$blog)
+                                <tr>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $blog->title }}</td>
+                                    <td><img src="{{ asset('backend_assets/uploads/blogs/' . $blog->image) }}"
+                                            alt="blog image" class="img-fluid" width="100"></td>
+                                    <td>
+                                        @php
+                                            $desc = $blog->description;
+                                            if (strlen($desc) > 100) {
+                                                echo substr($desc, 0, 100) . '...';
+                                            } else {
+                                                echo $desc;
+                                            }
+                                        @endphp
+                                    </td>
+                                    <td>
+                                        @if ($blog->status == 0)
+                                        <a href="#" class="btn btn-warning btn-sm">Unpublish</a>
+                                        @else
+                                        <a href="#" class="btn btn-success btn-sm">Unpublish</a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="#!" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
+                                        <a href="#!" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
@@ -50,7 +81,8 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-12">
-                                    <input type="text" name="title" class="form-control" placeholder="Enter blog title..." />
+                                    <input type="text" name="title" class="form-control"
+                                        placeholder="Enter blog title..." />
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

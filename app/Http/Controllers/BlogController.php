@@ -18,8 +18,10 @@ class BlogController extends Controller
     public function index()
     {
         $categories = Category::get();
+        $blogs = Blog::get();
         return view('backend.blogs.index', [
-            'categories' => $categories
+            'categories'    => $categories,
+            'blogs'         => $blogs,
         ]);
     }
 
