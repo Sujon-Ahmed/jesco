@@ -126,7 +126,8 @@
                                         <!-- Single Prodect -->
                                         <div class="product">
                                             <div class="thumb">
-                                                <a href="{{ route('single.product', encrypt($product->id)) }}" class="image">
+                                                <a href="{{ route('single.product', encrypt($product->id)) }}"
+                                                    class="image">
                                                     <img src="{{ asset('backend_assets/uploads/products/preview/' . $product->product_image) }}"
                                                         alt="Product" />
                                                 </a>
@@ -364,85 +365,30 @@
             <!-- section title start -->
 
             <div class="row">
-                <div class="col-lg-4 mb-md-30px mb-lm-30px">
-                    <div class="single-blog">
-                        <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img
-                                    src="{{ asset('frontend_assets/images/blog-image/1.jpg') }}"
-                                    class="img-responsive w-100" alt=""></a>
-                        </div>
-                        <div class="blog-text">
-                            <div class="blog-athor-date">
-                                <a class="blog-date height-shape" href="#"><i class="fa fa-calendar"
-                                        aria-hidden="true"></i> 24 Aug, 2021</a>
-                                <a class="blog-mosion" href="#"><i class="fa fa-commenting"
-                                        aria-hidden="true"></i>
-                                    1.5
-                                    K</a>
+                @foreach ($blogs as $blog)
+                    <div class="col-lg-4 mb-md-30px mb-lm-30px">
+                        <div class="single-blog">
+                            <div class="blog-image">
+                                <a href="blog-single-left-sidebar.html"><img
+                                        src="{{ asset('backend_assets/uploads/blogs/' . $blog->image) }}"
+                                        class="img-responsive w-100" alt=""></a>
                             </div>
-                            <h5 class="blog-heading"><a class="blog-heading-link"
-                                    href="blog-single-left-sidebar.html">There are many variations of
-                                    passages of Lorem</a></h5>
+                            <div class="blog-text">
+                                <div class="blog-athor-date">
+                                    <a class="blog-date height-shape" href="#"><i class="fa fa-calendar"
+                                            aria-hidden="true"></i> {{ date('d M Y', strtotime($blog->created_at)) }}</a>
+                                    <a class="blog-mosion" href="#"><i class="fa fa-commenting"
+                                            aria-hidden="true"></i>0</a>
+                                </div>
+                                <h5 class="blog-heading"><a class="blog-heading-link"
+                                        href="blog-single-left-sidebar.html">{{ $blog->title }}</a></h5>
 
-                            <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn"> Read More<i
-                                    class="fa fa-arrow-right ml-5px" aria-hidden="true"></i></a>
+                                <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn"> Read More<i
+                                        class="fa fa-arrow-right ml-5px" aria-hidden="true"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- End single blog -->
-                <div class="col-lg-4 mb-md-30px mb-lm-30px">
-                    <div class="single-blog ">
-                        <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img
-                                    src="{{ asset('frontend_assets/images/blog-image/2.jpg') }}"
-                                    class="img-responsive w-100" alt=""></a>
-                        </div>
-                        <div class="blog-text">
-                            <div class="blog-athor-date">
-                                <a class="blog-date height-shape" href="#"><i class="fa fa-calendar"
-                                        aria-hidden="true"></i> 24 Aug, 2021</a>
-                                <a class="blog-mosion" href="#"><i class="fa fa-commenting"
-                                        aria-hidden="true"></i>
-                                    1.5
-                                    K</a>
-                            </div>
-                            <h5 class="blog-heading"><a class="blog-heading-link" href="blog-single-left-sidebar.html">It
-                                    is a long established factoi
-                                    ader will be distracted</a></h5>
-
-                            <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn"> Read More<i
-                                    class="fa fa-arrow-right ml-5px" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End single blog -->
-                <div class="col-lg-4">
-                    <div class="single-blog">
-                        <div class="blog-image">
-                            <a href="blog-single-left-sidebar.html"><img
-                                    src="{{ asset('frontend_assets/images/blog-image/3.jpg') }}"
-                                    class="img-responsive w-100" alt=""></a>
-                        </div>
-                        <div class="blog-text">
-                            <div class="blog-athor-date">
-                                <a class="blog-date height-shape" href="#"><i class="fa fa-calendar"
-                                        aria-hidden="true"></i> 24 Aug, 2021</a>
-                                <a class="blog-mosion" href="#"><i class="fa fa-commenting"
-                                        aria-hidden="true"></i>
-                                    1.5
-                                    K</a>
-                            </div>
-                            <h5 class="blog-heading"><a class="blog-heading-link"
-                                    href="blog-single-left-sidebar.html">Contrary to popular belieflo
-                                    lorem Ipsum is not</a></h5>
-
-
-                            <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn"> Read More<i
-                                    class="fa fa-arrow-right ml-5px" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End single blog -->
+                @endforeach
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\HomepageSlider;
@@ -18,6 +19,7 @@ class FrontendController extends Controller
         $latest_product     = Product::latest()->get();
         $products           = Product::latest()->take(12)->get();
         $sliders            = HomepageSlider::where('status', 1)->get();
+        $blogs              = Blog::where('status', 1)->limit(3)->get();
 
         return view('frontend.index', [
             'sliders'           =>  $sliders,
@@ -25,6 +27,7 @@ class FrontendController extends Controller
             'latest_categories' =>  $latest_categories,
             'products'          =>  $products,
             'latest_product'    =>  $latest_product,
+            'blogs'             =>  $blogs,
         ]);
     }
     // single product page
@@ -42,7 +45,8 @@ class FrontendController extends Controller
     // blog grid
     public function blogsGrid()
     {
-        return view('frontend.blogs');
+        $blogs  = Blog::where('status', 1)->paginate(15);
+        return view('frontend.blogs', compact('blogs'));
     }
 
 }
