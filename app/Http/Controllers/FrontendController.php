@@ -19,7 +19,7 @@ class FrontendController extends Controller
         $latest_product     = Product::latest()->get();
         $products           = Product::latest()->take(12)->get();
         $sliders            = HomepageSlider::where('status', 1)->get();
-        $blogs              = Blog::where('status', 1)->limit(3)->get();
+        $blogs              = Blog::where('status', 1)->latest()->limit(3)->get();
 
         return view('frontend.index', [
             'sliders'           =>  $sliders,
@@ -45,8 +45,14 @@ class FrontendController extends Controller
     // blog grid
     public function blogsGrid()
     {
-        $blogs  = Blog::where('status', 1)->paginate(15);
+        $blogs  = Blog::where('status', 1)->latest()->paginate(15);
         return view('frontend.blogs', compact('blogs'));
+    }
+    // single blog
+    public function singleBlog($id)
+    {
+        $blog = Blog::findOrFail(decrypt($id));
+        return view('frontend.single-blog', compact('blog'));
     }
 
 }

@@ -34,12 +34,11 @@ use App\Http\Controllers\TeamController;
 Route::get('/', [FrontendController::class, 'index'])->name('index.frontend');
 Route::get('/single/product/{id}', [FrontendController::class, 'singleProduct'])->name('single.product');
 Route::get('/blogs-grid', [FrontendController::class, 'blogsGrid'])->name('blogs-grid');
-
-// shop section
-Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCategoryProduct'])->name('filter.category.product');
+Route::get('/single-blog/{id}', [FrontendController::class, 'singleBlog'])->name('single.blog-details');
 
 // shop page
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/filter/category/product/{id}', [ShopController::class, 'filterCategoryProduct'])->name('filter.category.product');
 
 // about
 Route::get('/about', [AboutController::class, 'index'])->name('about');

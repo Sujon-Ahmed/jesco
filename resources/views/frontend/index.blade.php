@@ -369,7 +369,7 @@
                     <div class="col-lg-4 mb-md-30px mb-lm-30px">
                         <div class="single-blog">
                             <div class="blog-image">
-                                <a href="blog-single-left-sidebar.html"><img
+                                <a href="{{ route('single.blog-details', encrypt($blog->id)) }}"><img
                                         src="{{ asset('backend_assets/uploads/blogs/' . $blog->image) }}"
                                         class="img-responsive w-100" alt=""></a>
                             </div>
@@ -381,9 +381,9 @@
                                             aria-hidden="true"></i>0</a>
                                 </div>
                                 <h5 class="blog-heading"><a class="blog-heading-link"
-                                        href="blog-single-left-sidebar.html">{{ $blog->title }}</a></h5>
+                                        href="{{ route('single.blog-details', encrypt($blog->id)) }}">{{ $blog->title }}</a></h5>
 
-                                <a href="blog-single-left-sidebar.html" class="btn btn-primary blog-btn"> Read More<i
+                                <a href="{{ route('single.blog-details', encrypt($blog->id)) }}" class="btn btn-primary blog-btn"> Read More<i
                                         class="fa fa-arrow-right ml-5px" aria-hidden="true"></i></a>
                             </div>
                         </div>

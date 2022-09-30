@@ -12,4 +12,8 @@ class Blog extends Model
     protected $fillable = [
         'title', 'category_id', 'image', 'description'
     ];
+
+    public function relationWithCategory() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
