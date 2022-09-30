@@ -90,7 +90,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return $blog;
     }
 
     /**
@@ -101,7 +101,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return $blog;
     }
 
     /**
@@ -111,9 +111,29 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, $id)
     {
-        //
+        if ($request->thumbnail_image != '') {
+            $blog = Blog::findOrFail(decrypt($id));
+            $extension = $request->thumbnail_image->getClientOriginalExtension();
+            $image_name = uniqid() . '.' . $extension;
+            if ($blog->image != null) {
+                unlink(public_path('/backend_assets/uploads/blogs/' . $blog->image));
+                $request->thumbnail_image->move(public_path('/backend_assets/uploads/blogs/'), $image_name);
+            } else {
+                $request->thumbnail_image->move(public_path('/backend_assets/uploads/blogs/'), $image_name);
+            }
+            Blog::findOrFail(decrypt($id))->update([
+                'image' => $image_name,
+            ]);
+            return back()->with('status', 'Blog Updated Successfully');
+        }
+        Blog::findOrFail(decrypt($id))->update([
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'description' => $request->editDescription,
+        ]);
+        return back()->with('status', 'Blog Updated Successfully');
     }
 
     /**

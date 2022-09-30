@@ -39,7 +39,7 @@
  </script>
  <script>
      $(document).ready(function() {
-         $('#description').summernote({
+         $('#description, #editDescription').summernote({
              tabsize: 2,
              height: 200
          });
