@@ -58,9 +58,29 @@
                                     </td>
                                     <td>
                                         <a href="#!" class="btn btn-success btn-sm"><i class="fa fa-edit"></i></a>
-                                        <a onclick="javascript:return confirm('Are You Sure?')"
-                                            href="{{ route('blogs.delete', encrypt($blog->id)) }}"
-                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
+                                        <button data-bs-toggle="modal" data-bs-target="#blogDeleteConfirmMessage"
+                                            class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                        <!-- delete modal -->
+                                        <div class="modal" tabindex="-1" id="blogDeleteConfirmMessage">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Confirm Message</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Are you sure Delete This Blog ?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary btn-sm"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <a href="{{ route('blogs.delete', encrypt($blog->id)) }}"
+                                                            class="btn btn-danger btn-sm">Yes Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
